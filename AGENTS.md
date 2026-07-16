@@ -98,8 +98,9 @@ Every section follows this pattern:
 ## Git Workflow
 - **Branch naming:** `feature/`, `fix/`, `chore/`, `docs/`
 - **Commit style:** Conventional Commits (`feat:`, `fix:`, `style:`, `docs:`, `chore:`)
-- **Branch from:** `main` (small project, no develop branch needed)
-- **Never** force-push to main
+- **Branch from:** `main` for active development/features
+- **Merge to:** `release` for stable production releases/deployments
+- **Never** force-push to `main` or `release`
 
 ## What NOT to Do
 - Do NOT add external CSS frameworks (no Tailwind, no Bootstrap)
