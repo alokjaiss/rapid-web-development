@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebDev Reference | Laws, Workflow & AI Acceleration</title>
+  <meta name="description" content="A personal reference guide covering universal laws of web app development, workflow models, knowledge gaps, and how AI agents like Antigravity accelerate development 1000x." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─────────────────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span>WebDev<strong>Ref</strong></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#preproject" class="nav-link">Pre-Project</a></li>
+        <li><a href="#laws" class="nav-link">Laws</a></li>
+        <li><a href="#workflow" class="nav-link">Workflow</a></li>
+        <li><a href="#gaps" class="nav-link">Knowledge Gaps</a></li>
+        <li><a href="#ai" class="nav-link">AI Acceleration</a></li>
+        <li><a href="#antigravity" class="nav-link">Antigravity</a></li>
+        <li><a href="#cheatsheet" class="nav-link">Cheat Sheet</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ──────────────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="hero-orb orb3"></div>
+      <canvas id="particleCanvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Personal Reference Guide · v2.0
+      </div>
+      <h1 class="hero-title">
+        The Universal<br/>
+        <span class="gradient-text">Laws of Web</span><br/>
+        Development
+      </h1>
+      <p class="hero-subtitle">
+        Framework-agnostic principles, proven workflows, critical knowledge gaps,
+        and how <strong>AI agents</strong> multiply your velocity by <span class="highlight-num">1000×</span>
+      </p>
+      <div class="hero-cta">
+        <a href="#laws" class="btn btn-primary">Explore Laws</a>
+        <a href="#ai" class="btn btn-ghost">AI Acceleration →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">8</span><span class="stat-label">Pre-Project Steps</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">12</span><span class="stat-label">Universal Laws</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">7</span><span class="stat-label">Workflow Phases</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">1000×</span><span class="stat-label">AI Speed Boost</span></div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ─── PRE-PROJECT SETUP ──────────────────────────────────────── -->
+  <section class="section section-alt" id="preproject">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Before You Code</span>
+        <h2 class="section-title">Pre-Project Setup<br/><span class="gradient-text">Checklist</span></h2>
+        <p class="section-subtitle">The 8 essential steps to complete in your workspace <em>before</em> writing a single line of code. Skipping these is how projects go sideways.</p>
+      </div>
+
+      <div class="preproject-grid">
+
+        <div class="pp-card" data-step="01">
+          <div class="pp-step-num">01</div>
+          <div class="pp-icon">📁</div>
+          <h3>Set Up Folder Structure</h3>
+          <p>Organise your project before any files are created. A clear directory layout (<code>assets/</code>, <code>css/</code>, <code>js/</code>, <code>pages/</code>) keeps work scalable and prevents the root-folder chaos that accumulates when you skip this step.</p>
+          <div class="pp-code-block">
+            <pre>my-project/
+├── index.html
+├── README.md
+├── assets/
+│   ├── images/
+│   └── fonts/
+├── css/
+│   └── style.css
+└── js/
+    └── script.js</pre>
+          </div>
+          <div class="pp-tags"><span>Organisation</span><span>Scalability</span></div>
+        </div>
+
+        <div class="pp-card" data-step="02">
+          <div class="pp-step-num">02</div>
+          <div class="pp-icon">📝</div>
+          <h3>Create a README.md</h3>
+          <p>Document your project from day one. A good README covers: project name &amp; purpose, features list, how to run it locally, tech stack used, and links to key resources. This is the first file any collaborator — or future you — will read.</p>
+          <ul class="pp-checklist">
+            <li>Project name &amp; description</li>
+            <li>Core features list</li>
+            <li>How to run locally</li>
+            <li>Technologies used</li>
+            <li>Screenshots (add after building)</li>
+          </ul>
+          <div class="pp-tags"><span>Documentation</span><span>Onboarding</span></div>
+        </div>
+
+        <div class="pp-card" data-step="03">
+          <div class="pp-step-num">03</div>
+          <div class="pp-icon">🎯</div>
+          <h3>Define the Project Goal</h3>
+          <p>Before touching code, answer these four questions in writing. Vague goals lead to endless rewrites. A clear, written goal acts as a north star when you're tempted to add features that don't serve the core purpose.</p>
+          <ul class="pp-checklist">
+            <li>What problem does this solve?</li>
+            <li>Who is the target audience?</li>
+            <li>What are the v1 core features?</li>
+            <li>What design style? (dark/light, minimal/vibrant)</li>
+          </ul>
+          <div class="pp-tags"><span>Strategy</span><span>Scope</span></div>
+        </div>
+
+        <div class="pp-card" data-step="04">
+          <div class="pp-step-num">04</div>
+          <div class="pp-icon">🎨</div>
+          <h3>Plan Your Design System</h3>
+          <p>Define CSS custom properties (design tokens) at the very top of your stylesheet before writing a single component. This prevents magic numbers from spreading everywhere and ensures visual consistency across every element you build.</p>
+          <div class="pp-code-block">
+            <pre>:root {
+  --color-primary: hsl(250,80%,60%);
+  --color-bg: hsl(220,20%,8%);
+  --font-main: 'Inter', sans-serif;
+  --space-md: 1rem;
+  --radius-md: 12px;
+  --shadow-md: 0 8px 24px rgba(0,0,0,.3);
+}</pre>
+          </div>
+          <div class="pp-tags"><span>Design Tokens</span><span>CSS</span></div>
+        </div>
+
+        <div class="pp-card" data-step="05">
+          <div class="pp-step-num">05</div>
+          <div class="pp-icon">🔤</div>
+          <h3>Choose &amp; Import Fonts</h3>
+          <p>Browser-default fonts signal an unfinished product. Pick a Google Font pair (e.g. Inter + JetBrains Mono) and add the preconnect + stylesheet links to your <code>&lt;head&gt;</code> before writing any CSS. Font choice alone transforms perceived quality.</p>
+          <div class="pp-code-block">
+            <pre>&lt;link rel="preconnect"
+      href="https://fonts.googleapis.com"&gt;
+&lt;link href="https://fonts.googleapis.com/
+csss2?family=Inter:wght@400;600;700
+&amp;display=swap" rel="stylesheet"&gt;</pre>
+          </div>
+          <div class="pp-tags"><span>Typography</span><span>Branding</span></div>
+        </div>
+
+        <div class="pp-card" data-step="06">
+          <div class="pp-step-num">06</div>
+          <div class="pp-icon">🌐</div>
+          <h3>Set Up index.html Properly</h3>
+          <p>Start with a solid HTML5 boilerplate — not a blank file. Include charset, viewport, a descriptive title, meta description, and proper link/script tags. This baseline is the foundation that SEO, accessibility, and performance are all built on.</p>
+          <ul class="pp-checklist">
+            <li><code>lang</code> attribute on <code>&lt;html&gt;</code></li>
+            <li>Viewport meta tag set</li>
+            <li>Descriptive <code>&lt;title&gt;</code> tag</li>
+            <li>Meta description for SEO</li>
+            <li>CSS in <code>&lt;head&gt;</code>, JS before <code>&lt;/body&gt;</code></li>
+          </ul>
+          <div class="pp-tags"><span>SEO</span><span>HTML5</span></div>
+        </div>
+
+        <div class="pp-card" data-step="07">
+          <div class="pp-step-num">07</div>
+          <div class="pp-icon">🔀</div>
+          <h3>Initialise Git</h3>
+          <p>Run <code>git init</code> <em>before</em> writing any code — not after you've already made a mess. Create a <code>.gitignore</code> immediately to keep secrets, node_modules, and OS files out of version history. Commit early and commit often.</p>
+          <div class="pp-code-block">
+            <pre>git init
+git add .
+git commit -m "initial project setup"
+
+# .gitignore essentials:
+node_modules/
+.env
+.DS_Store
+*.log</pre>
+          </div>
+          <div class="pp-tags"><span>Git</span><span>Version Control</span></div>
+        </div>
+
+        <div class="pp-card" data-step="08">
+          <div class="pp-step-num">08</div>
+          <div class="pp-icon">📐</div>
+          <h3>Wireframe the Layout</h3>
+          <p>Sketch each page/screen before writing HTML — even on paper or in Excalidraw. A wireframe reveals layout problems, missing sections, and navigation gaps before you've spent time coding them. It takes 20 minutes and saves hours of restructuring.</p>
+          <ul class="pp-checklist">
+            <li>Map out every section/page</li>
+            <li>Define navigation structure</li>
+            <li>Plan content hierarchy (H1 → H2 → H3)</li>
+            <li>Identify reusable components</li>
+            <li>Plan responsive breakpoints</li>
+          </ul>
+          <div class="pp-tags"><span>UX</span><span>Planning</span></div>
+        </div>
+
+      </div>
+
+      <!-- Summary table -->
+      <div class="pp-summary-table">
+        <h3>Quick Reference Summary</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Step</th>
+                <th>What to Do</th>
+                <th>Why It Matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="pp-step-cell">01</td><td>📁 Folder Structure</td><td>Create organised subdirectories</td><td>Keeps files scalable &amp; findable</td></tr>
+              <tr><td class="pp-step-cell">02</td><td>📝 README.md</td><td>Document name, features &amp; setup</td><td>First thing any collaborator reads</td></tr>
+              <tr><td class="pp-step-cell">03</td><td>🎯 Project Goal</td><td>Write down problem, audience &amp; v1 scope</td><td>Prevents scope creep</td></tr>
+              <tr><td class="pp-step-cell">04</td><td>🎨 Design System</td><td>Define CSS variables in :root</td><td>Visual consistency across all components</td></tr>
+              <tr><td class="pp-step-cell">05</td><td>🔤 Import Fonts</td><td>Add Google Font preconnect links</td><td>Professional typography from the start</td></tr>
+              <tr><td class="pp-step-cell">06</td><td>🌐 HTML Boilerplate</td><td>Set up base index.html with SEO tags</td><td>Foundation for SEO &amp; accessibility</td></tr>
+              <tr><td class="pp-step-cell">07</td><td>🔀 Init Git</td><td>git init + .gitignore before coding</td><td>Version control &amp; backup from day one</td></tr>
+              <tr><td class="pp-step-cell">08</td><td>📐 Wireframe</td><td>Sketch layout &amp; components</td><td>Catch structural issues before coding</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── UNIVERSAL LAWS ────────────────────────────────────────── -->
+  <section class="section" id="laws">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Foundation</span>
+        <h2 class="section-title">The 12 Universal Laws of<br/><span class="gradient-text">Web App Development</span></h2>
+        <p class="section-subtitle">These principles apply regardless of your framework, language, or stack. Violate them and you'll pay the price later.</p>
+      </div>
+      <div class="laws-grid">
+
+        <div class="law-card" data-law="01">
+          <div class="law-num">01</div>
+          <div class="law-icon">🏗️</div>
+          <h3>Separation of Concerns</h3>
+          <p>Keep HTML (structure), CSS (style), and JS (behaviour) cleanly separated. Each file/module should do <em>one thing well</em>. Mixing them creates a maintenance nightmare that compounds over time.</p>
+          <div class="law-tags"><span>Architecture</span><span>Maintainability</span></div>
+        </div>
+
+        <div class="law-card" data-law="02">
+          <div class="law-num">02</div>
+          <div class="law-icon">📱</div>
+          <h3>Mobile-First, Always</h3>
+          <p>Design and code for the smallest viewport first, then scale up. Over 60% of web traffic is mobile. Starting desktop-first and squishing down is a recipe for broken layouts and poor UX.</p>
+          <div class="law-tags"><span>Responsive</span><span>UX</span></div>
+        </div>
+
+        <div class="law-card" data-law="03">
+          <div class="law-num">03</div>
+          <div class="law-icon">⚡</div>
+          <h3>Performance IS a Feature</h3>
+          <p>Every 100ms delay reduces conversion by ~1%. Users abandon pages that take &gt;3s. Lighthouse score, bundle size, and Core Web Vitals are not optional metrics — they are product requirements.</p>
+          <div class="law-tags"><span>Performance</span><span>CWV</span></div>
+        </div>
+
+        <div class="law-card" data-law="04">
+          <div class="law-num">04</div>
+          <div class="law-icon">♿</div>
+          <h3>Accessibility is Non-Negotiable</h3>
+          <p>WCAG compliance is both a legal requirement and the right thing to do. Use semantic HTML, ARIA roles, sufficient colour contrast, and keyboard navigability. Screen readers exist for real users.</p>
+          <div class="law-tags"><span>A11y</span><span>WCAG</span></div>
+        </div>
+
+        <div class="law-card" data-law="05">
+          <div class="law-num">05</div>
+          <div class="law-icon">🔒</div>
+          <h3>Security by Design</h3>
+          <p>Never trust user input. Sanitise everything server-side. Use HTTPS everywhere, implement CSP headers, avoid XSS and CSRF vectors, and never store secrets in client code. Security is never an afterthought.</p>
+          <div class="law-tags"><span>Security</span><span>OWASP</span></div>
+        </div>
+
+        <div class="law-card" data-law="06">
+          <div class="law-num">06</div>
+          <div class="law-icon">🧩</div>
+          <h3>Component-Based Thinking</h3>
+          <p>Build the UI as a tree of reusable, composable components. Each component owns its state, markup, and styles. This scales far better than monolithic pages and enables parallel development.</p>
+          <div class="law-tags"><span>Architecture</span><span>Reusability</span></div>
+        </div>
+
+        <div class="law-card" data-law="07">
+          <div class="law-num">07</div>
+          <div class="law-icon">🗄️</div>
+          <h3>State is the Source of Truth</h3>
+          <p>UI is a function of state. Manage state at the right layer — local vs global vs server state. Avoid duplicating state; when state diverges from UI you get bugs that are nearly impossible to reproduce.</p>
+          <div class="law-tags"><span>State Mgmt</span><span>Data Flow</span></div>
+        </div>
+
+        <div class="law-card" data-law="08">
+          <div class="law-num">08</div>
+          <div class="law-icon">🔗</div>
+          <h3>API-First Architecture</h3>
+          <p>Treat your backend as a product, not an implementation detail. Design clear, versioned APIs before writing a line of UI. This decouples frontend from backend and enables parallel development.</p>
+          <div class="law-tags"><span>API Design</span><span>Decoupling</span></div>
+        </div>
+
+        <div class="law-card" data-law="09">
+          <div class="law-num">09</div>
+          <div class="law-icon">🧪</div>
+          <h3>Test What Matters</h3>
+          <p>Not everything needs a unit test, but critical paths must be tested. Follow the Testing Pyramid: many unit tests, fewer integration tests, few end-to-end tests. Untested code is technical debt waiting to explode.</p>
+          <div class="law-tags"><span>Testing</span><span>Quality</span></div>
+        </div>
+
+        <div class="law-card" data-law="10">
+          <div class="law-num">10</div>
+          <div class="law-icon">🚀</div>
+          <h3>CI/CD is Table Stakes</h3>
+          <p>Automate building, testing, and deploying from day one. Manual deployments breed fear and slow velocity. A broken CI pipeline should stop all other work — it's your quality gate.</p>
+          <div class="law-tags"><span>DevOps</span><span>Automation</span></div>
+        </div>
+
+        <div class="law-card" data-law="11">
+          <div class="law-num">11</div>
+          <div class="law-icon">📐</div>
+          <h3>Progressive Enhancement</h3>
+          <p>Build a working baseline first (pure HTML), then layer in CSS enhancements, then JS interactivity. This ensures your app works for every user on every device, even with JS disabled or slow connections.</p>
+          <div class="law-tags"><span>Resilience</span><span>UX</span></div>
+        </div>
+
+        <div class="law-card" data-law="12">
+          <div class="law-num">12</div>
+          <div class="law-icon">📊</div>
+          <h3>Measure Before You Optimise</h3>
+          <p>Premature optimisation is the root of all evil. Profile first, identify the real bottleneck, then optimise surgically. Optimising the wrong thing wastes time and often makes code worse.</p>
+          <div class="law-tags"><span>Performance</span><span>Profiling</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WORKFLOW ──────────────────────────────────────────────── -->
+  <section class="section section-alt" id="workflow">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Process</span>
+        <h2 class="section-title">The 7-Phase<br/><span class="gradient-text">Development Workflow</span></h2>
+        <p class="section-subtitle">A repeatable, battle-tested process that works for solo devs and large teams alike.</p>
+      </div>
+      <div class="workflow-timeline">
+
+        <div class="phase-card">
+          <div class="phase-connector"></div>
+          <div class="phase-badge">Phase 1</div>
+          <div class="phase-icon">🎯</div>
+          <h3>Discovery & Requirements</h3>
+          <p>Define the <strong>problem</strong>, not the solution. Interview stakeholders, document user stories, set measurable acceptance criteria. Ambiguous requirements are the #1 cause of project failure.</p>
+          <ul class="phase-checklist">
+            <li>User stories &amp; personas defined</li>
+            <li>Acceptance criteria written</li>
+            <li>Tech constraints identified</li>
+            <li>Success metrics agreed upon</li>
+          </ul>
+          <div class="phase-output"><span>📄</span> Output: PRD / Spec Doc</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-connector"></div>
+          <div class="phase-badge">Phase 2</div>
+          <div class="phase-icon">🗺️</div>
+          <h3>Architecture & Design</h3>
+          <p>Choose your tech stack deliberately. Design the system architecture, data models, and API contracts. Create wireframes and high-fidelity mockups. Validate with stakeholders <em>before</em> writing code.</p>
+          <ul class="phase-checklist">
+            <li>System diagram created</li>
+            <li>Data models defined</li>
+            <li>API contracts documented</li>
+            <li>UI/UX mockups approved</li>
+          </ul>
+          <div class="phase-output"><span>📐</span> Output: Architecture Doc + Mockups</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-connector"></div>
+          <div class="phase-badge">Phase 3</div>
+          <div class="phase-icon">🏗️</div>
+          <h3>Environment Setup & Foundation</h3>
+          <p>Set up version control, CI/CD pipeline, dev/staging/prod environments, linting, formatting, and the project scaffold. A solid foundation prevents technical debt from accumulating.</p>
+          <ul class="phase-checklist">
+            <li>Git branching strategy set</li>
+            <li>CI/CD pipeline configured</li>
+            <li>Environment variables managed</li>
+            <li>Code style enforced (ESLint/Prettier)</li>
+          </ul>
+          <div class="phase-output"><span>⚙️</span> Output: Runnable scaffold + CI pipeline</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-connector"></div>
+          <div class="phase-badge">Phase 4</div>
+          <div class="phase-icon">💻</div>
+          <h3>Core Development</h3>
+          <p>Build features in vertical slices (full-stack per feature), not horizontal layers (all backend then all frontend). Use feature flags for incomplete work. Commit small, deploy often.</p>
+          <ul class="phase-checklist">
+            <li>Feature-by-feature development</li>
+            <li>Unit tests written alongside code</li>
+            <li>Code reviews for every PR</li>
+            <li>No broken builds merged</li>
+          </ul>
+          <div class="phase-output"><span>🛠️</span> Output: Working feature increments</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-connector"></div>
+          <div class="phase-badge">Phase 5</div>
+          <div class="phase-icon">🧪</div>
+          <h3>Testing & QA</h3>
+          <p>Run the full testing suite — unit, integration, end-to-end, accessibility, performance, and security audits. Cross-browser and cross-device testing. Fix bugs before adding more features.</p>
+          <ul class="phase-checklist">
+            <li>Unit + integration tests passing</li>
+            <li>E2E tests covering critical paths</li>
+            <li>Lighthouse score ≥ 90</li>
+            <li>Zero WCAG AA violations</li>
+          </ul>
+          <div class="phase-output"><span>✅</span> Output: Test report + bug fixes</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-connector"></div>
+          <div class="phase-badge">Phase 6</div>
+          <div class="phase-icon">🚀</div>
+          <h3>Deployment & Launch</h3>
+          <p>Deploy to production via your automated pipeline. Use blue-green or canary releases to minimise risk. Set up monitoring, error tracking, and alerting <em>before</em> launch, not after.</p>
+          <ul class="phase-checklist">
+            <li>Production deploy automated</li>
+            <li>Error tracking active (Sentry/etc.)</li>
+            <li>Uptime monitoring configured</li>
+            <li>Rollback plan documented</li>
+          </ul>
+          <div class="phase-output"><span>🌐</span> Output: Live production app</div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-connector"></div>
+          <div class="phase-badge">Phase 7</div>
+          <div class="phase-icon">📈</div>
+          <h3>Iterate & Optimise</h3>
+          <p>Analyse real user data, collect feedback, measure against success metrics, and prioritise the next iteration. Software is never "done" — it evolves in response to real-world usage.</p>
+          <ul class="phase-checklist">
+            <li>Analytics reviewed weekly</li>
+            <li>User feedback collected</li>
+            <li>Performance monitored</li>
+            <li>Backlog prioritised</li>
+          </ul>
+          <div class="phase-output"><span>🔄</span> Output: Next iteration plan</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── KNOWLEDGE GAPS ────────────────────────────────────────── -->
+  <section class="section" id="gaps">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Self-Awareness</span>
+        <h2 class="section-title">Critical Knowledge Gaps<br/><span class="gradient-text">to Fill Before You Build</span></h2>
+        <p class="section-subtitle">Honest blind spots that trip up most developers. Knowing what you <em>don't</em> know is the first step to mastery.</p>
+      </div>
+      <div class="gaps-grid">
+
+        <div class="gap-category">
+          <div class="gap-cat-header">
+            <div class="gap-cat-icon">🌐</div>
+            <h3>Networking & HTTP</h3>
+          </div>
+          <div class="gap-items">
+            <div class="gap-item">
+              <span class="gap-level level-high">Critical</span>
+              <h4>HTTP Methods Semantics</h4>
+              <p>GET is idempotent &amp; safe. POST creates. PUT replaces. PATCH partially updates. DELETE removes. Misusing them breaks REST contracts and caching.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-med">Important</span>
+              <h4>CORS — How It Really Works</h4>
+              <p>CORS is enforced by the <em>browser</em>, not the server. The server only sends headers. Understanding preflight requests saves hours of debugging.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-med">Important</span>
+              <h4>HTTP Caching Headers</h4>
+              <p>Cache-Control, ETag, Last-Modified. Proper caching = faster apps with less server load. Getting it wrong = stale data reaching users.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gap-category">
+          <div class="gap-cat-header">
+            <div class="gap-cat-icon">🎨</div>
+            <h3>CSS Fundamentals</h3>
+          </div>
+          <div class="gap-items">
+            <div class="gap-item">
+              <span class="gap-level level-high">Critical</span>
+              <h4>The Cascade & Specificity</h4>
+              <p>Specificity wars cause "why isn't my style applying?" panic. Understanding the cascade (origin → specificity → order) fixes this permanently.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-high">Critical</span>
+              <h4>CSS Box Model</h4>
+              <p>content-box vs border-box. Margins collapse. Padding vs margin. Most layout bugs trace back to misunderstanding the box model.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-med">Important</span>
+              <h4>Flexbox vs Grid — When to Use Which</h4>
+              <p>Flex is 1D (row OR column). Grid is 2D. Use Grid for page layout, Flex for component-level alignment.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gap-category">
+          <div class="gap-cat-header">
+            <div class="gap-cat-icon">⚡</div>
+            <h3>JavaScript Internals</h3>
+          </div>
+          <div class="gap-items">
+            <div class="gap-item">
+              <span class="gap-level level-high">Critical</span>
+              <h4>Event Loop & Async/Await</h4>
+              <p>JS is single-threaded. The event loop enables concurrency. Not understanding it leads to race conditions, blocking the UI thread, and missed error handling.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-high">Critical</span>
+              <h4>Closures & Scope</h4>
+              <p>Closures are how JS handles private state. Misunderstanding scope causes "variable is undefined" bugs and stale closure bugs in React hooks.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-low">Good to Know</span>
+              <h4>Prototype Chain & this</h4>
+              <p>Understanding <code>this</code> binding prevents a class of bugs that are notoriously confusing, especially in callbacks and event handlers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gap-category">
+          <div class="gap-cat-header">
+            <div class="gap-cat-icon">🔒</div>
+            <h3>Security Essentials</h3>
+          </div>
+          <div class="gap-items">
+            <div class="gap-item">
+              <span class="gap-level level-high">Critical</span>
+              <h4>XSS (Cross-Site Scripting)</h4>
+              <p>Injecting malicious scripts via user input. Never use <code>innerHTML</code> with user data. Sanitise all inputs. Use a Content Security Policy.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-high">Critical</span>
+              <h4>CSRF (Cross-Site Request Forgery)</h4>
+              <p>Tricking authenticated users into submitting unintended requests. Defend with CSRF tokens and SameSite cookie attribute.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-med">Important</span>
+              <h4>JWT Authentication Pitfalls</h4>
+              <p>JWTs are not sessions. They can't be invalidated server-side until expiry. Use short expiry + refresh tokens. Never store in localStorage.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gap-category">
+          <div class="gap-cat-header">
+            <div class="gap-cat-icon">🗄️</div>
+            <h3>Database & State</h3>
+          </div>
+          <div class="gap-items">
+            <div class="gap-item">
+              <span class="gap-level level-high">Critical</span>
+              <h4>N+1 Query Problem</h4>
+              <p>Fetching a list of N items then making N additional queries for each item. This silently kills performance. Always profile your database queries.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-med">Important</span>
+              <h4>SQL vs NoSQL Trade-offs</h4>
+              <p>Relational DBs for structured, consistent data. NoSQL for flexible schemas, horizontal scale. Choosing wrong is painful to undo later.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-med">Important</span>
+              <h4>Optimistic vs Pessimistic Updates</h4>
+              <p>Update the UI immediately (optimistic) vs wait for server confirmation (pessimistic). Each has trade-offs in UX and data consistency.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gap-category">
+          <div class="gap-cat-header">
+            <div class="gap-cat-icon">📦</div>
+            <h3>Build & Deployment</h3>
+          </div>
+          <div class="gap-items">
+            <div class="gap-item">
+              <span class="gap-level level-high">Critical</span>
+              <h4>Environment Variables & Secrets</h4>
+              <p>Never hardcode secrets. Use .env files locally, proper secret managers in production (Vault, AWS Secrets Manager). Leaked secrets = critical vulnerability.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-med">Important</span>
+              <h4>Bundle Size & Code Splitting</h4>
+              <p>Shipping a 5MB JS bundle tanks your performance. Use lazy loading, tree shaking, and code splitting. Analyse your bundle with Webpack Bundle Analyzer.</p>
+            </div>
+            <div class="gap-item">
+              <span class="gap-level level-low">Good to Know</span>
+              <h4>CDN & Edge Caching</h4>
+              <p>Serving assets from geographically close CDN nodes drastically reduces latency. Misconfigured CDN cache means users see stale content after deploys.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── AI ACCELERATION ───────────────────────────────────────── -->
+  <section class="section section-ai" id="ai">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">The Future is Now</span>
+        <h2 class="section-title">How AI Agents Accelerate<br/><span class="gradient-text">Development 1000×</span></h2>
+        <p class="section-subtitle">AI isn't just autocomplete. Used correctly, it's a force multiplier that compresses weeks of work into hours.</p>
+      </div>
+
+      <div class="ai-velocity-banner">
+        <div class="velocity-item">
+          <span class="velocity-num">10×</span>
+          <span class="velocity-label">Code Generation Speed</span>
+        </div>
+        <div class="velocity-item">
+          <span class="velocity-num">50×</span>
+          <span class="velocity-label">Boilerplate Elimination</span>
+        </div>
+        <div class="velocity-item">
+          <span class="velocity-num">100×</span>
+          <span class="velocity-label">Research & Learning</span>
+        </div>
+        <div class="velocity-item">
+          <span class="velocity-num">1000×</span>
+          <span class="velocity-label">End-to-End Automation</span>
+        </div>
+      </div>
+
+      <div class="ai-pillars">
+
+        <div class="pillar-card pillar-1">
+          <div class="pillar-icon">✍️</div>
+          <h3>Intelligent Code Generation</h3>
+          <p>Describe what you need in plain English and get production-ready code instantly. Not just snippets — full components, API handlers, database schemas, and test suites generated in seconds.</p>
+          <div class="pillar-examples">
+            <div class="example-chip">Generate REST API endpoint</div>
+            <div class="example-chip">Create auth middleware</div>
+            <div class="example-chip">Write unit tests</div>
+            <div class="example-chip">Build data models</div>
+          </div>
+        </div>
+
+        <div class="pillar-card pillar-2">
+          <div class="pillar-icon">🔍</div>
+          <h3>Instant Research & Debugging</h3>
+          <p>Ask AI to explain error messages, research best practices, compare libraries, and diagnose performance issues. What used to take 2 hours of Stack Overflow hunting takes 30 seconds.</p>
+          <div class="pillar-examples">
+            <div class="example-chip">Explain this error</div>
+            <div class="example-chip">Compare libraries</div>
+            <div class="example-chip">Debug performance</div>
+            <div class="example-chip">Find security issues</div>
+          </div>
+        </div>
+
+        <div class="pillar-card pillar-3">
+          <div class="pillar-icon">🔄</div>
+          <h3>Automated Refactoring</h3>
+          <p>Transform legacy code, migrate between patterns, rename across the entire codebase, enforce coding standards, and modernise APIs automatically — without the risk of human error.</p>
+          <div class="pillar-examples">
+            <div class="example-chip">Migrate to TypeScript</div>
+            <div class="example-chip">Extract components</div>
+            <div class="example-chip">Update dependencies</div>
+            <div class="example-chip">Apply design patterns</div>
+          </div>
+        </div>
+
+        <div class="pillar-card pillar-4">
+          <div class="pillar-icon">📋</div>
+          <h3>Documentation on Autopilot</h3>
+          <p>Auto-generate JSDoc comments, README files, API documentation, and architecture diagrams. Keep docs in sync with code changes. Stop maintaining docs manually — let AI do it.</p>
+          <div class="pillar-examples">
+            <div class="example-chip">JSDoc generation</div>
+            <div class="example-chip">README creation</div>
+            <div class="example-chip">API docs</div>
+            <div class="example-chip">Architecture diagrams</div>
+          </div>
+        </div>
+
+        <div class="pillar-card pillar-5">
+          <div class="pillar-icon">🧪</div>
+          <h3>Test Generation at Scale</h3>
+          <p>Generate comprehensive test suites — unit, integration, and E2E — that cover edge cases a human would miss. AI can analyse your code paths and produce tests with 90%+ coverage automatically.</p>
+          <div class="pillar-examples">
+            <div class="example-chip">Unit test generation</div>
+            <div class="example-chip">Edge case coverage</div>
+            <div class="example-chip">Mock generation</div>
+            <div class="example-chip">Test data factories</div>
+          </div>
+        </div>
+
+        <div class="pillar-card pillar-6">
+          <div class="pillar-icon">🤖</div>
+          <h3>Autonomous Task Execution</h3>
+          <p>Give an AI agent a high-level goal and it will plan, execute, verify, and iterate — using tools like file systems, browsers, terminals, and APIs. This is where 1000× speed becomes real.</p>
+          <div class="pillar-examples">
+            <div class="example-chip">End-to-end features</div>
+            <div class="example-chip">Automated deployment</div>
+            <div class="example-chip">Multi-step workflows</div>
+            <div class="example-chip">Self-correcting code</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- AI Workflow Table -->
+      <div class="ai-workflow-table">
+        <h3>Traditional vs AI-Assisted Development</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Traditional Time</th>
+                <th>With AI Agent</th>
+                <th>Speed Gain</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Set up project scaffold</td>
+                <td>2–4 hours</td>
+                <td>2 minutes</td>
+                <td class="gain">120×</td>
+              </tr>
+              <tr>
+                <td>Build CRUD API endpoints</td>
+                <td>1–2 days</td>
+                <td>15 minutes</td>
+                <td class="gain">96×</td>
+              </tr>
+              <tr>
+                <td>Write test suite (80% coverage)</td>
+                <td>3–5 days</td>
+                <td>30 minutes</td>
+                <td class="gain">240×</td>
+              </tr>
+              <tr>
+                <td>Debug a complex issue</td>
+                <td>2–8 hours</td>
+                <td>5–15 minutes</td>
+                <td class="gain">30×</td>
+              </tr>
+              <tr>
+                <td>Write full component with styles</td>
+                <td>2–4 hours</td>
+                <td>3 minutes</td>
+                <td class="gain">80×</td>
+              </tr>
+              <tr>
+                <td>Generate documentation</td>
+                <td>1–2 days</td>
+                <td>10 minutes</td>
+                <td class="gain">200×</td>
+              </tr>
+              <tr>
+                <td>Refactor legacy codebase</td>
+                <td>1–3 weeks</td>
+                <td>2–4 hours</td>
+                <td class="gain">50×</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ANTIGRAVITY GUIDE ─────────────────────────────────────── -->
+  <section class="section section-alt" id="antigravity">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Tool Mastery</span>
+        <h2 class="section-title">Mastering<br/><span class="gradient-text">Antigravity AI</span></h2>
+        <p class="section-subtitle">Antigravity is a powerful agentic AI coding assistant. Here's how to unlock its full potential and use it at its absolute best.</p>
+      </div>
+
+      <div class="ag-hero-block">
+        <div class="ag-logo">⬡</div>
+        <div class="ag-hero-text">
+          <h3>What is Antigravity?</h3>
+          <p>Antigravity is an AI coding agent powered by Google DeepMind's advanced models. Unlike a simple chatbot, it's an <strong>autonomous agent</strong> — it can read and write files, run commands in your terminal, browse the web, search your codebase, and even spawn sub-agents to tackle tasks in parallel. Think of it as a senior engineer on your team who never sleeps and works at machine speed.</p>
+        </div>
+      </div>
+
+      <div class="ag-principles">
+
+        <div class="ag-principle">
+          <div class="ag-principle-num">01</div>
+          <div class="ag-principle-content">
+            <h3>Give Context, Not Commands</h3>
+            <p>The more context you provide, the better the output. Don't just say "build a login page." Say: <em>"Build a login page for a SaaS app. Users log in with email/password. It should use our existing dark theme (see style.css), handle errors gracefully, and redirect to /dashboard on success."</em></p>
+            <div class="ag-tip">
+              <span>💡 Tip:</span> Include the WHY, not just the WHAT. "I need this to be fast because it's on the critical path" helps the agent make better trade-off decisions.
+            </div>
+          </div>
+        </div>
+
+        <div class="ag-principle">
+          <div class="ag-principle-num">02</div>
+          <div class="ag-principle-content">
+            <h3>Use /goal for Complex, Long-Running Tasks</h3>
+            <p>For big features or overnight tasks, use the <code>/goal</code> slash command. This puts Antigravity in a thorough, persistent mode where it won't stop until the goal is fully achieved — running tests, fixing errors, and iterating automatically.</p>
+            <div class="ag-tip">
+              <span>💡 Tip:</span> Use /goal for tasks like "Build a complete authentication system with registration, login, password reset, and email verification."
+            </div>
+          </div>
+        </div>
+
+        <div class="ag-principle">
+          <div class="ag-principle-num">03</div>
+          <div class="ag-principle-content">
+            <h3>Leverage the Planning Mode</h3>
+            <p>For complex changes, Antigravity enters Planning Mode before writing any code. It researches, analyses your codebase, and proposes a detailed implementation plan. <strong>Always review and approve the plan</strong> before proceeding — this is your chance to catch misunderstandings early.</p>
+            <div class="ag-tip">
+              <span>💡 Tip:</span> Ask clarifying questions in the plan review phase. "Can we also handle X edge case?" or "I prefer approach B" are all valid feedbacks.
+            </div>
+          </div>
+        </div>
+
+        <div class="ag-principle">
+          <div class="ag-principle-num">04</div>
+          <div class="ag-principle-content">
+            <h3>Teach It Your Patterns with /learn</h3>
+            <p>When Antigravity does something wrong or you correct it, use <code>/learn</code> to persist that correction as a rule. Over time, it adapts to your exact coding style, naming conventions, and architectural preferences.</p>
+            <div class="ag-tip">
+              <span>💡 Tip:</span> After you correct a repeated mistake (e.g., "always use our custom Button component, not plain &lt;button&gt;"), use /learn to lock that in permanently.
+            </div>
+          </div>
+        </div>
+
+        <div class="ag-principle">
+          <div class="ag-principle-num">05</div>
+          <div class="ag-principle-content">
+            <h3>Use @mention to Reference Past Work</h3>
+            <p>You can reference a previous conversation or context using @mention. This lets Antigravity pick up exactly where it left off, carry forward decisions from past sessions, and build on prior work without repeating yourself.</p>
+            <div class="ag-tip">
+              <span>💡 Tip:</span> After finishing a feature session, ask Antigravity to write a brief summary. Reference that summary in your next session for instant context loading.
+            </div>
+          </div>
+        </div>
+
+        <div class="ag-principle">
+          <div class="ag-principle-num">06</div>
+          <div class="ag-principle-content">
+            <h3>Combine Skills for Maximum Power</h3>
+            <p>Antigravity supports custom Skills — reusable instruction sets for specific tasks (e.g., "deploy to Vercel", "generate a data model"). Create skills for your most common workflows and activate them instantly with a single mention.</p>
+            <div class="ag-tip">
+              <span>💡 Tip:</span> Create a skill that encodes your entire component creation pattern — naming, file structure, test file, storybook story — and generate perfect components every time.
+            </div>
+          </div>
+        </div>
+
+        <div class="ag-principle">
+          <div class="ag-principle-num">07</div>
+          <div class="ag-principle-content">
+            <h3>Schedule with /schedule</h3>
+            <p>Use <code>/schedule</code> to set up recurring tasks or one-time timers. Antigravity can run a nightly code quality check, generate weekly progress reports, or remind you to run tests before a deployment window.</p>
+            <div class="ag-tip">
+              <span>💡 Tip:</span> Schedule a weekly /goal task to clean up tech debt — "Every Sunday, analyse the codebase for unused code, large functions, and missing tests."
+            </div>
+          </div>
+        </div>
+
+        <div class="ag-principle">
+          <div class="ag-principle-num">08</div>
+          <div class="ag-principle-content">
+            <h3>Review All Proposed Commands</h3>
+            <p>Antigravity will always ask your permission before running terminal commands, writing files, or making network requests. This is a safety feature — <strong>always read proposed commands</strong> before approving. You remain in control.</p>
+            <div class="ag-tip">
+              <span>💡 Tip:</span> Grant persistent permissions for commonly used safe commands (like git, npm, ls) to reduce friction without compromising safety.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Best Practices Grid -->
+      <div class="ag-best-practices">
+        <h3>Prompt Engineering for Antigravity</h3>
+        <div class="bp-grid">
+          <div class="bp-card bp-do">
+            <div class="bp-label">✅ DO</div>
+            <ul>
+              <li>Provide specific file paths when referencing existing code</li>
+              <li>Describe the expected behaviour and edge cases</li>
+              <li>Specify which framework/library versions you're using</li>
+              <li>State constraints: "keep it under 100 lines", "no new dependencies"</li>
+              <li>Ask it to explain its decisions so you learn</li>
+              <li>Use /goal for complex multi-step tasks</li>
+              <li>Review plans carefully before approving</li>
+            </ul>
+          </div>
+          <div class="bp-card bp-dont">
+            <div class="bp-label">❌ DON'T</div>
+            <ul>
+              <li>Give vague prompts: "make it better" or "fix the bug"</li>
+              <li>Approve commands without reading them</li>
+              <li>Ask for too many unrelated things in one message</li>
+              <li>Ignore the implementation plan phase</li>
+              <li>Expect it to know context it doesn't have access to</li>
+              <li>Use it as a replacement for understanding the code</li>
+              <li>Skip testing the generated code</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CHEAT SHEET ───────────────────────────────────────────── -->
+  <section class="section" id="cheatsheet">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Quick Reference</span>
+        <h2 class="section-title">Developer<br/><span class="gradient-text">Cheat Sheet</span></h2>
+        <p class="section-subtitle">The most important things to remember, distilled to the essentials.</p>
+      </div>
+      <div class="cheatsheet-grid">
+
+        <div class="cs-card">
+          <h3>⚡ Performance Checklist</h3>
+          <ul>
+            <li>Lighthouse score ≥ 90 on all metrics</li>
+            <li>LCP &lt; 2.5s, FID &lt; 100ms, CLS &lt; 0.1</li>
+            <li>Images: WebP format, lazy loaded, proper srcset</li>
+            <li>Fonts: font-display: swap, preload key fonts</li>
+            <li>JS bundle &lt; 150KB gzipped for initial load</li>
+            <li>Use service workers for offline support</li>
+            <li>Minimise render-blocking resources</li>
+          </ul>
+        </div>
+
+        <div class="cs-card">
+          <h3>🔒 Security Checklist</h3>
+          <ul>
+            <li>HTTPS everywhere, HSTS header set</li>
+            <li>Content-Security-Policy header configured</li>
+            <li>All user inputs sanitised server-side</li>
+            <li>No secrets in client-side code or git</li>
+            <li>Authentication tokens use httpOnly cookies</li>
+            <li>Rate limiting on all auth endpoints</li>
+            <li>Dependencies updated (npm audit passing)</li>
+          </ul>
+        </div>
+
+        <div class="cs-card">
+          <h3>♿ Accessibility Checklist</h3>
+          <ul>
+            <li>All images have descriptive alt text</li>
+            <li>Colour contrast ≥ 4.5:1 for normal text</li>
+            <li>Entire app keyboard-navigable</li>
+            <li>Focus indicators visible and clear</li>
+            <li>ARIA labels on all interactive elements</li>
+            <li>Screen reader tested (NVDA / VoiceOver)</li>
+            <li>No reliance on colour alone for meaning</li>
+          </ul>
+        </div>
+
+        <div class="cs-card">
+          <h3>🚀 Pre-Launch Checklist</h3>
+          <ul>
+            <li>Favicon and Open Graph meta tags set</li>
+            <li>robots.txt and sitemap.xml created</li>
+            <li>Error pages (404, 500) designed</li>
+            <li>Analytics and error monitoring active</li>
+            <li>All environment variables set in prod</li>
+            <li>Database backups configured</li>
+            <li>Rollback plan documented and tested</li>
+          </ul>
+        </div>
+
+        <div class="cs-card">
+          <h3>🤖 Antigravity Commands</h3>
+          <ul>
+            <li><code>/goal</code> — Long-running autonomous task</li>
+            <li><code>/learn</code> — Persist a correction or rule</li>
+            <li><code>/schedule</code> — Set recurring or one-time tasks</li>
+            <li><code>/grill-me</code> — Interactive planning interview</li>
+            <li><code>@mention</code> — Reference past conversations</li>
+            <li>Planning Mode — Review before any code is written</li>
+            <li>Skills — Custom reusable instruction sets</li>
+          </ul>
+        </div>
+
+        <div class="cs-card">
+          <h3>📐 CSS Layout Quick Ref</h3>
+          <ul>
+            <li><code>display: flex</code> → 1D layouts</li>
+            <li><code>display: grid</code> → 2D layouts</li>
+            <li><code>box-sizing: border-box</code> → always set globally</li>
+            <li><code>clamp(min, ideal, max)</code> → fluid typography</li>
+            <li><code>gap</code> → use instead of margins in flex/grid</li>
+            <li><code>min-content / max-content</code> → intrinsic sizing</li>
+            <li>CSS Custom Properties → design tokens</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-icon">⬡</span>
+          <span>WebDev<strong>Ref</strong></span>
+          <p>A living reference. Update it as you learn.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#preproject">Pre-Project</a>
+          <a href="#laws">Laws</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#gaps">Gaps</a>
+          <a href="#ai">AI</a>
+          <a href="#antigravity">Antigravity</a>
+          <a href="#cheatsheet">Cheat Sheet</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with Antigravity AI · Personal Reference · Always evolving · <span id="year"></span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
