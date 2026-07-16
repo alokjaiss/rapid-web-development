@@ -22,6 +22,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#preproject" class="nav-link">Pre-Project</a></li>
         <li><a href="#github" class="nav-link">GitHub</a></li>
+        <li><a href="#aicontext" class="nav-link">AI Context</a></li>
         <li><a href="#laws" class="nav-link">Laws</a></li>
         <li><a href="#workflow" class="nav-link">Workflow</a></li>
         <li><a href="#gaps" class="nav-link">Knowledge Gaps</a></li>
@@ -641,6 +642,367 @@ git commit -m "feat: add login form validation"</pre></div>
 git checkout develop
 git pull origin develop
 git branch -d feature/your-feature-name</pre></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── AI CONTEXT FILES ──────────────────────────────────────── -->
+  <section class="section section-alt" id="aicontext">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">AI-First Development</span>
+        <h2 class="section-title">AI Context Files &amp;<br/><span class="gradient-text">Project Knowledge Management</span></h2>
+        <p class="section-subtitle">The secret to 10× better AI output is context. Here’s exactly how to write <code>AGENTS.md</code>, build a <code>docs/</code> folder, and maintain living documentation so every AI session starts fully informed.</p>
+      </div>
+
+      <!-- ── WHY CONTEXT FILES MATTER ── -->
+      <div class="aic-why-banner">
+        <div class="aic-why-item">
+          <div class="aic-why-icon">🧠</div>
+          <div>
+            <h4>Without Context Files</h4>
+            <p>AI has zero memory between sessions. You re-explain your stack, naming conventions, folder structure, and decisions every single time. Hours wasted on re-onboarding.</p>
+          </div>
+        </div>
+        <div class="aic-why-divider"></div>
+        <div class="aic-why-item">
+          <div class="aic-why-icon">⚡</div>
+          <div>
+            <h4>With Context Files</h4>
+            <p>AI reads your files, instantly understands your architecture, knows your naming conventions, respects your workflow, and produces on-brand code from the very first message of every session.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOCK 1: AGENTS.md / claude.md from Day 1 ── -->
+      <div class="aic-block">
+        <div class="aic-block-header">
+          <div class="aic-block-icon">📝</div>
+          <div>
+            <h3>Writing AGENTS.md (or claude.md) from Day 1</h3>
+            <p>Create this file in your project root on the very first day. It is the AI’s permanent briefing document — read automatically at the start of every session. Write it like you’re onboarding a new senior developer.</p>
+          </div>
+        </div>
+
+        <div class="aic-template-intro">
+          <h4>What to Include</h4>
+          <div class="aic-sections-grid">
+            <div class="aic-section-pill">🎯 Project Overview</div>
+            <div class="aic-section-pill">🛠️ Tech Stack</div>
+            <div class="aic-section-pill">📁 Folder Structure</div>
+            <div class="aic-section-pill">🎨 Design System</div>
+            <div class="aic-section-pill">🌿 Branch Strategy</div>
+            <div class="aic-section-pill">✏️ Commit Convention</div>
+            <div class="aic-section-pill">📚 Coding Standards</div>
+            <div class="aic-section-pill">🚫 What NOT to Do</div>
+            <div class="aic-section-pill">🔄 Current Workflow</div>
+            <div class="aic-section-pill">📋 Active Tasks</div>
+          </div>
+        </div>
+
+        <div class="aic-template-block">
+          <div class="aic-template-label">📄 AGENTS.md — Full Template</div>
+          <div class="aic-code-scroll">
+<pre><span class="aic-comment"># AGENTS.md — AI Assistant Briefing</span>
+<span class="aic-comment"># Read this before doing anything in this project.</span>
+
+<span class="aic-heading">## Project Overview</span>
+- <span class="aic-key">Name:</span> MyApp — A SaaS dashboard for freelancers
+- <span class="aic-key">Goal:</span> Help freelancers track projects, invoices, and time
+- <span class="aic-key">Status:</span> MVP in progress — targeting v1.0 by Aug 2025
+- <span class="aic-key">Live URL:</span> https://myapp.vercel.app (staging)
+
+<span class="aic-heading">## Tech Stack</span>
+- <span class="aic-key">Frontend:</span> Next.js 14 (App Router), TypeScript, Tailwind CSS
+- <span class="aic-key">Backend:</span> Next.js API routes + Prisma ORM
+- <span class="aic-key">Database:</span> PostgreSQL (Neon serverless)
+- <span class="aic-key">Auth:</span> NextAuth.js v5 (Google + email)
+- <span class="aic-key">Deploy:</span> Vercel (preview + production)
+- <span class="aic-key">Testing:</span> Vitest + Playwright
+
+<span class="aic-heading">## Folder Structure</span>
+src/
+├── app/              ← Next.js App Router pages
+├── components/       ← Reusable UI components
+│   ├── ui/           ← Primitive components (Button, Input...)
+│   └── features/     ← Feature-specific components
+├── lib/              ← Utilities, helpers, constants
+├── hooks/            ← Custom React hooks
+├── types/            ← TypeScript type definitions
+├── server/           ← Server actions + API logic
+└── styles/           ← Global CSS, design tokens
+
+<span class="aic-heading">## Design System &amp; Conventions</span>
+- <span class="aic-key">Colors:</span> Use Tailwind classes only, never hardcode hex
+- <span class="aic-key">Spacing:</span> Always use Tailwind spacing scale (p-4, gap-6...)
+- <span class="aic-key">Components:</span> Use shadcn/ui as base, extend in components/ui/
+- <span class="aic-key">Icons:</span> lucide-react ONLY, no other icon libraries
+- <span class="aic-key">Fonts:</span> Inter (body), JetBrains Mono (code)
+
+<span class="aic-heading">## Coding Standards</span>
+- TypeScript strict mode is ON — no 'any' types allowed
+- Components use named exports, never default exports
+- File naming: kebab-case for files, PascalCase for components
+- All server actions live in src/server/actions/
+- API errors must use our custom ApiError class (see lib/errors.ts)
+- Always handle loading and error states in UI components
+
+<span class="aic-heading">## Git Workflow</span>
+- Branch from: develop (never main directly)
+- Branch naming: feature/, fix/, chore/, hotfix/
+- Commit style: Conventional Commits (feat:, fix:, docs:...)
+- PRs require: passing CI + 1 review before merge
+- Never force-push to main or develop
+
+<span class="aic-heading">## What NOT to Do</span>
+- Do NOT install new npm packages without asking first
+- Do NOT modify the Prisma schema without discussing migration plan
+- Do NOT change NextAuth config — it is intentionally complex
+- Do NOT use 'any' type in TypeScript
+- Do NOT hardcode strings — use constants from lib/constants.ts
+- Do NOT commit .env files or secrets
+
+<span class="aic-heading">## Current Sprint Focus</span>
+- Building: Invoice generation feature (see docs/features/invoices.md)
+- Blocked on: Stripe webhook integration (see issue #47)
+- Next up: PDF export + email delivery
+
+<span class="aic-heading">## Important Files to Know</span>
+- lib/auth.ts — auth configuration and session helpers
+- lib/db.ts — Prisma client singleton
+- lib/constants.ts — all magic strings and enums
+- components/ui/Button.tsx — always use this, never &lt;button&gt;
+- docs/ARCHITECTURE.md — system design and data flow</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOCK 2: docs/ folder structure ── -->
+      <div class="aic-block">
+        <div class="aic-block-header">
+          <div class="aic-block-icon">📁</div>
+          <div>
+            <h3>The docs/ Folder — Your Project’s Brain</h3>
+            <p>Maintain a <code>docs/</code> folder at the project root. This is where all architecture decisions, feature specs, and technical notes live. Reference these from AGENTS.md so AI can read them when needed.</p>
+          </div>
+        </div>
+        <div class="aic-docs-grid">
+
+          <div class="aic-doc-card">
+            <div class="aic-doc-file">ARCHITECTURE.md</div>
+            <h4>System Architecture</h4>
+            <p>High-level system diagram, data flow, service boundaries. How frontend talks to backend, what the database schema looks like at a macro level, any external APIs integrated.</p>
+            <div class="aic-doc-tip">Update whenever you add a new service or major data model</div>
+          </div>
+
+          <div class="aic-doc-card">
+            <div class="aic-doc-file">DECISIONS.md</div>
+            <h4>Architecture Decision Records (ADRs)</h4>
+            <p>Log every major technical decision with: <strong>Context</strong> (why was this decision needed?), <strong>Options considered</strong>, <strong>Decision made</strong>, and <strong>Consequences</strong>. Invaluable for AI and future-you.</p>
+            <div class="aic-doc-tip">Example: &ldquo;Chose Prisma over Drizzle because…&rdquo;</div>
+          </div>
+
+          <div class="aic-doc-card">
+            <div class="aic-doc-file">features/[name].md</div>
+            <h4>Feature Specifications</h4>
+            <p>One file per feature. Include: user story, acceptance criteria, UI mockup link, API endpoints affected, data model changes, edge cases to handle. AI uses this to implement features correctly on the first try.</p>
+            <div class="aic-doc-tip">Write the spec before opening a ticket or writing code</div>
+          </div>
+
+          <div class="aic-doc-card">
+            <div class="aic-doc-file">API.md</div>
+            <h4>API Reference</h4>
+            <p>Document every endpoint: method, URL, request body schema, response shape, auth requirements, error codes. AI uses this to write accurate API calls, types, and integration tests without guessing.</p>
+            <div class="aic-doc-tip">Auto-generate with tools like Swagger/OpenAPI, then export to markdown</div>
+          </div>
+
+          <div class="aic-doc-card">
+            <div class="aic-doc-file">PROGRESS.md</div>
+            <h4>Living Progress Log</h4>
+            <p>A running log of what was built, what was decided, and what’s left. Update at the end of every session. This is the most powerful file for AI continuity — it tells the AI exactly where things stand.</p>
+            <div class="aic-doc-tip">Ask Antigravity to update this file at the end of every session</div>
+          </div>
+
+          <div class="aic-doc-card">
+            <div class="aic-doc-file">TROUBLESHOOTING.md</div>
+            <h4>Known Issues &amp; Gotchas</h4>
+            <p>Document every tricky bug, unexpected behaviour, or environment quirk you’ve discovered. Prevents AI (and you) from re-solving the same problem. Include the symptom, root cause, and fix.</p>
+            <div class="aic-doc-tip">Add an entry every time you spend &gt;30 mins on a non-obvious problem</div>
+          </div>
+
+        </div>
+
+        <div class="aic-folder-layout">
+          <div class="aic-folder-label">📁 Recommended docs/ Layout</div>
+          <div class="aic-code-block">
+<pre>docs/
+├── ARCHITECTURE.md     ← System diagram &amp; data flow
+├── DECISIONS.md        ← Architecture Decision Records (ADRs)
+├── API.md              ← All endpoints documented
+├── PROGRESS.md         ← Living progress log (update every session)
+├── TROUBLESHOOTING.md  ← Known bugs &amp; non-obvious solutions
+├── features/
+│   ├── auth.md           ← Auth feature spec
+│   ├── invoices.md       ← Invoice feature spec
+│   └── dashboard.md      ← Dashboard feature spec
+└── diagrams/
+    ├── erd.png           ← Entity relationship diagram
+    └── system-flow.png   ← Request/response flow diagram</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOCK 3: Project Knowledge Stack ── -->
+      <div class="aic-block">
+        <div class="aic-block-header">
+          <div class="aic-block-icon">🗃️</div>
+          <div>
+            <h3>The Complete Project Knowledge Stack</h3>
+            <p>Every piece of information has a correct home. Here’s where each type of project knowledge should live so AI always knows where to look.</p>
+          </div>
+        </div>
+        <div class="aic-knowledge-table">
+          <div class="aic-kt-row aic-kt-header">
+            <span>File / Location</span>
+            <span>What Lives Here</span>
+            <span>Who Reads It</span>
+            <span>Update When</span>
+          </div>
+          <div class="aic-kt-row">
+            <span class="aic-kt-file">AGENTS.md</span>
+            <span>AI briefing: stack, conventions, workflow, don’ts</span>
+            <span>AI (every session)</span>
+            <span>Any convention or stack change</span>
+          </div>
+          <div class="aic-kt-row">
+            <span class="aic-kt-file">README.md</span>
+            <span>Project intro, setup, features, how to run</span>
+            <span>Devs, collaborators</span>
+            <span>New features, setup changes</span>
+          </div>
+          <div class="aic-kt-row">
+            <span class="aic-kt-file">docs/ARCHITECTURE.md</span>
+            <span>System design, services, data flow</span>
+            <span>AI + devs</span>
+            <span>New services or major refactors</span>
+          </div>
+          <div class="aic-kt-row">
+            <span class="aic-kt-file">docs/DECISIONS.md</span>
+            <span>Why key choices were made (ADRs)</span>
+            <span>AI + devs</span>
+            <span>Every major technical decision</span>
+          </div>
+          <div class="aic-kt-row">
+            <span class="aic-kt-file">docs/PROGRESS.md</span>
+            <span>What’s built, what’s in progress, what’s next</span>
+            <span>AI (cross-session)</span>
+            <span>End of every work session</span>
+          </div>
+          <div class="aic-kt-row">
+            <span class="aic-kt-file">docs/features/*.md</span>
+            <span>Feature specs, acceptance criteria, edge cases</span>
+            <span>AI before building</span>
+            <span>Before starting any feature</span>
+          </div>
+          <div class="aic-kt-row">
+            <span class="aic-kt-file">.github/AGENTS.md</span>
+            <span>GitHub-specific AI rules (PR, review behaviour)</span>
+            <span>AI in GitHub context</span>
+            <span>When PR/review workflow changes</span>
+          </div>
+          <div class="aic-kt-row">
+            <span class="aic-kt-file">Code comments</span>
+            <span>Why non-obvious code exists (not what it does)</span>
+            <span>AI + devs inline</span>
+            <span>When writing tricky logic</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOCK 4: Living Documentation Rules ── -->
+      <div class="aic-block">
+        <div class="aic-block-header">
+          <div class="aic-block-icon">🔄</div>
+          <div>
+            <h3>Keeping Context Files Alive</h3>
+            <p>A stale AGENTS.md is worse than none — it misleads the AI. Follow these rules to keep your context files current without it becoming a burden.</p>
+          </div>
+        </div>
+        <div class="aic-rules-grid">
+          <div class="aic-rule-card aic-rule-green">
+            <div class="aic-rule-icon">✅</div>
+            <h4>Update AGENTS.md on every stack change</h4>
+            <p>Added a new library? Changed a naming convention? Switched auth providers? Update AGENTS.md in the same commit. Treat it like updating package.json.</p>
+          </div>
+          <div class="aic-rule-card aic-rule-green">
+            <div class="aic-rule-icon">✅</div>
+            <h4>Ask AI to update PROGRESS.md at session end</h4>
+            <p>At the end of every work session, prompt: <em>&ldquo;Update docs/PROGRESS.md with what we built today, key decisions made, and what’s left for next session.&rdquo;</em> This gives future sessions instant context.</p>
+          </div>
+          <div class="aic-rule-card aic-rule-green">
+            <div class="aic-rule-icon">✅</div>
+            <h4>Write feature specs before code</h4>
+            <p>Before asking AI to build a feature, create <code>docs/features/feature-name.md</code> first. Include the user story, acceptance criteria, and edge cases. Then say: &ldquo;Build this per the spec in docs/features/x.md.&rdquo;</p>
+          </div>
+          <div class="aic-rule-card aic-rule-green">
+            <div class="aic-rule-icon">✅</div>
+            <h4>Log every ADR immediately</h4>
+            <p>The moment you make a technical decision (&ldquo;we’re using Zustand instead of Redux because…&rdquo;), add it to docs/DECISIONS.md. Future AI sessions won’t undo your decisions if they’re documented.</p>
+          </div>
+          <div class="aic-rule-card aic-rule-red">
+            <div class="aic-rule-icon">❌</div>
+            <h4>Don’t let AGENTS.md become a monolith</h4>
+            <p>Keep AGENTS.md to 200–400 lines max. Move deep feature details to <code>docs/features/</code>. Reference those files from AGENTS.md instead of copying content in. AI can read linked files on demand.</p>
+          </div>
+          <div class="aic-rule-card aic-rule-red">
+            <div class="aic-rule-icon">❌</div>
+            <h4>Don’t document the obvious</h4>
+            <p>Don’t write &ldquo;useState manages local state&rdquo; in AGENTS.md. Document what’s non-obvious, project-specific, or against framework defaults. Focus on YOUR conventions, not general React knowledge.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOCK 5: Session Handoff Template ── -->
+      <div class="aic-block">
+        <div class="aic-block-header">
+          <div class="aic-block-icon">🤝</div>
+          <div>
+            <h3>Session Handoff Template</h3>
+            <p>Ask AI to fill this template at the end of every session. Paste it as the <em>first message</em> of your next session to instantly reload full context without repeating yourself.</p>
+          </div>
+        </div>
+        <div class="aic-handoff-grid">
+          <div class="aic-handoff-card">
+            <div class="aic-handoff-label">Prompt to end a session</div>
+            <div class="aic-code-block">
+<pre>&ldquo;Before we finish, please:
+1. Update docs/PROGRESS.md with:
+   - What we built/changed today
+   - Key decisions made and why
+   - Any problems encountered &amp; solutions
+   - Exact next steps for next session
+2. Note any files I should review
+3. Give me a 3-line summary I can
+   use to start the next session&rdquo;</pre>
+            </div>
+          </div>
+          <div class="aic-handoff-card">
+            <div class="aic-handoff-label">First message of a new session</div>
+            <div class="aic-code-block">
+<pre>&ldquo;We’re continuing work on [Project Name].
+Context files:
+- AGENTS.md — project briefing
+- docs/PROGRESS.md — where we left off
+- docs/features/[x].md — current feature
+
+Last session summary:
+[paste the 3-line summary here]
+
+Today’s task: [what you want to do]&rdquo;</pre>
             </div>
           </div>
         </div>
@@ -1450,6 +1812,7 @@ git branch -d feature/your-feature-name</pre></div>
         <div class="footer-links">
           <a href="#preproject">Pre-Project</a>
           <a href="#github">GitHub</a>
+          <a href="#aicontext">AI Context</a>
           <a href="#laws">Laws</a>
           <a href="#workflow">Workflow</a>
           <a href="#gaps">Gaps</a>
