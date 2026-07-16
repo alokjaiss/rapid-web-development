@@ -23,6 +23,14 @@
         <li><a href="#preproject" class="nav-link">Pre-Project</a></li>
         <li><a href="#github" class="nav-link">GitHub</a></li>
         <li><a href="#aicontext" class="nav-link">AI Context</a></li>
+        <li><a href="#prelaunch" class="nav-link">Pre-Launch</a></li>
+        <li><a href="#cssarch" class="nav-link">CSS</a></li>
+        <li><a href="#performance" class="nav-link">Performance</a></li>
+        <li><a href="#testing" class="nav-link">Testing</a></li>
+        <li><a href="#debugging" class="nav-link">Debugging</a></li>
+        <li><a href="#apidesign" class="nav-link">API</a></li>
+        <li><a href="#deployment" class="nav-link">Deploy</a></li>
+        <li><a href="#devtools" class="nav-link">Dev Tools</a></li>
         <li><a href="#laws" class="nav-link">Laws</a></li>
         <li><a href="#workflow" class="nav-link">Workflow</a></li>
         <li><a href="#gaps" class="nav-link">Knowledge Gaps</a></li>
@@ -1011,6 +1019,824 @@ Today’s task: [what you want to do]&rdquo;</pre>
     </div>
   </section>
 
+  <!-- ─── PRE-LAUNCH CHECKLIST ───────────────────────────────────── -->
+  <section class="section" id="prelaunch">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Ship It Right</span>
+        <h2 class="section-title">Pre-Launch<br/><span class="gradient-text">Checklist</span></h2>
+        <p class="section-subtitle">The non-negotiable things to verify before your project goes live. One missed item can cost you users, SEO rank, or reputation.</p>
+      </div>
+      <div class="checklist-grid">
+
+        <div class="cl-category">
+          <div class="cl-cat-icon">🔍</div>
+          <h3>SEO &amp; Meta</h3>
+          <ul class="cl-items">
+            <li><span class="cl-check"></span>Unique <code>&lt;title&gt;</code> tag on every page (&lt;60 chars)</li>
+            <li><span class="cl-check"></span>Meta description written (150–160 chars)</li>
+            <li><span class="cl-check"></span>Open Graph tags: <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, <code>og:url</code></li>
+            <li><span class="cl-check"></span>Twitter Card meta tags set</li>
+            <li><span class="cl-check"></span>Canonical URL set to avoid duplicate content</li>
+            <li><span class="cl-check"></span>robots.txt created and correct</li>
+            <li><span class="cl-check"></span>sitemap.xml generated and submitted to Google Search Console</li>
+            <li><span class="cl-check"></span>Structured data (JSON-LD) added where relevant</li>
+          </ul>
+        </div>
+
+        <div class="cl-category">
+          <div class="cl-cat-icon">⚡</div>
+          <h3>Performance</h3>
+          <ul class="cl-items">
+            <li><span class="cl-check"></span>Lighthouse score ≥ 90 on all 4 metrics</li>
+            <li><span class="cl-check"></span>LCP &lt; 2.5s, FID &lt; 100ms, CLS &lt; 0.1</li>
+            <li><span class="cl-check"></span>All images compressed &amp; in WebP format</li>
+            <li><span class="cl-check"></span>Images have <code>width</code> &amp; <code>height</code> to prevent CLS</li>
+            <li><span class="cl-check"></span>Fonts preloaded with <code>rel="preconnect"</code></li>
+            <li><span class="cl-check"></span>JS bundle &lt; 150KB gzipped for initial load</li>
+            <li><span class="cl-check"></span>CSS minified, unused CSS purged</li>
+            <li><span class="cl-check"></span>Browser caching configured (Cache-Control headers)</li>
+          </ul>
+        </div>
+
+        <div class="cl-category">
+          <div class="cl-cat-icon">♿</div>
+          <h3>Accessibility</h3>
+          <ul class="cl-items">
+            <li><span class="cl-check"></span>All images have descriptive <code>alt</code> text</li>
+            <li><span class="cl-check"></span>Colour contrast ≥ 4.5:1 for normal text (WCAG AA)</li>
+            <li><span class="cl-check"></span>Entire app is keyboard-navigable (Tab through it)</li>
+            <li><span class="cl-check"></span>Visible focus indicators on all interactive elements</li>
+            <li><span class="cl-check"></span>ARIA labels on buttons with no text content</li>
+            <li><span class="cl-check"></span>Skip navigation link for screen readers</li>
+            <li><span class="cl-check"></span>Heading hierarchy correct (one H1, logical H2→H3)</li>
+            <li><span class="cl-check"></span>Run axe DevTools or WAVE — zero violations</li>
+          </ul>
+        </div>
+
+        <div class="cl-category">
+          <div class="cl-cat-icon">🔒</div>
+          <h3>Security</h3>
+          <ul class="cl-items">
+            <li><span class="cl-check"></span>HTTPS enforced, HSTS header set</li>
+            <li><span class="cl-check"></span>Content-Security-Policy header configured</li>
+            <li><span class="cl-check"></span>All user inputs sanitised server-side</li>
+            <li><span class="cl-check"></span>No secrets or API keys in client-side code or Git history</li>
+            <li><span class="cl-check"></span>Authentication tokens in httpOnly cookies</li>
+            <li><span class="cl-check"></span>Rate limiting on auth endpoints</li>
+            <li><span class="cl-check"></span><code>npm audit</code> passes with zero high-severity issues</li>
+            <li><span class="cl-check"></span>X-Content-Type-Options + X-Frame-Options headers set</li>
+          </ul>
+        </div>
+
+        <div class="cl-category">
+          <div class="cl-cat-icon">📱</div>
+          <h3>Cross-Device Testing</h3>
+          <ul class="cl-items">
+            <li><span class="cl-check"></span>Tested on Chrome, Firefox, Safari, Edge</li>
+            <li><span class="cl-check"></span>Tested on iOS Safari (real device or BrowserStack)</li>
+            <li><span class="cl-check"></span>Tested on Android Chrome</li>
+            <li><span class="cl-check"></span>Responsive at 320px, 375px, 768px, 1024px, 1440px</li>
+            <li><span class="cl-check"></span>Touch targets ≥ 44×44px on mobile</li>
+            <li><span class="cl-check"></span>No horizontal scrollbar at any viewport</li>
+            <li><span class="cl-check"></span>Forms work correctly on mobile keyboards</li>
+          </ul>
+        </div>
+
+        <div class="cl-category">
+          <div class="cl-cat-icon">📊</div>
+          <h3>Monitoring &amp; Analytics</h3>
+          <ul class="cl-items">
+            <li><span class="cl-check"></span>Error tracking active (Sentry, LogRocket, or similar)</li>
+            <li><span class="cl-check"></span>Analytics set up (Google Analytics, Plausible, Umami)</li>
+            <li><span class="cl-check"></span>Uptime monitoring configured (UptimeRobot or Better Uptime)</li>
+            <li><span class="cl-check"></span>Custom 404 page designed and working</li>
+            <li><span class="cl-check"></span>Custom 500 error page in place</li>
+            <li><span class="cl-check"></span>All environment variables set in production</li>
+            <li><span class="cl-check"></span>Rollback plan documented and tested</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CSS ARCHITECTURE & RESPONSIVE ─────────────────────────── -->
+  <section class="section section-alt" id="cssarch">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Styling Mastery</span>
+        <h2 class="section-title">CSS Architecture &amp;<br/><span class="gradient-text">Responsive Design</span></h2>
+        <p class="section-subtitle">How to structure CSS that scales, write mobile-first layouts that don’t break, and use the cascade without fighting it.</p>
+      </div>
+      <div class="css-topics-grid">
+
+        <div class="css-card">
+          <div class="css-card-icon">🎨</div>
+          <h3>Design Tokens First</h3>
+          <p>Always define all colours, spacing, radius, shadows, and typography as CSS custom properties in <code>:root</code> before writing a single component. This is your single source of truth.</p>
+          <div class="css-code">
+<pre>:root {
+  --clr-primary: hsl(250 80% 60%);
+  --space-4: 1rem;
+  --radius-md: 12px;
+  --text-body: 'Inter', sans-serif;
+}</pre>
+          </div>
+        </div>
+
+        <div class="css-card">
+          <div class="css-card-icon">📱</div>
+          <h3>Mobile-First Media Queries</h3>
+          <p>Write base styles for mobile, then use <code>min-width</code> to scale up. Never use <code>max-width</code> to undo mobile styles — that’s desktop-first thinking and creates specificity chaos.</p>
+          <div class="css-code">
+<pre>/* Mobile base (default) */
+.card { padding: 1rem; }
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .card { padding: 2rem; }
+}
+
+/* Desktop and up */
+@media (min-width: 1200px) {
+  .card { padding: 3rem; }
+}</pre>
+          </div>
+        </div>
+
+        <div class="css-card">
+          <div class="css-card-icon">📌</div>
+          <h3>Flexbox vs Grid — The Rule</h3>
+          <p><strong>Flexbox</strong> = 1-dimensional. Use for: navbars, button groups, centering a single item, card content layout. <strong>Grid</strong> = 2-dimensional. Use for: page layouts, card grids, anything with rows AND columns.</p>
+          <div class="css-code">
+<pre>/* Flex — 1D row alignment */
+.nav { display: flex; gap: 1rem; align-items: center; }
+
+/* Grid — 2D card layout */
+.cards {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}</pre>
+          </div>
+        </div>
+
+        <div class="css-card">
+          <div class="css-card-icon">📝</div>
+          <h3>BEM Naming Convention</h3>
+          <p>Block__Element--Modifier. Name classes so they describe structure, not style. A class named <code>.btn--primary</code> tells you what it is. A class named <code>.blue-large</code> tells you nothing useful.</p>
+          <div class="css-code">
+<pre>/* Block */
+.card { }
+/* Element */
+.card__header { }
+.card__body { }
+/* Modifier */
+.card--featured { }
+.card--compact { }</pre>
+          </div>
+        </div>
+
+        <div class="css-card">
+          <div class="css-card-icon">📏</div>
+          <h3>Fluid Typography with clamp()</h3>
+          <p>Use <code>clamp(min, preferred, max)</code> to create font sizes that scale fluidly between breakpoints without any media queries. Set it once, forget it.</p>
+          <div class="css-code">
+<pre>/* Scales from 1.25rem to 3rem */
+h1 {
+  font-size: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* Container padding that adapts */
+.container {
+  padding-inline:
+    clamp(1rem, 5vw, 3rem);
+}</pre>
+          </div>
+        </div>
+
+        <div class="css-card">
+          <div class="css-card-icon">🧩</div>
+          <h3>The Box Model — border-box</h3>
+          <p>Always reset to <code>border-box</code> globally. With the default <code>content-box</code>, adding padding makes elements larger than intended. This is the #1 source of layout bugs for beginners.</p>
+          <div class="css-code">
+<pre>/* Always put this at the top of your CSS */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Now padding/border are INSIDE the width */
+.box {
+  width: 200px;
+  padding: 20px; /* doesn't expand the box */
+}</pre>
+          </div>
+        </div>
+
+        <div class="css-card">
+          <div class="css-card-icon">⚡</div>
+          <h3>CSS Specificity Order</h3>
+          <p>Specificity determines which rule wins when two selectors target the same element. Understanding it prevents the <code>!important</code> spiral that destroys codebases.</p>
+          <div class="css-code">
+<pre>/* Lowest → Highest specificity */
+* { }              /* 0,0,0 */
+element { }        /* 0,0,1 */
+.class { }         /* 0,1,0 */
+#id { }            /* 1,0,0 */
+style="..."        /* inline */
+!important         /* nuclear option */
+
+/* Keep specificity flat — all classes */</pre>
+          </div>
+        </div>
+
+        <div class="css-card">
+          <div class="css-card-icon">🎥</div>
+          <h3>Smooth Animations</h3>
+          <p>Animate only <code>transform</code> and <code>opacity</code> for 60fps performance. Animating <code>width</code>, <code>height</code>, <code>top</code>, or <code>margin</code> triggers expensive layout reflow. Use <code>will-change</code> sparingly.</p>
+          <div class="css-code">
+<pre>/* ✅ GPU-accelerated */
+.card:hover {
+  transform: translateY(-4px);
+  opacity: 0.9;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ❌ Triggers layout */
+.card:hover { top: -4px; width: 102%; }</pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PERFORMANCE OPTIMIZATION ──────────────────────────────── -->
+  <section class="section" id="performance">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Speed Matters</span>
+        <h2 class="section-title">Performance<br/><span class="gradient-text">Optimization Guide</span></h2>
+        <p class="section-subtitle">Every 100ms of delay costs ~1% conversion. Here’s exactly how to make your web app fast — measured, not guessed.</p>
+      </div>
+      <div class="perf-grid">
+
+        <div class="perf-metric-banner">
+          <div class="perf-metric">
+            <span class="perf-metric-val">LCP</span>
+            <span class="perf-metric-label">Largest Contentful Paint</span>
+            <span class="perf-metric-target good">&lt; 2.5s ✓</span>
+          </div>
+          <div class="perf-metric">
+            <span class="perf-metric-val">CLS</span>
+            <span class="perf-metric-label">Cumulative Layout Shift</span>
+            <span class="perf-metric-target good">&lt; 0.1 ✓</span>
+          </div>
+          <div class="perf-metric">
+            <span class="perf-metric-val">INP</span>
+            <span class="perf-metric-label">Interaction to Next Paint</span>
+            <span class="perf-metric-target good">&lt; 200ms ✓</span>
+          </div>
+          <div class="perf-metric">
+            <span class="perf-metric-val">TTFB</span>
+            <span class="perf-metric-label">Time to First Byte</span>
+            <span class="perf-metric-target good">&lt; 800ms ✓</span>
+          </div>
+        </div>
+
+        <div class="perf-cards">
+          <div class="perf-card">
+            <div class="perf-card-icon">🖼️</div>
+            <h3>Images</h3>
+            <ul>
+              <li>Use <code>WebP</code> format (30–50% smaller than PNG/JPG)</li>
+              <li>Always set <code>width</code> &amp; <code>height</code> to prevent CLS</li>
+              <li>Add <code>loading="lazy"</code> for below-fold images</li>
+              <li>Use <code>srcset</code> + <code>sizes</code> for responsive images</li>
+              <li>Serve via CDN (Cloudinary, Imgix, or Vercel Image)</li>
+              <li>Use <code>decoding="async"</code> on non-critical images</li>
+            </ul>
+          </div>
+          <div class="perf-card">
+            <div class="perf-card-icon">📜</div>
+            <h3>JavaScript</h3>
+            <ul>
+              <li>Lazy-load routes and large components (dynamic import)</li>
+              <li>Tree-shake unused code — never import entire libraries</li>
+              <li>Defer non-critical scripts with <code>defer</code> or <code>async</code></li>
+              <li>Bundle size: keep initial JS &lt; 150KB gzipped</li>
+              <li>Analyse with Webpack Bundle Analyzer or <code>vite --analyze</code></li>
+              <li>Move heavy computation to Web Workers</li>
+            </ul>
+          </div>
+          <div class="perf-card">
+            <div class="perf-card-icon">🎨</div>
+            <h3>CSS</h3>
+            <ul>
+              <li>Inline critical CSS in <code>&lt;head&gt;</code> for above-fold content</li>
+              <li>Load non-critical CSS asynchronously</li>
+              <li>Use <code>font-display: swap</code> on web fonts</li>
+              <li>Preconnect to font CDN: <code>rel="preconnect"</code></li>
+              <li>Purge unused CSS (PurgeCSS, Tailwind purge)</li>
+              <li>Avoid large CSS files &gt; 50KB uncompressed</li>
+            </ul>
+          </div>
+          <div class="perf-card">
+            <div class="perf-card-icon">📦</div>
+            <h3>Caching &amp; CDN</h3>
+            <ul>
+              <li>Serve static assets via CDN edge nodes globally</li>
+              <li>Long-term cache: <code>Cache-Control: max-age=31536000, immutable</code></li>
+              <li>Use content hashing in filenames for cache busting</li>
+              <li>Cache API responses with proper ETags</li>
+              <li>Enable Brotli or Gzip compression on server</li>
+              <li>Use a service worker for offline caching</li>
+            </ul>
+          </div>
+          <div class="perf-card">
+            <div class="perf-card-icon">🔧</div>
+            <h3>Server &amp; Network</h3>
+            <ul>
+              <li>Reduce TTFB: use edge functions or SSR caching</li>
+              <li>HTTP/2 or HTTP/3 — enables multiplexing</li>
+              <li>Preload key resources: <code>&lt;link rel="preload"&gt;</code></li>
+              <li>Use <code>dns-prefetch</code> for external domains</li>
+              <li>Minimise redirects — each adds 100–300ms</li>
+              <li>Use Resource Hints: prefetch next-page resources</li>
+            </ul>
+          </div>
+          <div class="perf-card">
+            <div class="perf-card-icon">📊</div>
+            <h3>Measure First</h3>
+            <ul>
+              <li>Run Lighthouse in Chrome DevTools before optimising</li>
+              <li>Use WebPageTest.org for real-world waterfall analysis</li>
+              <li>Monitor with Google Search Console CWV report</li>
+              <li>Profile JS with Performance tab in DevTools</li>
+              <li>Never optimise without measuring first — guessing is waste</li>
+              <li>Set a performance budget and enforce it in CI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTING STRATEGY ─────────────────────────────────────────── -->
+  <section class="section section-alt" id="testing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Quality Assurance</span>
+        <h2 class="section-title">Testing<br/><span class="gradient-text">Strategy</span></h2>
+        <p class="section-subtitle">Not everything needs a test. But critical paths must never break silently. Here’s what to test, how, and when.</p>
+      </div>
+      <div class="test-pyramid">
+        <div class="pyramid-label-top">Few, Slow, Expensive</div>
+        <div class="pyramid-level p-e2e">
+          <div class="pyramid-badge">E2E Tests</div>
+          <p>Playwright or Cypress — test complete user journeys (login → checkout → success). Slow but catches integration failures. Run on CI before every deploy. Aim for 5–20 critical path tests.</p>
+        </div>
+        <div class="pyramid-level p-integration">
+          <div class="pyramid-badge">Integration Tests</div>
+          <p>Test how components work together: API routes, database queries, auth middleware. Use Supertest for HTTP. More than unit tests, fewer than E2E. Fast enough to run on every PR.</p>
+        </div>
+        <div class="pyramid-level p-unit">
+          <div class="pyramid-badge">Unit Tests</div>
+          <p>Test individual functions and components in isolation. Use Vitest or Jest. Should be the majority of your test suite. Run in milliseconds. Cover: utilities, validation, business logic, edge cases.</p>
+        </div>
+        <div class="pyramid-label-bottom">Many, Fast, Cheap</div>
+      </div>
+      <div class="test-rules">
+        <div class="test-rule-card">
+          <h4>🎯 What to Test</h4>
+          <ul>
+            <li>All business logic and utility functions</li>
+            <li>Auth flows — login, logout, session expiry</li>
+            <li>Payment &amp; checkout critical paths</li>
+            <li>Form validation (valid + invalid inputs)</li>
+            <li>API endpoints: success, error, and edge cases</li>
+            <li>Components that change based on state/props</li>
+          </ul>
+        </div>
+        <div class="test-rule-card">
+          <h4>🚫 What NOT to Test</h4>
+          <ul>
+            <li>Third-party libraries (they have their own tests)</li>
+            <li>Implementation details — test behaviour, not internals</li>
+            <li>Simple getters/setters with no logic</li>
+            <li>Static HTML markup that never changes</li>
+            <li>Config files and constants</li>
+            <li>Code that will definitely be deleted soon</li>
+          </ul>
+        </div>
+        <div class="test-rule-card">
+          <h4>✅ Testing Principles</h4>
+          <ul>
+            <li>Write tests before fixing bugs — reproduce first</li>
+            <li>One assertion per test when possible</li>
+            <li>Tests should be readable like documentation</li>
+            <li>Fast feedback: unit tests in &lt; 1s total</li>
+            <li>Aim for 80% coverage on critical modules</li>
+            <li>Tests that always pass without asserting are useless</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DEBUGGING TOOLKIT ──────────────────────────────────────────── -->
+  <section class="section" id="debugging">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Problem Solving</span>
+        <h2 class="section-title">Debugging<br/><span class="gradient-text">Toolkit</span></h2>
+        <p class="section-subtitle">Master your browser DevTools and debug CSS, JS, and network issues faster with these systematic techniques.</p>
+      </div>
+      <div class="debug-grid">
+
+        <div class="debug-card">
+          <div class="debug-icon">🎨</div>
+          <h3>CSS Debugging</h3>
+          <div class="debug-tip">💡 Outline everything to see layout</div>
+          <div class="dbg-code"><pre>* { outline: 1px solid red !important; }</pre></div>
+          <ul class="debug-list">
+            <li>Use Elements tab → Computed panel to see exactly which rule is applying</li>
+            <li>Check for overridden (strikethrough) rules in Styles panel</li>
+            <li>Toggle classes with the <code>.cls</code> button to isolate issues</li>
+            <li>Use the Box Model diagram to visualise margin/padding</li>
+            <li>Inspect with Flexbox/Grid overlays turned on</li>
+          </ul>
+        </div>
+
+        <div class="debug-card">
+          <div class="debug-icon">⚡</div>
+          <h3>JavaScript Debugging</h3>
+          <div class="debug-tip">💡 Use breakpoints, not console.log()</div>
+          <div class="dbg-code"><pre>debugger; // Pauses execution here</pre></div>
+          <ul class="debug-list">
+            <li>Set breakpoints in Sources tab — click the line number</li>
+            <li>Use <code>console.table(arr)</code> for arrays of objects</li>
+            <li>Use <code>console.group()</code> to organise grouped logs</li>
+            <li>Right-click → &ldquo;Break on&rdquo; for DOM mutation breakpoints</li>
+            <li>Watch expressions to track variable values across steps</li>
+          </ul>
+        </div>
+
+        <div class="debug-card">
+          <div class="debug-icon">🌐</div>
+          <h3>Network Debugging</h3>
+          <div class="debug-tip">💡 Filter by XHR/Fetch to find API calls</div>
+          <ul class="debug-list">
+            <li>Network tab → Preview tab to see response body formatted</li>
+            <li>Check Status codes: 401 = auth, 403 = forbidden, 422 = validation</li>
+            <li>Use &ldquo;Throttle&rdquo; to simulate slow 3G connections</li>
+            <li>Right-click a request → &ldquo;Copy as cURL&rdquo; to replay in Postman</li>
+            <li>Check Request Headers for missing <code>Authorization</code> or <code>Content-Type</code></li>
+            <li>CORS errors appear as red network entries — check preflight OPTIONS request</li>
+          </ul>
+        </div>
+
+        <div class="debug-card">
+          <div class="debug-icon">🔍</div>
+          <h3>The Debugging Mindset</h3>
+          <div class="debug-tip">💡 Reproduce first, fix second</div>
+          <ul class="debug-list">
+            <li><strong>Reproduce reliably</strong> — if you can’t reproduce it, you can’t fix it</li>
+            <li><strong>Isolate the problem</strong> — comment out code until the bug disappears</li>
+            <li><strong>Change one thing at a time</strong> — multiple changes create new unknowns</li>
+            <li><strong>Read the full error message</strong> — the answer is usually in the stack trace</li>
+            <li><strong>Rubber duck debug</strong> — explain the problem out loud (or to AI)</li>
+            <li><strong>Check what changed recently</strong> — <code>git diff</code> is your friend</li>
+          </ul>
+        </div>
+
+        <div class="debug-card">
+          <div class="debug-icon">🖥️</div>
+          <h3>Console Power Commands</h3>
+          <div class="dbg-code"><pre>console.log('%cStyled!', 'color:cyan;font-size:20px')
+console.time('label') / console.timeEnd('label')
+console.trace()     // shows call stack
+$0                  // selected element in inspector
+$('selector')       // querySelector shorthand
+monitor(functionName) // logs every call</pre></div>
+        </div>
+
+        <div class="debug-card">
+          <div class="debug-icon">🧠</div>
+          <h3>When to Ask AI for Help</h3>
+          <div class="debug-tip">💡 Give AI the full error + context</div>
+          <ul class="debug-list">
+            <li>Copy the <strong>full error message</strong> including stack trace</li>
+            <li>Share the <strong>relevant code snippet</strong> (not the whole file)</li>
+            <li>Describe <strong>what you expected vs what happened</strong></li>
+            <li>Mention <strong>what you already tried</strong> to avoid repeat suggestions</li>
+            <li>Include your <strong>environment</strong> (browser, OS, framework version)</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── API DESIGN ──────────────────────────────────────────────── -->
+  <section class="section section-alt" id="apidesign">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Backend Fundamentals</span>
+        <h2 class="section-title">API Design<br/><span class="gradient-text">Best Practices</span></h2>
+        <p class="section-subtitle">A well-designed API is a product. These conventions make your API predictable, maintainable, and a joy to consume.</p>
+      </div>
+      <div class="api-grid">
+
+        <div class="api-card">
+          <h3>🔗 REST Conventions</h3>
+          <div class="api-code"><pre>GET    /users          ← List all
+GET    /users/:id      ← Get one
+POST   /users          ← Create
+PUT    /users/:id      ← Full replace
+PATCH  /users/:id      ← Partial update
+DELETE /users/:id      ← Delete
+
+✅ Plural nouns, never verbs
+❌ /getUser  /createInvoice</pre></div>
+        </div>
+
+        <div class="api-card">
+          <h3>🟢 HTTP Status Codes</h3>
+          <div class="api-code"><pre>200 OK          ← Success
+201 Created     ← POST success
+204 No Content  ← DELETE success
+400 Bad Request ← Invalid input
+401 Unauthorized← Not authenticated
+403 Forbidden   ← Not authorized
+404 Not Found   ← Resource missing
+409 Conflict    ← Duplicate data
+422 Unprocessable← Validation fail
+429 Too Many Req← Rate limited
+500 Server Error← Our fault</pre></div>
+        </div>
+
+        <div class="api-card">
+          <h3>📦 Response Shape</h3>
+          <p>Always use a consistent envelope structure:</p>
+          <div class="api-code"><pre>// Success
+{
+  "data": { ... },
+  "meta": { "page": 1, "total": 42 }
+}
+
+// Error
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Email is required",
+    "field": "email"
+  }
+}</pre></div>
+        </div>
+
+        <div class="api-card">
+          <h3>📌 API Design Rules</h3>
+          <ul class="api-list">
+            <li>Version your API from day 1: <code>/api/v1/</code></li>
+            <li>Never return raw DB errors to the client</li>
+            <li>Validate all inputs server-side, always</li>
+            <li>Use pagination for any list endpoint</li>
+            <li>Return the created/updated resource in the response</li>
+            <li>Be idempotent: same request = same result</li>
+            <li>Document every endpoint before building it</li>
+            <li>Rate limit all public endpoints</li>
+          </ul>
+        </div>
+
+        <div class="api-card">
+          <h3>🔐 Authentication Patterns</h3>
+          <ul class="api-list">
+            <li><strong>Session cookies</strong> — best for web apps, httpOnly + SameSite=Strict</li>
+            <li><strong>JWT</strong> — stateless, for APIs &amp; mobile; use short expiry + refresh tokens</li>
+            <li><strong>API Keys</strong> — for server-to-server; never expose in frontend code</li>
+            <li><strong>OAuth 2.0</strong> — for third-party login (Google, GitHub)</li>
+            <li>Always send auth tokens in headers, never in URLs</li>
+            <li>Rotate secrets regularly; revoke on compromise immediately</li>
+          </ul>
+        </div>
+
+        <div class="api-card">
+          <h3>⚡ API Performance</h3>
+          <ul class="api-list">
+            <li>Profile every DB query — watch for N+1 problems</li>
+            <li>Add database indexes on frequently queried fields</li>
+            <li>Cache expensive queries with Redis or in-memory cache</li>
+            <li>Use cursor-based pagination for large datasets</li>
+            <li>Compress responses with Brotli/Gzip</li>
+            <li>Set timeouts on all external API calls</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DEPLOYMENT GUIDE ───────────────────────────────────────────── -->
+  <section class="section" id="deployment">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Ship It</span>
+        <h2 class="section-title">Deployment<br/><span class="gradient-text">Guide</span></h2>
+        <p class="section-subtitle">How to deploy correctly from day one — environments, platforms, CI/CD pipelines, and how to push to production without fear.</p>
+      </div>
+      <div class="deploy-grid">
+
+        <div class="deploy-env-card">
+          <div class="deploy-env-badge dev">Development</div>
+          <h4>Local Machine</h4>
+          <p>Your personal environment. Use <code>.env.local</code> for secrets. Never commit this file. Run the dev server, iterate fast, use mock data where needed. Break things freely here.</p>
+        </div>
+        <div class="deploy-arrow">→</div>
+        <div class="deploy-env-card">
+          <div class="deploy-env-badge staging">Staging</div>
+          <h4>Preview / Testing</h4>
+          <p>A mirror of production. Auto-deployed from <code>develop</code> branch. Used for QA, stakeholder review, and integration testing with real (anonymised) data. Nothing ships without passing here first.</p>
+        </div>
+        <div class="deploy-arrow">→</div>
+        <div class="deploy-env-card">
+          <div class="deploy-env-badge prod">Production</div>
+          <h4>Live Site</h4>
+          <p>Auto-deployed from <code>main</code> branch only. Protected by branch rules. Requires CI to pass. Use canary or blue-green deployments for zero-downtime releases. Have a rollback plan ready.</p>
+        </div>
+
+        <div class="deploy-platforms">
+          <h3>Choose Your Platform</h3>
+          <div class="deploy-platform-grid">
+            <div class="deploy-platform-card">
+              <div class="dp-name">Vercel</div>
+              <div class="dp-best">Best for: Next.js, React, static</div>
+              <ul><li>Zero-config deploy from GitHub</li><li>Automatic preview deployments per PR</li><li>Edge network, serverless functions</li><li>Free tier is genuinely good</li></ul>
+            </div>
+            <div class="deploy-platform-card">
+              <div class="dp-name">Netlify</div>
+              <div class="dp-best">Best for: Static sites, JAMstack</div>
+              <ul><li>Drag &amp; drop or Git-connected deploy</li><li>Built-in forms, identity, edge functions</li><li>Branch deploys for every PR</li><li>Excellent free tier</li></ul>
+            </div>
+            <div class="deploy-platform-card">
+              <div class="dp-name">GitHub Pages</div>
+              <div class="dp-best">Best for: Static HTML/CSS/JS</div>
+              <ul><li>Free forever for public repos</li><li>Deploy from any branch or folder</li><li>Custom domain with HTTPS support</li><li>Perfect for portfolios &amp; docs</li></ul>
+            </div>
+            <div class="deploy-platform-card">
+              <div class="dp-name">Railway / Render</div>
+              <div class="dp-best">Best for: Full-stack apps, databases</div>
+              <ul><li>Deploy Node, Python, Go, Rust, etc.</li><li>Managed PostgreSQL, Redis, etc.</li><li>Auto-scale and sleep-on-idle free tier</li><li>Great DX, simpler than AWS</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="deploy-rules">
+          <h3>Deployment Rules</h3>
+          <div class="deploy-rules-grid">
+            <div class="deploy-rule do">✅ Always deploy through CI/CD — never manually push to production</div>
+            <div class="deploy-rule do">✅ Set all environment variables in platform dashboard, never in code</div>
+            <div class="deploy-rule do">✅ Test your rollback before you need it — in a drill, not a crisis</div>
+            <div class="deploy-rule do">✅ Deploy small, deploy often — big releases = big risk</div>
+            <div class="deploy-rule dont">❌ Never deploy on a Friday afternoon (Murphy’s law)</div>
+            <div class="deploy-rule dont">❌ Never hardcode environment-specific values in source code</div>
+            <div class="deploy-rule dont">❌ Don’t deploy without a passing CI build and green test suite</div>
+            <div class="deploy-rule dont">❌ Don’t skip staging for &ldquo;small&rdquo; changes — they’re never small</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DEVELOPER TOOLS & WORKFLOW ─────────────────────────────────── -->
+  <section class="section section-alt" id="devtools">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Craft Your Environment</span>
+        <h2 class="section-title">Developer Tools<br/><span class="gradient-text">&amp; Workflow</span></h2>
+        <p class="section-subtitle">The tools, extensions, and habits that separate productive developers from frustrated ones. Your environment is your leverage.</p>
+      </div>
+      <div class="tools-grid">
+
+        <div class="tool-category">
+          <div class="tool-cat-icon">💻</div>
+          <h3>VS Code Extensions</h3>
+          <div class="tool-items">
+            <div class="tool-item">
+              <div class="tool-name">Prettier</div>
+              <div class="tool-desc">Auto-format on save. Set as default formatter. Non-negotiable.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">ESLint</div>
+              <div class="tool-desc">Catch errors and bad patterns as you type.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">GitLens</div>
+              <div class="tool-desc">See who changed what, when, and why — inline blame.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">Error Lens</div>
+              <div class="tool-desc">Shows errors and warnings inline on the problem line.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">Live Server</div>
+              <div class="tool-desc">One-click local server with hot reload for static files.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">Path Intellisense</div>
+              <div class="tool-desc">Autocomplete file paths as you type imports.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-category">
+          <div class="tool-cat-icon">🌍</div>
+          <h3>Browser Extensions</h3>
+          <div class="tool-items">
+            <div class="tool-item">
+              <div class="tool-name">React / Vue DevTools</div>
+              <div class="tool-desc">Inspect component tree, state, and props live.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">axe DevTools</div>
+              <div class="tool-desc">Automated accessibility audits with one click.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">Wappalyzer</div>
+              <div class="tool-desc">Detect tech stack of any website you visit.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">ColorZilla</div>
+              <div class="tool-desc">Pick colours from any element on any page.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">JSON Viewer</div>
+              <div class="tool-desc">Pretty-print JSON responses in the browser.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-category">
+          <div class="tool-cat-icon">🔧</div>
+          <h3>Online Tools</h3>
+          <div class="tool-items">
+            <div class="tool-item">
+              <div class="tool-name">Excalidraw</div>
+              <div class="tool-desc">Free, instant whiteboard for wireframes &amp; diagrams.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">Squoosh.app</div>
+              <div class="tool-desc">Compress &amp; convert images to WebP in the browser.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">RegExr.com</div>
+              <div class="tool-desc">Build and test regex patterns interactively.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">CSS Grid Generator</div>
+              <div class="tool-desc">Visual CSS Grid builder by Sarah Drasner.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">Bundlephobia</div>
+              <div class="tool-desc">Check npm package size before installing it.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">Can I Use</div>
+              <div class="tool-desc">Browser compatibility for any CSS/JS/HTML feature.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-category">
+          <div class="tool-cat-icon">⚡</div>
+          <h3>Productivity Habits</h3>
+          <div class="tool-items">
+            <div class="tool-item">
+              <div class="tool-name">Learn keyboard shortcuts</div>
+              <div class="tool-desc">Multi-cursor, rename symbol, go-to-definition, quick fix. Print a cheat sheet.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">Pomodoro technique</div>
+              <div class="tool-desc">25 min deep work → 5 min break. Prevents context fatigue.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">Document as you build</div>
+              <div class="tool-desc">Write comments for non-obvious code immediately, not later.</div>
+            </div>
+            <div class="tool-item">
+              <div class="tool-name">End each session with a note</div>
+              <div class="tool-desc">Write 3 lines: what you finished, what’s next, any blockers.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ─── UNIVERSAL LAWS ────────────────────────────────────────── -->
   <section class="section" id="laws">
     <div class="container">
@@ -1813,6 +2639,14 @@ Today’s task: [what you want to do]&rdquo;</pre>
           <a href="#preproject">Pre-Project</a>
           <a href="#github">GitHub</a>
           <a href="#aicontext">AI Context</a>
+          <a href="#prelaunch">Pre-Launch</a>
+          <a href="#cssarch">CSS</a>
+          <a href="#performance">Performance</a>
+          <a href="#testing">Testing</a>
+          <a href="#debugging">Debugging</a>
+          <a href="#apidesign">API</a>
+          <a href="#deployment">Deploy</a>
+          <a href="#devtools">Dev Tools</a>
           <a href="#laws">Laws</a>
           <a href="#workflow">Workflow</a>
           <a href="#gaps">Gaps</a>

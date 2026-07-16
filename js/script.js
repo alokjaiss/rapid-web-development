@@ -60,7 +60,10 @@ const revealObserver = new IntersectionObserver((entries) => {
 const revealTargets = document.querySelectorAll(
   '.law-card, .phase-card, .gap-category, .pillar-card, .cs-card, ' +
   '.ag-principle, .velocity-item, .section-header, .pp-card, ' +
-  '.gh-block, .gh-loop-step, .gh-feature-card, .gh-np-card'
+  '.gh-block, .gh-loop-step, .gh-feature-card, .gh-np-card, ' +
+  '.cl-category, .css-card, .perf-card, .perf-metric, .pyramid-level, ' +
+  '.test-rule-card, .debug-card, .api-card, .deploy-env-card, ' +
+  '.deploy-platform-card, .tool-category'
 );
 
 revealTargets.forEach((el, i) => {

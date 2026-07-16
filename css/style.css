@@ -2136,6 +2136,790 @@ tbody tr:hover td {
 }
 
 /* ============================================================
+   PRE-LAUNCH CHECKLIST SECTION
+   ============================================================ */
+.checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cl-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.cl-category:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.cl-cat-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.cl-category h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.cl-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cl-items li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.cl-check {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--accent-green);
+  text-align: center;
+  line-height: 1.1rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.cl-check::before {
+  content: "✓";
+}
+
+/* ============================================================
+   CSS ARCHITECTURE & RESPONSIVE SECTION
+   ============================================================ */
+.css-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.css-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.css-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.css-card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.css-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.css-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.css-code {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.1rem;
+  margin-top: auto;
+}
+
+.css-code pre {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  line-height: 1.65;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* ============================================================
+   PERFORMANCE OPTIMIZATION SECTION
+   ============================================================ */
+.perf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.perf-metric-banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.perf-metric {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+.perf-metric:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.perf-metric-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  margin-bottom: 0.35rem;
+  background: linear-gradient(135deg, var(--grad-start), var(--grad-mid));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.perf-metric-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.perf-metric-target {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+}
+
+.perf-metric-target.good {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--accent-green);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.perf-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.perf-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.perf-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.perf-card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.perf-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.perf-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.perf-card li {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+
+.perf-card li::before {
+  content: "⚡";
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+
+/* ============================================================
+   TESTING STRATEGY SECTION
+   ============================================================ */
+.test-pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.pyramid-label-top, .pyramid-label-bottom {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0.5rem 0;
+}
+
+.pyramid-level {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  margin: 0.4rem 0;
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+  width: 100%;
+}
+
+.pyramid-level:hover {
+  transform: scale(1.02);
+}
+
+.pyramid-level p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.p-e2e {
+  max-width: 440px;
+  border-left: 4px solid var(--accent-red);
+}
+
+.p-integration {
+  max-width: 620px;
+  border-left: 4px solid var(--accent-amber);
+}
+
+.p-unit {
+  max-width: 800px;
+  border-left: 4px solid var(--accent-green);
+}
+
+.pyramid-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.7rem;
+  border-radius: 100px;
+  margin-bottom: 0.6rem;
+}
+
+.p-e2e .pyramid-badge {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.p-integration .pyramid-badge {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.p-unit .pyramid-badge {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.test-rules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.test-rule-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: border-color 0.3s;
+}
+
+.test-rule-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.test-rule-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.test-rule-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.test-rule-card li {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   DEBUGGING TOOLKIT SECTION
+   ============================================================ */
+.debug-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.debug-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.debug-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.debug-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.debug-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.debug-tip {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 0 1rem;
+  font-weight: 500;
+}
+
+.dbg-code {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.dbg-code pre {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  color: var(--accent-cyan);
+  line-height: 1.6;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.debug-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.debug-list li {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+
+.debug-list li::before {
+  content: "•";
+  color: var(--accent-primary);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   API DESIGN SECTION
+   ============================================================ */
+.api-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.api-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.api-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.api-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.api-card p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.api-code {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1rem;
+}
+
+.api-code pre {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  color: var(--accent-cyan);
+  line-height: 1.6;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.api-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.api-list li {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+
+.api-list li::before {
+  content: "⚡";
+  color: var(--accent-amber);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   DEPLOYMENT GUIDE SECTION
+   ============================================================ */
+.deploy-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.deploy-env-flow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.deploy-env-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  flex: 1;
+  min-width: 260px;
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.deploy-env-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.deploy-env-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.deploy-env-badge.dev {
+  background: rgba(99, 102, 241, 0.12);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.deploy-env-badge.staging {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.deploy-env-badge.prod {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.deploy-env-card h4 {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.deploy-env-card p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.deploy-arrow {
+  font-size: 2rem;
+  color: rgba(99, 102, 241, 0.4);
+  align-self: center;
+}
+
+.deploy-platforms h3, .deploy-rules h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.deploy-platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.deploy-platform-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.deploy-platform-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.dp-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.dp-best {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.deploy-platform-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.deploy-platform-card li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.deploy-platform-card li::before {
+  content: "✦";
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.deploy-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.deploy-rule {
+  font-size: 0.87rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  line-height: 1.5;
+}
+
+.deploy-rule.do {
+  background: rgba(16, 185, 129, 0.08);
+  color: var(--text-secondary);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.deploy-rule.dont {
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--text-secondary);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================================
+   DEVELOPER TOOLS & WORKFLOW SECTION
+   ============================================================ */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.tool-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.tool-category:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.tool-cat-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.tool-category h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.tool-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tool-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 0.85rem;
+}
+
+.tool-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.tool-name {
+  font-weight: 700;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.tool-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Responsive adjustment for deploy env flow layout */
+@media (max-width: 900px) {
+  .deploy-env-flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .deploy-arrow {
+    transform: rotate(90deg);
+    margin: 0.5rem 0;
+  }
+}
+
+/* ============================================================
    PRE-PROJECT SETUP SECTION
    ============================================================ */
 .preproject-grid {

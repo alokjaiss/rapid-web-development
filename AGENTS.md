@@ -80,12 +80,20 @@ Every section follows this pattern:
 2. `#preproject` — Pre-Project Setup Checklist (8 steps)
 3. `#github` — GitHub Setup & Workflow (6 blocks)
 4. `#aicontext` — AI Context Files & Knowledge Management (5 blocks)
-5. `#laws` — 12 Universal Laws of Web Development
-6. `#workflow` — 7-Phase Development Workflow
-7. `#gaps` — Knowledge Gaps by category
-8. `#ai` — AI Acceleration section
-9. `#antigravity` — Mastering Antigravity AI
-10. `#cheatsheet` — Developer Cheat Sheet
+5. `#prelaunch` — Pre-Launch Checklist (6 categories)
+6. `#cssarch` — CSS Architecture & Responsive Design (8 cards)
+7. `#performance` — Performance Optimization Guide (metrics + cards)
+8. `#testing` — Testing Strategy (Pyramid + Rules)
+9. `#debugging` — Debugging Toolkit (6 cards)
+10. `#apidesign` — API Design Best Practices (REST, Status codes, auth, etc.)
+11. `#deployment` — Deployment Guide (flow + platform cards + rules)
+12. `#devtools` — Developer Tools & Workflow (Extensions + productivity cards)
+13. `#laws` — 12 Universal Laws of Web Development
+14. `#workflow` — 7-Phase Development Workflow
+15. `#gaps` — Knowledge Gaps by category
+16. `#ai` — AI Acceleration section
+17. `#antigravity` — Mastering Antigravity AI
+18. `#cheatsheet` — Developer Cheat Sheet
 
 ## Git Workflow
 - **Branch naming:** `feature/`, `fix/`, `chore/`, `docs/`
