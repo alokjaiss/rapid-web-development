@@ -21,6 +21,7 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#preproject" class="nav-link">Pre-Project</a></li>
+        <li><a href="#github" class="nav-link">GitHub</a></li>
         <li><a href="#laws" class="nav-link">Laws</a></li>
         <li><a href="#workflow" class="nav-link">Workflow</a></li>
         <li><a href="#gaps" class="nav-link">Knowledge Gaps</a></li>
@@ -244,6 +245,404 @@ node_modules/
               <tr><td class="pp-step-cell">08</td><td>📐 Wireframe</td><td>Sketch layout &amp; components</td><td>Catch structural issues before coding</td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── GITHUB SETUP & WORKFLOW ────────────────────────────────── -->
+  <section class="section" id="github">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Version Control</span>
+        <h2 class="section-title">GitHub Setup &amp;<br/><span class="gradient-text">Effective Workflow</span></h2>
+        <p class="section-subtitle">How to set up GitHub properly, what to do when starting a new project, and how to use GitHub's full feature set to ship better code, faster.</p>
+      </div>
+
+      <!-- ── BLOCK 1: First-Time Setup ── -->
+      <div class="gh-block">
+        <div class="gh-block-header">
+          <div class="gh-block-icon">🔧</div>
+          <div>
+            <h3>First-Time GitHub Setup</h3>
+            <p>Do this once on every new machine. These steps connect your local Git to your GitHub account securely.</p>
+          </div>
+        </div>
+        <div class="gh-steps">
+
+          <div class="gh-step">
+            <div class="gh-step-num">1</div>
+            <div class="gh-step-body">
+              <h4>Create a GitHub Account</h4>
+              <p>Go to <strong>github.com</strong> and sign up. Use a professional username — it appears on your profile, commits, and public repos. Employers and collaborators will see it.</p>
+            </div>
+          </div>
+
+          <div class="gh-step">
+            <div class="gh-step-num">2</div>
+            <div class="gh-step-body">
+              <h4>Configure Your Identity Locally</h4>
+              <p>Tell Git who you are. This name and email appear on every commit you make.</p>
+              <div class="gh-code">
+                <pre>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global core.editor "code --wait"  # VS Code as default editor</pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="gh-step">
+            <div class="gh-step-num">3</div>
+            <div class="gh-step-body">
+              <h4>Set Up SSH Authentication</h4>
+              <p>SSH is more secure than HTTPS and avoids typing your password every time. Generate a key and add it to GitHub once.</p>
+              <div class="gh-code">
+                <pre># Generate SSH key
+ssh-keygen -t ed25519 -C "you@example.com"
+
+# Copy the public key to clipboard (Windows)
+cat ~/.ssh/id_ed25519.pub | clip
+
+# Then: GitHub → Settings → SSH Keys → New SSH Key → Paste</pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="gh-step">
+            <div class="gh-step-num">4</div>
+            <div class="gh-step-body">
+              <h4>Set Default Branch to &ldquo;main&rdquo;</h4>
+              <p>Modern convention uses <code>main</code> instead of <code>master</code>. Set this globally so all new repos start with <code>main</code>.</p>
+              <div class="gh-code">
+                <pre>git config --global init.defaultBranch main</pre>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── BLOCK 2: New Project on GitHub ── -->
+      <div class="gh-block">
+        <div class="gh-block-header">
+          <div class="gh-block-icon">🆕</div>
+          <div>
+            <h3>Starting a New Project on GitHub</h3>
+            <p>The exact sequence to follow the moment you begin a new project. Do this <em>before</em> writing any code.</p>
+          </div>
+        </div>
+
+        <div class="gh-newproject-grid">
+
+          <div class="gh-np-card">
+            <div class="gh-np-num">01</div>
+            <h4>Create Remote Repo on GitHub</h4>
+            <ul>
+              <li>Go to <strong>github.com/new</strong></li>
+              <li>Name it clearly (e.g. <code>rapid-web-dev</code>)</li>
+              <li>Set to <strong>Public</strong> or <strong>Private</strong></li>
+              <li>✅ Add README, ✅ Add .gitignore, ✅ Choose a licence</li>
+              <li>Click <strong>Create repository</strong></li>
+            </ul>
+          </div>
+
+          <div class="gh-np-card">
+            <div class="gh-np-num">02</div>
+            <h4>Clone or Connect Locally</h4>
+            <p><strong>Option A — Clone (recommended for new projects):</strong></p>
+            <div class="gh-code">
+              <pre>git clone git@github.com:username/repo.git
+cd repo</pre>
+            </div>
+            <p><strong>Option B — Push existing local project:</strong></p>
+            <div class="gh-code">
+              <pre>git remote add origin git@github.com:username/repo.git
+git branch -M main
+git push -u origin main</pre>
+            </div>
+          </div>
+
+          <div class="gh-np-card">
+            <div class="gh-np-num">03</div>
+            <h4>Protect the main Branch</h4>
+            <p>Prevent anyone (including yourself) from accidentally force-pushing or committing broken code directly to <code>main</code>.</p>
+            <ul>
+              <li>Settings → Branches → Add rule for <code>main</code></li>
+              <li>✅ Require pull request reviews before merging</li>
+              <li>✅ Require status checks to pass (CI)</li>
+              <li>✅ Disallow force pushes</li>
+            </ul>
+          </div>
+
+          <div class="gh-np-card">
+            <div class="gh-np-num">04</div>
+            <h4>Set Up GitHub Actions CI</h4>
+            <p>Auto-run tests and checks on every push. Create <code>.github/workflows/ci.yml</code> — even a simple lint check adds massive value early.</p>
+            <div class="gh-code">
+              <pre>name: CI
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm run lint</pre>
+            </div>
+          </div>
+
+          <div class="gh-np-card">
+            <div class="gh-np-num">05</div>
+            <h4>Enable GitHub Pages (for static sites)</h4>
+            <p>Deploy your HTML/CSS/JS site for free in seconds — no server needed.</p>
+            <ul>
+              <li>Settings → Pages → Source: <strong>Deploy from branch</strong></li>
+              <li>Branch: <code>main</code> / folder: <code>/ (root)</code></li>
+              <li>Your site goes live at <code>username.github.io/repo</code></li>
+              <li>Every push to <code>main</code> auto-deploys</li>
+            </ul>
+          </div>
+
+          <div class="gh-np-card">
+            <div class="gh-np-num">06</div>
+            <h4>Create Project Board &amp; Issues</h4>
+            <p>Use GitHub Projects and Issues as a lightweight Kanban. Create issues for every feature and bug <em>before</em> coding them — this keeps work visible and trackable.</p>
+            <ul>
+              <li>Projects → New Project → Board view</li>
+              <li>Columns: <strong>Backlog → In Progress → Review → Done</strong></li>
+              <li>Link issues to PRs for automatic close on merge</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── BLOCK 3: Branching Strategy ── -->
+      <div class="gh-block">
+        <div class="gh-block-header">
+          <div class="gh-block-icon">🌿</div>
+          <div>
+            <h3>Branching Strategy</h3>
+            <p>Never commit directly to <code>main</code>. Use a structured branch naming convention from day one.</p>
+          </div>
+        </div>
+        <div class="gh-branch-table">
+          <div class="gh-branch-row gh-branch-header">
+            <span>Branch</span>
+            <span>Purpose</span>
+            <span>Merges Into</span>
+          </div>
+          <div class="gh-branch-row">
+            <span class="gh-branch-name main-branch">main</span>
+            <span>Production-ready code only. Always deployable.</span>
+            <span class="gh-muted">— (protected)</span>
+          </div>
+          <div class="gh-branch-row">
+            <span class="gh-branch-name dev-branch">develop</span>
+            <span>Integration branch. All features merge here first.</span>
+            <span class="gh-muted">main (via PR)</span>
+          </div>
+          <div class="gh-branch-row">
+            <span class="gh-branch-name feat-branch">feature/login-page</span>
+            <span>One branch per feature or task.</span>
+            <span class="gh-muted">develop</span>
+          </div>
+          <div class="gh-branch-row">
+            <span class="gh-branch-name fix-branch">fix/nav-overflow</span>
+            <span>Bug fixes — small scope, fast turnaround.</span>
+            <span class="gh-muted">develop</span>
+          </div>
+          <div class="gh-branch-row">
+            <span class="gh-branch-name hotfix-branch">hotfix/critical-crash</span>
+            <span>Emergency fixes for production issues.</span>
+            <span class="gh-muted">main + develop</span>
+          </div>
+          <div class="gh-branch-row">
+            <span class="gh-branch-name chore-branch">chore/update-deps</span>
+            <span>Non-feature work: deps, config, tooling, docs.</span>
+            <span class="gh-muted">develop</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOCK 4: Commit Conventions ── -->
+      <div class="gh-block">
+        <div class="gh-block-header">
+          <div class="gh-block-icon">✍️</div>
+          <div>
+            <h3>Commit Message Conventions</h3>
+            <p>Follow <strong>Conventional Commits</strong> — it makes your history readable, enables changelog generation, and communicates intent clearly.</p>
+          </div>
+        </div>
+        <div class="gh-commit-grid">
+          <div class="gh-commit-card">
+            <div class="gh-commit-type feat">feat</div>
+            <p>A new feature added to the app</p>
+            <div class="gh-code"><pre>feat: add user authentication flow</pre></div>
+          </div>
+          <div class="gh-commit-card">
+            <div class="gh-commit-type fix">fix</div>
+            <p>A bug fix — references the issue if possible</p>
+            <div class="gh-code"><pre>fix: resolve nav overflow on mobile (#12)</pre></div>
+          </div>
+          <div class="gh-commit-card">
+            <div class="gh-commit-type style">style</div>
+            <p>CSS/formatting changes, no logic change</p>
+            <div class="gh-code"><pre>style: update card hover transition timing</pre></div>
+          </div>
+          <div class="gh-commit-card">
+            <div class="gh-commit-type refactor">refactor</div>
+            <p>Code restructured, no behaviour change</p>
+            <div class="gh-code"><pre>refactor: extract Button into own component</pre></div>
+          </div>
+          <div class="gh-commit-card">
+            <div class="gh-commit-type docs">docs</div>
+            <p>Documentation only changes</p>
+            <div class="gh-code"><pre>docs: update README with setup instructions</pre></div>
+          </div>
+          <div class="gh-commit-card">
+            <div class="gh-commit-type chore">chore</div>
+            <p>Tooling, deps, config — no source change</p>
+            <div class="gh-code"><pre>chore: update eslint to v9, fix lint errors</pre></div>
+          </div>
+          <div class="gh-commit-card">
+            <div class="gh-commit-type test">test</div>
+            <p>Adding or updating tests</p>
+            <div class="gh-code"><pre>test: add unit tests for auth middleware</pre></div>
+          </div>
+          <div class="gh-commit-card">
+            <div class="gh-commit-type perf">perf</div>
+            <p>Performance improvements</p>
+            <div class="gh-code"><pre>perf: lazy-load images below the fold</pre></div>
+          </div>
+        </div>
+        <div class="gh-commit-rules">
+          <h4>Golden Rules for Commit Messages</h4>
+          <div class="gh-rules-grid">
+            <div class="gh-rule gh-rule-do">✅ Use imperative mood: &ldquo;add feature&rdquo; not &ldquo;added feature&rdquo;</div>
+            <div class="gh-rule gh-rule-do">✅ Keep subject line under 72 characters</div>
+            <div class="gh-rule gh-rule-do">✅ Reference issues: &ldquo;fix: resolve crash (#42)&rdquo;</div>
+            <div class="gh-rule gh-rule-do">✅ One logical change per commit — atomic commits</div>
+            <div class="gh-rule gh-rule-dont">❌ Don't write &ldquo;fix stuff&rdquo; or &ldquo;WIP&rdquo; in final commits</div>
+            <div class="gh-rule gh-rule-dont">❌ Don't commit unrelated changes together</div>
+            <div class="gh-rule gh-rule-dont">❌ Don't commit broken code to shared branches</div>
+            <div class="gh-rule gh-rule-dont">❌ Don't force-push to main or develop</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOCK 5: GitHub Features ── -->
+      <div class="gh-block">
+        <div class="gh-block-header">
+          <div class="gh-block-icon">⚡</div>
+          <div>
+            <h3>GitHub Features to Use Effectively</h3>
+            <p>Most developers only use 20% of what GitHub offers. Here's the other 80%.</p>
+          </div>
+        </div>
+        <div class="gh-features-grid">
+          <div class="gh-feature-card">
+            <div class="gh-feature-icon">🔀</div>
+            <h4>Pull Requests</h4>
+            <p>Every feature goes through a PR — even when working solo. PRs are your code review gate, your documentation of intent, and your automated test trigger. Write a clear description, link the issue, and add screenshots for UI changes.</p>
+            <div class="gh-feature-tip">💡 Use PR templates (<code>.github/pull_request_template.md</code>) to enforce consistency</div>
+          </div>
+          <div class="gh-feature-card">
+            <div class="gh-feature-icon">📋</div>
+            <h4>Issues &amp; Labels</h4>
+            <p>Treat every bug, feature, and task as an Issue. Use labels (<code>bug</code>, <code>enhancement</code>, <code>priority: high</code>) to organise your backlog. Assign issues to milestones to track version goals.</p>
+            <div class="gh-feature-tip">💡 Close issues automatically: write &ldquo;Closes #42&rdquo; in your PR description</div>
+          </div>
+          <div class="gh-feature-card">
+            <div class="gh-feature-icon">⚙️</div>
+            <h4>GitHub Actions</h4>
+            <p>Automate everything: run tests on every PR, lint on push, deploy on merge to main, check for broken links, send Slack notifications. Actions are free for public repos and generous for private ones.</p>
+            <div class="gh-feature-tip">💡 Browse <strong>github.com/marketplace</strong> for pre-built Actions — don't reinvent the wheel</div>
+          </div>
+          <div class="gh-feature-card">
+            <div class="gh-feature-icon">📄</div>
+            <h4>GitHub Pages</h4>
+            <p>Free hosting for static sites (HTML/CSS/JS, React builds, Jekyll, etc). Perfect for portfolios, documentation, and demo sites. Custom domains supported. Zero server management.</p>
+            <div class="gh-feature-tip">💡 Use <code>gh-pages</code> branch for SPAs so main stays clean</div>
+          </div>
+          <div class="gh-feature-card">
+            <div class="gh-feature-icon">📊</div>
+            <h4>GitHub Projects</h4>
+            <p>A full Kanban/Table/Roadmap board built into GitHub. Link issues and PRs directly to project cards. Use it for sprint planning, feature tracking, and release management — no third-party tool needed.</p>
+            <div class="gh-feature-tip">💡 Use &ldquo;Iterations&rdquo; for sprint planning and &ldquo;Milestones&rdquo; for release tracking</div>
+          </div>
+          <div class="gh-feature-card">
+            <div class="gh-feature-icon">🔒</div>
+            <h4>Dependabot &amp; Security</h4>
+            <p>Enable Dependabot to auto-create PRs when your dependencies have vulnerabilities or updates. Also enable Code Scanning (GitHub Advanced Security) to catch security issues in your own code.</p>
+            <div class="gh-feature-tip">💡 Settings → Security → Enable all Dependabot features — it's free and saves you from CVEs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOCK 6: Daily Workflow ── -->
+      <div class="gh-block">
+        <div class="gh-block-header">
+          <div class="gh-block-icon">🔄</div>
+          <div>
+            <h3>The Daily GitHub Workflow Loop</h3>
+            <p>Follow this loop every single day for every piece of work — no exceptions.</p>
+          </div>
+        </div>
+        <div class="gh-workflow-loop">
+          <div class="gh-loop-step">
+            <div class="gh-loop-num">1</div>
+            <div class="gh-loop-content">
+              <h4>Pull latest changes</h4>
+              <div class="gh-code"><pre>git checkout develop
+git pull origin develop</pre></div>
+            </div>
+          </div>
+          <div class="gh-loop-arrow">↓</div>
+          <div class="gh-loop-step">
+            <div class="gh-loop-num">2</div>
+            <div class="gh-loop-content">
+              <h4>Create a feature branch</h4>
+              <div class="gh-code"><pre>git checkout -b feature/your-feature-name</pre></div>
+            </div>
+          </div>
+          <div class="gh-loop-arrow">↓</div>
+          <div class="gh-loop-step">
+            <div class="gh-loop-num">3</div>
+            <div class="gh-loop-content">
+              <h4>Write code &amp; commit often</h4>
+              <div class="gh-code"><pre>git add .
+git commit -m "feat: add login form validation"</pre></div>
+            </div>
+          </div>
+          <div class="gh-loop-arrow">↓</div>
+          <div class="gh-loop-step">
+            <div class="gh-loop-num">4</div>
+            <div class="gh-loop-content">
+              <h4>Push branch to GitHub</h4>
+              <div class="gh-code"><pre>git push -u origin feature/your-feature-name</pre></div>
+            </div>
+          </div>
+          <div class="gh-loop-arrow">↓</div>
+          <div class="gh-loop-step">
+            <div class="gh-loop-num">5</div>
+            <div class="gh-loop-content">
+              <h4>Open a Pull Request</h4>
+              <p>Go to GitHub → Compare &amp; pull request → Write description → Link issue → Request review</p>
+            </div>
+          </div>
+          <div class="gh-loop-arrow">↓</div>
+          <div class="gh-loop-step">
+            <div class="gh-loop-num">6</div>
+            <div class="gh-loop-content">
+              <h4>CI checks pass → Merge → Delete branch</h4>
+              <div class="gh-code"><pre># After merge, clean up locally
+git checkout develop
+git pull origin develop
+git branch -d feature/your-feature-name</pre></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1050,6 +1449,7 @@ node_modules/
         </div>
         <div class="footer-links">
           <a href="#preproject">Pre-Project</a>
+          <a href="#github">GitHub</a>
           <a href="#laws">Laws</a>
           <a href="#workflow">Workflow</a>
           <a href="#gaps">Gaps</a>

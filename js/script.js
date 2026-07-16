@@ -59,7 +59,8 @@ const revealObserver = new IntersectionObserver((entries) => {
 // Add reveal class to card-like elements
 const revealTargets = document.querySelectorAll(
   '.law-card, .phase-card, .gap-category, .pillar-card, .cs-card, ' +
-  '.ag-principle, .velocity-item, .section-header, .pp-card'
+  '.ag-principle, .velocity-item, .section-header, .pp-card, ' +
+  '.gh-block, .gh-loop-step, .gh-feature-card, .gh-np-card'
 );
 
 revealTargets.forEach((el, i) => {

@@ -1312,6 +1312,429 @@ tbody tr:hover td {
 }
 
 /* ============================================================
+   GITHUB SETUP & WORKFLOW SECTION
+   ============================================================ */
+
+/* Block container */
+.gh-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  transition: border-color 0.3s;
+}
+
+.gh-block:hover {
+  border-color: rgba(99,102,241,0.3);
+}
+
+.gh-block-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.75rem 2rem;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border);
+}
+
+.gh-block-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.gh-block-header h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.35rem;
+}
+
+.gh-block-header p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* Shared code block */
+.gh-code {
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.1rem;
+  margin-top: 0.6rem;
+}
+
+.gh-code pre {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  line-height: 1.7;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* ── First-Time Steps ── */
+.gh-steps {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.gh-step {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.gh-step-num {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--grad-start), var(--grad-mid));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(99,102,241,0.4);
+}
+
+.gh-step-body h4 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+  color: var(--text-primary);
+}
+
+.gh-step-body > p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+/* ── New Project Grid ── */
+.gh-newproject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1px;
+  background: var(--border);
+}
+
+.gh-np-card {
+  background: var(--bg-primary);
+  padding: 1.75rem 2rem;
+  position: relative;
+  transition: background 0.25s;
+}
+
+.gh-np-card:hover {
+  background: var(--bg-card-hover);
+}
+
+.gh-np-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.25);
+  padding: 0.15rem 0.55rem;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.gh-np-card h4 {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-primary);
+}
+
+.gh-np-card > p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.gh-np-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.gh-np-card li {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+
+/* ── Branching Table ── */
+.gh-branch-table {
+  padding: 1rem 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gh-branch-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 160px;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.gh-branch-row:not(.gh-branch-header):hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.gh-branch-header {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+  border-radius: 0;
+}
+
+.gh-branch-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.main-branch   { background: rgba(239,68,68,0.12);  color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+.dev-branch    { background: rgba(245,158,11,0.12); color: #fbbf24; border: 1px solid rgba(245,158,11,0.25); }
+.feat-branch   { background: rgba(99,102,241,0.12); color: #818cf8; border: 1px solid rgba(99,102,241,0.25); }
+.fix-branch    { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.25); }
+.hotfix-branch { background: rgba(239,68,68,0.08);  color: #fca5a5; border: 1px solid rgba(239,68,68,0.15); }
+.chore-branch  { background: rgba(100,116,139,0.12);color: #94a3b8; border: 1px solid rgba(100,116,139,0.25); }
+
+.gh-branch-row span:nth-child(2) {
+  color: var(--text-secondary);
+  font-size: 0.87rem;
+  line-height: 1.5;
+}
+
+.gh-muted { color: var(--text-muted) !important; font-size: 0.85rem !important; }
+
+/* ── Commit Conventions ── */
+.gh-commit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.gh-commit-card {
+  background: var(--bg-primary);
+  padding: 1.25rem 1.5rem;
+  transition: background 0.2s;
+}
+
+.gh-commit-card:hover {
+  background: var(--bg-card-hover);
+}
+
+.gh-commit-type {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+  margin-bottom: 0.5rem;
+}
+
+.gh-commit-type.feat     { background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
+.gh-commit-type.fix      { background: rgba(239,68,68,0.15);  color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+.gh-commit-type.style    { background: rgba(6,182,212,0.15);  color: #22d3ee; border: 1px solid rgba(6,182,212,0.3); }
+.gh-commit-type.refactor { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+.gh-commit-type.docs     { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+.gh-commit-type.chore    { background: rgba(100,116,139,0.15);color: #94a3b8; border: 1px solid rgba(100,116,139,0.3); }
+.gh-commit-type.test     { background: rgba(139,92,246,0.15); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.3); }
+.gh-commit-type.perf     { background: rgba(249,115,22,0.15); color: #fb923c; border: 1px solid rgba(249,115,22,0.3); }
+
+.gh-commit-card p {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Commit golden rules */
+.gh-commit-rules {
+  padding: 1.75rem 2rem;
+}
+
+.gh-commit-rules h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.gh-rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.gh-rule {
+  font-size: 0.87rem;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  line-height: 1.5;
+}
+
+.gh-rule-do   { background: rgba(16,185,129,0.08);  color: var(--text-secondary); border: 1px solid rgba(16,185,129,0.2); }
+.gh-rule-dont { background: rgba(239,68,68,0.08);   color: var(--text-secondary); border: 1px solid rgba(239,68,68,0.2); }
+
+/* ── GitHub Features ── */
+.gh-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--border);
+}
+
+.gh-feature-card {
+  background: var(--bg-primary);
+  padding: 1.75rem;
+  transition: background 0.25s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.gh-feature-card:hover {
+  background: var(--bg-card-hover);
+}
+
+.gh-feature-icon {
+  font-size: 1.75rem;
+}
+
+.gh-feature-card h4 {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.gh-feature-card > p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.gh-feature-tip {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.85rem;
+  margin-top: auto;
+  line-height: 1.5;
+}
+
+/* ── Daily Workflow Loop ── */
+.gh-workflow-loop {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.gh-loop-step {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.25s;
+}
+
+.gh-loop-step:hover {
+  border-color: rgba(99,102,241,0.35);
+}
+
+.gh-loop-num {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(99,102,241,0.4);
+}
+
+.gh-loop-content h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.gh-loop-content > p {
+  font-size: 0.87rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.gh-loop-arrow {
+  font-size: 1.5rem;
+  color: rgba(99,102,241,0.5);
+  padding: 0.35rem 0;
+  line-height: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .gh-branch-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .gh-rules-grid {
+    grid-template-columns: 1fr;
+  }
+  .gh-loop-step {
+    grid-template-columns: 2.5rem 1fr;
+  }
+  .gh-block-header {
+    padding: 1.25rem;
+  }
+  .gh-steps, .gh-branch-table, .gh-commit-rules, .gh-workflow-loop {
+    padding: 1rem;
+  }
+}
+
+/* ============================================================
    PRE-PROJECT SETUP SECTION
    ============================================================ */
 .preproject-grid {
