@@ -234,3 +234,85 @@ document.querySelectorAll('.law-card').forEach(card => {
     card.style.setProperty('--mouse-y', y + '%');
   });
 });
+
+// ── Toast Notification Helper ──
+function showToast(message) {
+  const container = document.getElementById('toastContainer');
+  if (!container) return;
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<span>✓</span> <span>${message}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    toast.style.transition = 'all 0.3s ease';
+    setTimeout(() => toast.remove(), 300);
+  }, 2200);
+}
+
+// ── Automatic Copy Code Buttons ──
+document.querySelectorAll('pre').forEach(preBlock => {
+  const btn = document.createElement('button');
+  btn.className = 'copy-code-btn';
+  btn.textContent = 'Copy';
+  btn.setAttribute('aria-label', 'Copy code to clipboard');
+
+  btn.addEventListener('click', async () => {
+    const codeText = preBlock.querySelector('code')?.innerText || preBlock.innerText;
+    try {
+      await navigator.clipboard.writeText(codeText);
+      btn.textContent = 'Copied! ✓';
+      btn.classList.add('copied');
+      showToast('Code copied to clipboard!');
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy code: ', err);
+    }
+  });
+
+  preBlock.appendChild(btn);
+});
+
+// ── Back to Top Button ──
+const backToTopBtn = document.getElementById('backToTop');
+if (backToTopBtn) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 350) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// ── Live Reference Search Filter ──
+const searchInput = document.getElementById('searchInput');
+if (searchInput) {
+  const searchableCards = document.querySelectorAll(
+    '.pp-card, .law-card, .phase-card, .gap-category, .pillar-card, .cs-card, ' +
+    '.ag-principle, .css-card, .perf-card, .debug-card, .api-card, ' +
+    '.deploy-env-card, .deploy-platform-card, .tool-category, .gh-block'
+  );
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+
+    searchableCards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      if (!query || text.includes(query)) {
+        card.style.display = '';
+        card.style.opacity = '1';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+}
