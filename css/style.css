@@ -7,6 +7,17 @@
   padding: 0;
 }
 
+/* Keyboard Focus Accessibility */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.nav-link:focus-visible,
+.dropdown-item:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 :root {
   /* Colour palette */
   --bg-primary: #050510;
@@ -28,10 +39,10 @@
   --accent-amber: #f59e0b;
   --accent-red: #ef4444;
 
-  /* Text */
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #475569;
+  /* Text (WCAG AA Compliant Contrast) */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
 
   /* Spacing */
   --section-padding: 5rem 0;
@@ -101,6 +112,23 @@ code {
 
 .section-alt {
   background: var(--bg-secondary);
+}
+
+/* Card Equal-Height Grid Alignment */
+.pp-card,
+.law-card,
+.perf-card,
+.debug-card,
+.api-card,
+.deploy-env-card,
+.deploy-platform-card,
+.cs-card,
+.gap-category,
+.tool-category,
+.pillar-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .section-header {
