@@ -449,10 +449,20 @@ if (searchInput) {
     }
   ];
 
+  const categoryStudyMap = {
+    checklists: { name: 'Pre-Project & Pre-Launch Checklists', url: 'checklists.html' },
+    github: { name: 'GitHub Setup & AI Context Management', url: 'github-context.html' },
+    css: { name: 'CSS Architecture & Performance', url: 'css-performance.html' },
+    testing: { name: 'Testing Strategy & Debugging Toolkit', url: 'testing-debugging.html' },
+    api: { name: 'API Design & Deployment Guide', url: 'api-deployment.html' },
+    laws: { name: '12 Universal Laws & 7-Phase Workflow', url: 'laws-workflow.html' }
+  };
+
   let currentPool = [...quizQuestions];
   let currentIndex = 0;
   let score = 0;
   let selectedCategory = 'all';
+  let userAnswers = [];
 
   const categoryLabel = document.getElementById('quizCategoryLabel');
   const counterText = document.getElementById('quizCounterText');
@@ -472,6 +482,7 @@ if (searchInput) {
     }
     currentIndex = 0;
     score = 0;
+    userAnswers = [];
     renderQuestion();
   }
 
@@ -504,7 +515,8 @@ if (searchInput) {
     const allOptionBtns = optionsContainer.querySelectorAll('.quiz-option-btn');
     allOptionBtns.forEach(btn => btn.disabled = true);
 
-    if (chosenIndex === questionObj.answer) {
+    const isCorrect = (chosenIndex === questionObj.answer);
+    if (isCorrect) {
       selectedBtn.classList.add('correct');
       score++;
       if (typeof showToast === 'function') showToast('Correct! +1 Point');
@@ -512,6 +524,12 @@ if (searchInput) {
       selectedBtn.classList.add('incorrect');
       allOptionBtns[questionObj.answer].classList.add('correct');
     }
+
+    userAnswers.push({
+      questionObj,
+      chosenIndex,
+      isCorrect
+    });
 
     explanationText.textContent = questionObj.explanation;
     explanationBox.style.display = 'block';
@@ -522,6 +540,34 @@ if (searchInput) {
     progressBar.style.width = '100%';
     const pct = Math.round((score / currentPool.length) * 100);
     let badgeText = pct >= 80 ? '🏆 Mastered!' : pct >= 60 ? '👍 Good Effort!' : '📚 Keep Learning!';
+    const incorrectCount = currentPool.length - score;
+
+    let reviewCardsHTML = userAnswers.map((ans, idx) => {
+      const q = ans.questionObj;
+      const userAnsText = q.options[ans.chosenIndex];
+      const correctAnsText = q.options[q.answer];
+      const studyInfo = categoryStudyMap[q.category] || { name: 'WebDev Reference Guide', url: '../index.html' };
+
+      return `
+        <div class="quiz-review-card ${ans.isCorrect ? 'review-correct' : 'review-incorrect'}" data-is-correct="${ans.isCorrect}">
+          <div class="review-q-title">Q${idx + 1}. ${q.question}</div>
+          <div class="review-ans-group">
+            <div class="review-user-ans ${ans.isCorrect ? 'user-correct' : 'user-incorrect'}">
+              <strong>Your Answer:</strong> ${ans.isCorrect ? '✅' : '❌'} ${userAnsText}
+            </div>
+            ${!ans.isCorrect ? `
+              <div class="review-correct-ans">
+                <strong>Correct Answer:</strong> ✅ ${correctAnsText}
+              </div>
+            ` : ''}
+          </div>
+          <div class="review-exp-box">
+            <strong>💡 Explanation:</strong> ${q.explanation}
+          </div>
+          <a href="${studyInfo.url}" class="study-guide-link" target="_blank">📖 Review Topic: ${studyInfo.name} →</a>
+        </div>
+      `;
+    }).join('');
 
     quizCard.innerHTML = `
       <div class="quiz-scorecard">
@@ -530,12 +576,48 @@ if (searchInput) {
         <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
           You scored <strong>${score}</strong> out of <strong>${currentPool.length}</strong> questions correctly.
         </p>
-        <button class="btn btn-primary" id="restartQuizBtn">Retake Quiz →</button>
+
+        <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+          <button class="btn btn-primary" id="restartQuizBtn">Retake Quiz →</button>
+          <button class="btn btn-ghost" id="copyResultsBtn">📋 Copy Results</button>
+          ${incorrectCount > 0 ? `<button class="btn btn-ghost" id="toggleMistakesBtn">🔍 Show Incorrect Only (${incorrectCount})</button>` : ''}
+        </div>
+
+        <div class="quiz-review-section">
+          <div class="quiz-review-header">
+            <h4>Detailed Performance Audit</h4>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">${userAnswers.length} Questions Reviewed</span>
+          </div>
+          <div class="quiz-review-list" id="quizReviewList">
+            ${reviewCardsHTML}
+          </div>
+        </div>
       </div>
     `;
 
     document.getElementById('restartQuizBtn')?.addEventListener('click', () => {
       location.reload();
+    });
+
+    document.getElementById('copyResultsBtn')?.addEventListener('click', () => {
+      const summaryText = `WebDevRef Quiz Score: ${pct}%\nCategory: ${selectedCategory.toUpperCase()}\nCorrect: ${score}/${currentPool.length}`;
+      navigator.clipboard.writeText(summaryText);
+      if (typeof showToast === 'function') showToast('Copied quiz summary to clipboard!');
+    });
+
+    let showingOnlyMistakes = false;
+    document.getElementById('toggleMistakesBtn')?.addEventListener('click', (e) => {
+      showingOnlyMistakes = !showingOnlyMistakes;
+      e.target.textContent = showingOnlyMistakes ? `👁️ Show All (${currentPool.length})` : `🔍 Show Incorrect Only (${incorrectCount})`;
+      
+      const cards = document.querySelectorAll('.quiz-review-card');
+      cards.forEach(card => {
+        if (showingOnlyMistakes && card.dataset.isCorrect === 'true') {
+          card.style.display = 'none';
+        } else {
+          card.style.display = 'block';
+        }
+      });
     });
   }
 
