@@ -1,17 +1,20 @@
 /* ─── SCRIPT.JS ──────────────────────────────────────────────── */
 
 // ── Footer year ──
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // ── Navbar scroll effect ──
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 40) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-}, { passive: true });
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
+}
 
 // ── Mobile hamburger menu ──
 const hamburger = document.getElementById('hamburger');
@@ -182,7 +185,8 @@ revealTargets.forEach((el, i) => {
     }
   }, { threshold: 0 });
 
-  heroObs.observe(document.getElementById('hero'));
+  const heroEl = document.getElementById('hero');
+  if (heroEl) heroObs.observe(heroEl);
 })();
 
 // ── Smooth number count-up animation for velocity banner ──
