@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebDev Reference | Universal Laws, Workflow & AI Acceleration Hub</title>
-  <meta name="description" content="A multi-page developer reference guide covering universal laws of web app development, workflow models, knowledge gaps, and AI acceleration." />
+  <title>WebDev Reference | Your Complete Web Development Command Center</title>
+  <meta name="description" content="A multi-page developer command center covering universal laws, guided learning tracks, interactive quizzes, and AI acceleration." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -20,10 +20,11 @@
         <span>WebDev<strong>Ref</strong></span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#directories" class="nav-link">Directory</a></li>
-        <li><a href="pages/quiz.html" class="nav-link" style="color: var(--accent-cyan); font-weight: 600;">🧠 Quiz App</a></li>
+        <li><a href="#tracks" class="nav-link">Learning Tracks</a></li>
+        <li><a href="pages/quiz.html" class="nav-link" style="color: var(--accent-cyan); font-weight: 600;">🧠 Quiz</a></li>
+        <li><a href="#directories" class="nav-link">All Guides</a></li>
         <li><a href="#highlights" class="nav-link">Core Laws</a></li>
-        
+
         <li class="nav-item-dropdown">
           <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
           <ul class="dropdown-menu">
@@ -39,14 +40,29 @@
           </ul>
         </li>
       </ul>
-      <div class="nav-search">
-        <input type="text" id="searchInput" placeholder="🔍 Search topics..." aria-label="Search Reference Topics" />
-      </div>
+      <button class="cmd-palette-trigger" id="cmdPaletteTrigger" aria-label="Open Command Palette">
+        <span>🔍 Search...</span>
+        <kbd>Ctrl K</kbd>
+      </button>
       <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
+
+  <!-- ─── COMMAND PALETTE OVERLAY ─── -->
+  <div class="cmd-overlay" id="cmdOverlay">
+    <div class="cmd-modal">
+      <div class="cmd-search-row">
+        <span class="cmd-search-icon">🔍</span>
+        <input type="text" id="cmdSearchInput" class="cmd-search-input" placeholder="Search guides, laws, quiz topics, cheat sheet..." autocomplete="off" />
+        <kbd class="cmd-kbd-esc">Esc</kbd>
+      </div>
+      <div class="cmd-results" id="cmdResults">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+  </div>
 
   <!-- ─── HERO ──────────────────────────────────────────────────── -->
   <section class="hero" id="hero">
@@ -59,27 +75,27 @@
     <div class="hero-content">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        Multi-Page Developer Platform · v2.0
+        Multi-Page Command Center · v3.0
       </div>
       <h1 class="hero-title">
-        The Universal<br/>
-        <span class="gradient-text">Laws of Web</span><br/>
-        Development
+        Your Complete<br/>
+        <span class="gradient-text">Web Development</span><br/>
+        Command Center
       </h1>
       <p class="hero-subtitle">
-        Framework-agnostic principles, proven workflows, knowledge gaps,
+        Guided learning tracks, 30+ active-recall quiz questions, framework-agnostic laws,
         and how <strong>AI agents</strong> multiply your velocity by <span class="highlight-num">1000×</span>
       </p>
       <div class="hero-cta">
-        <a href="#directories" class="btn btn-primary">Explore Directory</a>
-        <a href="pages/ai-acceleration.html" class="btn btn-ghost">AI Suite →</a>
+        <a href="#tracks" class="btn btn-primary">Start a Learning Track</a>
+        <a href="pages/quiz.html" class="btn btn-ghost">🧠 Take the Quiz →</a>
       </div>
       <div class="hero-stats">
-        <div class="stat"><span class="stat-num">8</span><span class="stat-label">Sub-Guides</span></div>
+        <div class="stat"><span class="stat-num">9</span><span class="stat-label">Sub-Guides</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">30</span><span class="stat-label">Quiz Questions</span></div>
         <div class="stat-divider"></div>
         <div class="stat"><span class="stat-num">12</span><span class="stat-label">Universal Laws</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">7</span><span class="stat-label">Workflow Phases</span></div>
         <div class="stat-divider"></div>
         <div class="stat"><span class="stat-num">1000×</span><span class="stat-label">AI Speed Boost</span></div>
       </div>
@@ -90,13 +106,73 @@
     </div>
   </section>
 
+  <!-- ─── GUIDED LEARNING TRACKS ─── -->
+  <section class="section" id="tracks">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Guided Pathways</span>
+        <h2 class="section-title">Learning<br/><span class="gradient-text">Tracks</span></h2>
+        <p class="section-subtitle">Choose a structured pathway based on your goal. Each track connects related guides in the recommended study order.</p>
+      </div>
+
+      <div class="tracks-grid">
+
+        <div class="track-card track-production">
+          <div class="track-icon">🚀</div>
+          <h3 class="track-title">Production Readiness</h3>
+          <p class="track-desc">From project creation to production launch, step by step.</p>
+          <div class="track-steps">
+            <a href="pages/checklists.html" class="track-step">📋 Pre-Project Setup</a>
+            <span class="track-arrow">→</span>
+            <a href="pages/github-context.html" class="track-step">🐙 Git &amp; AGENTS.md</a>
+            <span class="track-arrow">→</span>
+            <a href="pages/css-performance.html" class="track-step">🎨 CSS &amp; Perf</a>
+            <span class="track-arrow">→</span>
+            <a href="pages/checklists.html" class="track-step">✅ Pre-Launch Audit</a>
+          </div>
+        </div>
+
+        <div class="track-card track-ai">
+          <div class="track-icon">⚡</div>
+          <h3 class="track-title">AI-Accelerated Developer</h3>
+          <p class="track-desc">Master agentic AI pair programming for maximum velocity.</p>
+          <div class="track-steps">
+            <a href="pages/github-context.html" class="track-step">📄 AGENTS.md Context</a>
+            <span class="track-arrow">→</span>
+            <a href="pages/ai-acceleration.html" class="track-step">🤖 AI Acceleration</a>
+            <span class="track-arrow">→</span>
+            <a href="pages/gaps-devtools.html" class="track-step">🛠️ DevTools</a>
+            <span class="track-arrow">→</span>
+            <a href="pages/cheatsheet.html" class="track-step">📑 Cheat Sheet</a>
+          </div>
+        </div>
+
+        <div class="track-card track-architect">
+          <div class="track-icon">🛡️</div>
+          <h3 class="track-title">Senior Architect</h3>
+          <p class="track-desc">Deep-dive into timeless engineering laws and quality systems.</p>
+          <div class="track-steps">
+            <a href="pages/laws-workflow.html" class="track-step">📜 12 Laws &amp; Phases</a>
+            <span class="track-arrow">→</span>
+            <a href="pages/testing-debugging.html" class="track-step">🧪 Testing &amp; Debug</a>
+            <span class="track-arrow">→</span>
+            <a href="pages/api-deployment.html" class="track-step">🌐 API &amp; Deploy</a>
+            <span class="track-arrow">→</span>
+            <a href="pages/quiz.html" class="track-step">🧠 Mastery Quiz</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ─── TOPIC DIRECTORY HUB ────────────────────────────────────── -->
   <section class="section section-alt" id="directories">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Reference Platform</span>
-        <h2 class="section-title">Topic Directory<br/><span class="gradient-text">Handbook Hub</span></h2>
-        <p class="section-subtitle">Select a dedicated reference guide to explore detailed checklists, architectural standards, and workflow blueprints.</p>
+        <h2 class="section-title">All<br/><span class="gradient-text">Guides</span></h2>
+        <p class="section-subtitle">Every topic in the handbook. Open any guide to explore detailed checklists, architectural standards, and workflow blueprints.</p>
       </div>
 
       <div class="preproject-grid">
@@ -104,15 +180,15 @@
         <div class="pp-card" data-step="00" style="border-color: var(--accent-cyan); background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(6,182,212,0.08));">
           <div class="pp-icon">🧠</div>
           <h3>Interactive Active-Recall Quiz</h3>
-          <p>Test your web development knowledge, reinforce core principles, and achieve permanent memory retention with instant explanations.</p>
-          <div class="pp-tags"><span>Active Recall</span><span>Memory</span><span>Quiz</span></div>
+          <p>30 questions across 6 categories. Instant feedback, explanations, and mastery scoring.</p>
+          <div class="pp-tags"><span>Active Recall</span><span>30 Questions</span><span>Quiz</span></div>
           <a href="pages/quiz.html" class="btn btn-primary" style="margin-top: 1rem;">Take Quiz Now →</a>
         </div>
 
         <div class="pp-card" data-step="01">
           <div class="pp-icon">📋</div>
           <h3>Pre-Project &amp; Pre-Launch Checklists</h3>
-          <p>The 8 essential pre-coding setup steps and the non-negotiable pre-launch verification checklist for SEO, performance, and accessibility.</p>
+          <p>The 8 essential pre-coding setup steps and the non-negotiable pre-launch verification checklist.</p>
           <div class="pp-tags"><span>Setup</span><span>Launch</span><span>Checklist</span></div>
           <a href="pages/checklists.html" class="btn btn-ghost" style="margin-top: 1rem;">Open Guide →</a>
         </div>
@@ -231,6 +307,7 @@
           <p>Universal principles, workflows, and AI acceleration guide.</p>
         </div>
         <div class="footer-links">
+          <a href="pages/quiz.html">🧠 Quiz</a>
           <a href="pages/checklists.html">Checklists</a>
           <a href="pages/github-context.html">GitHub &amp; Context</a>
           <a href="pages/css-performance.html">CSS Architecture</a>
@@ -241,7 +318,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>Built with Antigravity AI · Personal Reference · Multi-Page Platform v2.0 · <span id="year"></span></p>
+        <p>Built with Antigravity AI · Personal Reference · Command Center v3.0 · <span id="year"></span></p>
       </div>
     </div>
   </footer>

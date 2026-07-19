@@ -74,7 +74,7 @@ const revealTargets = document.querySelectorAll(
   '.gh-block, .gh-loop-step, .gh-feature-card, .gh-np-card, ' +
   '.cl-category, .css-card, .perf-card, .perf-metric, .pyramid-level, ' +
   '.test-rule-card, .debug-card, .api-card, .deploy-env-card, ' +
-  '.deploy-platform-card, .tool-category'
+  '.deploy-platform-card, .tool-category, .track-card'
 );
 
 revealTargets.forEach((el, i) => {
@@ -320,6 +320,169 @@ if (searchInput) {
     });
   });
 }
+
+// ── IA 3.0 — Command Palette (Ctrl+K) ──
+(function initCommandPalette() {
+  const overlay = document.getElementById('cmdOverlay');
+  const searchInput = document.getElementById('cmdSearchInput');
+  const resultsContainer = document.getElementById('cmdResults');
+  const trigger = document.getElementById('cmdPaletteTrigger');
+
+  if (!overlay || !searchInput || !resultsContainer) return;
+
+  // Search index — all navigable items across the platform
+  const cmdIndex = [
+    // Quick Actions
+    { group: 'Quick Actions', icon: '🧠', text: 'Take the Quiz Challenge', url: 'pages/quiz.html' },
+    { group: 'Quick Actions', icon: '📑', text: 'View Cheat Sheet', url: 'pages/cheatsheet.html' },
+    { group: 'Quick Actions', icon: '🏠', text: 'Back to Hub Overview', url: '#hero' },
+
+    // Guides
+    { group: 'Guides', icon: '📋', text: 'Pre-Project & Pre-Launch Checklists', url: 'pages/checklists.html' },
+    { group: 'Guides', icon: '🐙', text: 'GitHub & AI Context Management', url: 'pages/github-context.html' },
+    { group: 'Guides', icon: '🎨', text: 'CSS Architecture & Performance', url: 'pages/css-performance.html' },
+    { group: 'Guides', icon: '🧪', text: 'Testing Strategy & Debugging', url: 'pages/testing-debugging.html' },
+    { group: 'Guides', icon: '🌐', text: 'API Design & Deployment', url: 'pages/api-deployment.html' },
+    { group: 'Guides', icon: '📜', text: '12 Universal Laws & 7-Phase Workflow', url: 'pages/laws-workflow.html' },
+    { group: 'Guides', icon: '💡', text: 'Knowledge Gaps & Dev Tools', url: 'pages/gaps-devtools.html' },
+    { group: 'Guides', icon: '🤖', text: 'AI Acceleration & Antigravity', url: 'pages/ai-acceleration.html' },
+
+    // 12 Universal Laws
+    { group: '12 Laws', icon: '⚖️', text: 'Separation of Concerns', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '📱', text: 'Mobile-First Responsive Design', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '🛡️', text: 'Defensive Coding', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '🔒', text: 'Progressive Enhancement', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '♻️', text: 'DRY — Don\'t Repeat Yourself', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '🔀', text: 'Single Responsibility Principle', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '📦', text: 'Semantic HTML', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '⚡', text: 'Performance Budget', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '♿', text: 'Accessibility First (a11y)', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '🔄', text: 'Version Control Everything', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '🧪', text: 'Test Before Ship', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '🎯', text: 'Law of Least Surprise', url: 'pages/laws-workflow.html' },
+
+    // Learning Tracks
+    { group: 'Learning Tracks', icon: '🚀', text: 'Production Readiness Track', url: '#tracks' },
+    { group: 'Learning Tracks', icon: '⚡', text: 'AI-Accelerated Developer Track', url: '#tracks' },
+    { group: 'Learning Tracks', icon: '🛡️', text: 'Senior Architect Track', url: '#tracks' },
+  ];
+
+  let activeIndex = -1;
+
+  function openPalette() {
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    searchInput.value = '';
+    searchInput.focus();
+    renderResults('');
+    activeIndex = -1;
+  }
+
+  function closePalette() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    activeIndex = -1;
+  }
+
+  function renderResults(query) {
+    const q = query.toLowerCase().trim();
+    const filtered = q
+      ? cmdIndex.filter(item => item.text.toLowerCase().includes(q) || item.group.toLowerCase().includes(q))
+      : cmdIndex;
+
+    if (filtered.length === 0) {
+      resultsContainer.innerHTML = '<div class="cmd-empty">No results found. Try a different search.</div>';
+      return;
+    }
+
+    // Group by category
+    const groups = {};
+    filtered.forEach(item => {
+      if (!groups[item.group]) groups[item.group] = [];
+      groups[item.group].push(item);
+    });
+
+    let html = '';
+    Object.keys(groups).forEach(groupName => {
+      html += `<div class="cmd-group-label">${groupName}</div>`;
+      groups[groupName].forEach(item => {
+        html += `
+          <a href="${item.url}" class="cmd-result-item" data-url="${item.url}">
+            <span class="cmd-result-icon">${item.icon}</span>
+            <span class="cmd-result-text">${item.text}</span>
+            <span class="cmd-result-arrow">→</span>
+          </a>`;
+      });
+    });
+
+    resultsContainer.innerHTML = html;
+
+    // Attach click handlers
+    resultsContainer.querySelectorAll('.cmd-result-item').forEach(el => {
+      el.addEventListener('click', (e) => {
+        closePalette();
+      });
+    });
+  }
+
+  function updateActiveResult() {
+    const items = resultsContainer.querySelectorAll('.cmd-result-item');
+    items.forEach((el, i) => el.classList.toggle('active', i === activeIndex));
+    if (items[activeIndex]) items[activeIndex].scrollIntoView({ block: 'nearest' });
+  }
+
+  // Event: Trigger button click
+  if (trigger) trigger.addEventListener('click', openPalette);
+
+  // Event: Ctrl+K keyboard shortcut
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      if (overlay.classList.contains('active')) {
+        closePalette();
+      } else {
+        openPalette();
+      }
+    }
+
+    if (!overlay.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
+      closePalette();
+    }
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const items = resultsContainer.querySelectorAll('.cmd-result-item');
+      activeIndex = Math.min(activeIndex + 1, items.length - 1);
+      updateActiveResult();
+    }
+
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeIndex = Math.max(activeIndex - 1, 0);
+      updateActiveResult();
+    }
+
+    if (e.key === 'Enter') {
+      const items = resultsContainer.querySelectorAll('.cmd-result-item');
+      if (items[activeIndex]) {
+        items[activeIndex].click();
+      }
+    }
+  });
+
+  // Event: Search input
+  searchInput.addEventListener('input', (e) => {
+    renderResults(e.target.value);
+    activeIndex = -1;
+  });
+
+  // Event: Close on backdrop click
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closePalette();
+  });
+})();
 
 // ── Interactive Active-Recall Quiz Engine ──
 (function initQuizEngine() {
