@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Active-Recall Quiz Engine | WebDev Reference</title>
+  <meta name="description" content="Test your web development knowledge, reinforce core concepts, and achieve permanent memory retention through active recall." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─────────────────────────────────────────────── -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span>WebDev<strong>Ref</strong></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html" class="nav-link">← Hub Overview</a></li>
+        <li><a href="quiz.html" class="nav-link active">Interactive Quiz</a></li>
+        
+        <li class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="quiz.html" class="dropdown-item">Interactive Quiz Engine</a></li>
+            <li><a href="checklists.html" class="dropdown-item">Checklists</a></li>
+            <li><a href="github-context.html" class="dropdown-item">GitHub &amp; AI Context</a></li>
+            <li><a href="css-performance.html" class="dropdown-item">CSS &amp; Performance</a></li>
+            <li><a href="testing-debugging.html" class="dropdown-item">Testing &amp; Debugging</a></li>
+            <li><a href="api-deployment.html" class="dropdown-item">API &amp; Deployment</a></li>
+            <li><a href="laws-workflow.html" class="dropdown-item">Laws &amp; Workflow</a></li>
+            <li><a href="gaps-devtools.html" class="dropdown-item">Gaps &amp; DevTools</a></li>
+            <li><a href="ai-acceleration.html" class="dropdown-item">AI &amp; Antigravity</a></li>
+            <li><a href="cheatsheet.html" class="dropdown-item">Cheat Sheet</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-search">
+        <input type="text" id="searchInput" placeholder="🔍 Search topics..." aria-label="Search Reference Topics" />
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── QUIZ ENGINE SECTION ─── -->
+  <section class="section section-alt" id="quizSection">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Active Recall</span>
+        <h2 class="section-title">WebDev Knowledge<br/><span class="gradient-text">Mastery Quiz</span></h2>
+        <p class="section-subtitle">Reinforce concepts into permanent memory with instant visual feedback and detailed explanations.</p>
+      </div>
+
+      <div class="quiz-container">
+        
+        <!-- Category Selection Pills -->
+        <div class="quiz-category-pills" id="quizCategoryPills">
+          <button class="quiz-pill active" data-category="all">🔥 Full Mix Challenge</button>
+          <button class="quiz-pill" data-category="checklists">📋 Checklists</button>
+          <button class="quiz-pill" data-category="github">🐙 Git &amp; AGENTS.md</button>
+          <button class="quiz-pill" data-category="css">🎨 CSS &amp; Performance</button>
+          <button class="quiz-pill" data-category="testing">🧪 Testing &amp; Debugging</button>
+          <button class="quiz-pill" data-category="api">🌐 API &amp; Deploy</button>
+          <button class="quiz-pill" data-category="laws">📜 12 Laws</button>
+        </div>
+
+        <!-- Main Quiz Display Card -->
+        <div class="quiz-card" id="quizCard">
+          
+          <div class="quiz-progress-bar-container">
+            <div class="quiz-progress-bar" id="quizProgressBar"></div>
+          </div>
+
+          <div class="quiz-meta">
+            <span id="quizCategoryLabel">Category: Full Mix</span>
+            <span id="quizCounterText">Question 1 of 5</span>
+          </div>
+
+          <h3 class="quiz-question-text" id="quizQuestionText">Loading question...</h3>
+
+          <div class="quiz-options" id="quizOptionsContainer">
+            <!-- Dynamically populated options -->
+          </div>
+
+          <!-- Concept Explanation Box -->
+          <div class="quiz-explanation-box" id="quizExplanationBox">
+            <h4>💡 Why It Matters</h4>
+            <p id="quizExplanationText">Explanation details...</p>
+          </div>
+
+          <button class="btn btn-primary quiz-next-btn" id="quizNextBtn">Next Question →</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-icon">⬡</span>
+            <span>WebDev<strong>Ref</strong></span>
+          </a>
+          <p>Universal principles, workflows, and AI acceleration guide.</p>
+        </div>
+        <div class="footer-links">
+          <a href="../index.html">← Hub Home</a>
+          <a href="quiz.html">Interactive Quiz</a>
+          <a href="checklists.html">Checklists</a>
+          <a href="laws-workflow.html">Laws &amp; Workflow</a>
+          <a href="cheatsheet.html">Cheat Sheet</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+  <div id="toastContainer" class="toast-container"></div>
+  <script src="../js/script.js"></script>
+</body>
+</html>
