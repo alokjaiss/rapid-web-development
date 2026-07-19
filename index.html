@@ -51,6 +51,9 @@
           </ul>
         </li>
       </ul>
+      <div class="nav-search">
+        <input type="text" id="searchInput" placeholder="🔍 Search topics..." aria-label="Search Reference Topics" />
+      </div>
       <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
         <span></span><span></span><span></span>
       </button>
@@ -2673,6 +2676,12 @@ DELETE /users/:id      ← Delete
       </div>
     </div>
   </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top" title="Back to Top">↑</button>
+
+  <!-- Notification Toast Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
   <script src="js/script.js"></script>
 </body>
