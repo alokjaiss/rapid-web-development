@@ -327,6 +327,7 @@ if (searchInput) {
   if (!quizCard) return;
 
   const quizQuestions = [
+    // ── CATEGORY 1: CHECKLISTS (5 Questions) ──
     {
       category: 'checklists',
       question: 'What is the very first step to complete BEFORE writing a single line of code in a new project?',
@@ -341,7 +342,7 @@ if (searchInput) {
     },
     {
       category: 'checklists',
-      question: 'Which WCAG AA contrast ratio standard must text satisfy against its background color?',
+      question: 'Which WCAG AA contrast ratio standard must body text satisfy against its background color?',
       options: [
         'At least 2.0:1',
         'At least 4.5:1',
@@ -351,6 +352,44 @@ if (searchInput) {
       answer: 1,
       explanation: 'WCAG AA contrast guidelines require body text to achieve at least a 4.5:1 contrast ratio to ensure readability for visually impaired users.'
     },
+    {
+      category: 'checklists',
+      question: 'What target score threshold should a production web application achieve on Google Lighthouse Audits?',
+      options: [
+        'Under 50 in Performance',
+        'At least 90+ across Performance, Accessibility, Best Practices, and SEO',
+        'Exactly 100 in SEO only',
+        'Lighthouse scores are irrelevant'
+      ],
+      answer: 1,
+      explanation: 'Pre-Launch audit guidelines require achieving 90+ across all 4 Lighthouse pillars to ensure fast, accessible, and SEO-friendly delivery.'
+    },
+    {
+      category: 'checklists',
+      question: 'Why should a custom 404 page always be created before project launch?',
+      options: [
+        'To display arbitrary advertisements',
+        'To prevent broken user journeys and guide lost visitors back to the home hub',
+        'To hide server configuration errors',
+        'To force users to register'
+      ],
+      answer: 1,
+      explanation: 'A custom 404 page preserves user experience by providing clear navigation links back to active content when invalid URLs are visited.'
+    },
+    {
+      category: 'checklists',
+      question: 'Why is defining explicit `width` and `height` attributes on `<img>` tags required for performance?',
+      options: [
+        'To force image stretching',
+        'To reserve layout space and eliminate Cumulative Layout Shift (CLS)',
+        'To speed up CSS downloading',
+        'To enable automatic image crop'
+      ],
+      answer: 1,
+      explanation: 'Reserving aspect-ratio space prevents elements from jumping during image load, eliminating high Cumulative Layout Shift (CLS).'
+    },
+
+    // ── CATEGORY 2: GITHUB & AI CONTEXT (5 Questions) ──
     {
       category: 'github',
       question: 'What is the purpose of AGENTS.md (or claude.md) in an AI-first development workflow?',
@@ -376,6 +415,44 @@ if (searchInput) {
       explanation: 'Conventional Commits uses "fix:" for bug fixes, "feat:" for new features, "style:" for CSS/formatting, and "chore:" for tooling/deps.'
     },
     {
+      category: 'github',
+      question: 'In standard branch strategy, which branch holds production-ready, stable releases?',
+      options: [
+        'main branch',
+        'release branch',
+        'feature/test branch',
+        'scratch branch'
+      ],
+      answer: 1,
+      explanation: 'Feature development happens on feature branches, merges to `main`, and stable production releases are merged into `release` with semver tags.'
+    },
+    {
+      category: 'github',
+      question: 'Why should sensitive Personal Access Tokens (PATs) NEVER be hardcoded into public repositories?',
+      options: [
+        'Because GitHub will automatically delete your account',
+        'To prevent token leakage, unauthorized repository access, and push protection blocks',
+        'Because tokens slow down Git commit speeds',
+        'Tokens can only be used on Windows'
+      ],
+      answer: 1,
+      explanation: 'Hardcoding tokens exposes administrative access to your repositories and triggers GitHub secret scanning blocks.'
+    },
+    {
+      category: 'github',
+      question: 'What command format should be used to link a Pull Request to automatically close an issue upon merge?',
+      options: [
+        'closes #1 / fixes #1 in PR description',
+        'tag #1 in commit message',
+        'delete issue manually',
+        'create a new branch'
+      ],
+      answer: 0,
+      explanation: 'Including "closes #<issue>" or "fixes #<issue>" in the PR body automatically closes the referenced GitHub Issue upon merging.'
+    },
+
+    // ── CATEGORY 3: CSS & PERFORMANCE (5 Questions) ──
+    {
       category: 'css',
       question: 'Which CSS function allows smooth fluid font scaling between a minimum and maximum size without media queries?',
       options: [
@@ -399,6 +476,44 @@ if (searchInput) {
       answer: 0,
       explanation: 'Core Web Vitals targets LCP under 2.5s to ensure users perceive the page as loading quickly.'
     },
+    {
+      category: 'css',
+      question: 'Where should global design tokens (colors, font families, radii, shadows) be defined in vanilla CSS?',
+      options: [
+        'Inside inline HTML style attributes',
+        'Under the :root selector as CSS Custom Properties',
+        'Spread across 50 individual class selectors',
+        'In JavaScript script tags'
+      ],
+      answer: 1,
+      explanation: 'Defining custom properties under `:root` creates a centralized design token system that promotes consistency and effortless dark mode styling.'
+    },
+    {
+      category: 'css',
+      question: 'Why is Next-Gen WebP image format preferred over legacy PNG/JPEG for web delivery?',
+      options: [
+        'WebP images work without HTML img tags',
+        'WebP provides 25-35% smaller file sizes with superior lossy/lossless compression',
+        'PNG images load faster on mobile',
+        'JPEG supports transparent animation'
+      ],
+      answer: 1,
+      explanation: 'WebP significantly reduces payload bytes without visual quality degradation, boosting Largest Contentful Paint (LCP).'
+    },
+    {
+      category: 'css',
+      question: 'What does BEM class naming syntax stand for in CSS Architecture?',
+      options: [
+        'Basic Element Method',
+        'Block Element Modifier',
+        'Browser Execution Model',
+        'Build Engine Module'
+      ],
+      answer: 1,
+      explanation: 'Block Element Modifier (BEM) provides scoped, readable CSS class names like `.card__title--active` to prevent specificity collisions.'
+    },
+
+    // ── CATEGORY 4: TESTING & DEBUGGING (5 Questions) ──
     {
       category: 'testing',
       question: 'In the Testing Strategy Pyramid, which tier should make up the largest percentage (~70%) of automated tests?',
@@ -424,6 +539,44 @@ if (searchInput) {
       explanation: 'Empirical debugging requires inspecting complete, un-truncated logs and tracing upstream root causes rather than patching symptoms.'
     },
     {
+      category: 'testing',
+      question: 'Why is patching symptoms (e.g. returning dummy null objects) considered harmful in software engineering?',
+      options: [
+        'It speeds up code execution too much',
+        'It masks underlying contract breakages and causes silent downstream data corruption',
+        'It causes compiler warnings',
+        'It forces automatic server restart'
+      ],
+      answer: 1,
+      explanation: 'Superficial patches mask real bugs, leading to subtle runtime failures that are far harder to debug downstream.'
+    },
+    {
+      category: 'testing',
+      question: 'What is the primary advantage of End-to-End (E2E) testing over Unit testing?',
+      options: [
+        'E2E tests run 100x faster than unit tests',
+        'E2E tests validate complete user journeys across real browsers and DOM environments',
+        'E2E tests require zero test setup',
+        'E2E tests replace unit tests completely'
+      ],
+      answer: 1,
+      explanation: 'E2E tests simulate actual user interactions across the full application stack to verify end-to-end functionality.'
+    },
+    {
+      category: 'testing',
+      question: 'What defensive programming practice prevents `TypeError: Cannot read properties of null` crashes?',
+      options: [
+        'Using explicit null guards or optional chaining `?.` before property access',
+        'Removing all JavaScript files',
+        'Setting all variables to global scope',
+        'Wrapping entire codebase in `eval()`'
+      ],
+      answer: 0,
+      explanation: 'Checking element existence (`if (el)`) or using optional chaining (`el?.textContent`) prevents null pointer dereference crashes.'
+    },
+
+    // ── CATEGORY 5: API & DEPLOYMENT (5 Questions) ──
+    {
       category: 'api',
       question: 'Which HTTP status code signifies that a resource was successfully created on the server?',
       options: [
@@ -436,6 +589,56 @@ if (searchInput) {
       explanation: 'HTTP status code 201 Created explicitly indicates that a new resource was created successfully.'
     },
     {
+      category: 'api',
+      question: 'Which HTTP status code indicates an Unauthorized request due to missing or invalid authentication credentials?',
+      options: [
+        '200 OK',
+        '401 Unauthorized',
+        '404 Not Found',
+        '503 Service Unavailable'
+      ],
+      answer: 1,
+      explanation: '401 Unauthorized signals that authentication credentials are required or invalid.'
+    },
+    {
+      category: 'api',
+      question: 'What is the purpose of Cross-Origin Resource Sharing (CORS) HTTP headers?',
+      options: [
+        'To compress HTTP response bodies',
+        'To allow or restrict cross-domain requests between different web origins',
+        'To encrypt database passwords',
+        'To enable local file editing'
+      ],
+      answer: 1,
+      explanation: 'CORS headers inform browsers whether requests from origin A are permitted to access resources on origin B.'
+    },
+    {
+      category: 'api',
+      question: 'In RESTful API design, which HTTP verb should be used for updating existing resource data?',
+      options: [
+        'GET',
+        'PUT / PATCH',
+        'DELETE',
+        'OPTIONS'
+      ],
+      answer: 1,
+      explanation: 'PUT replaces a resource completely, while PATCH applies partial modifications to existing resources.'
+    },
+    {
+      category: 'api',
+      question: 'Why should API keys and database credentials be stored in `.env` files rather than source code?',
+      options: [
+        'To keep environment-specific configurations separate from codebase and prevent secret leakage',
+        'To make code run faster',
+        'Because git cannot read .env files',
+        'To disable server logging'
+      ],
+      answer: 0,
+      explanation: 'Storing secrets in `.env` files (excluded via `.gitignore`) prevents committing sensitive credentials to version control.'
+    },
+
+    // ── CATEGORY 6: 12 UNIVERSAL LAWS & WORKFLOW (5 Questions) ──
+    {
       category: 'laws',
       question: 'What does the Law of Separation of Concerns mandate?',
       options: [
@@ -446,6 +649,54 @@ if (searchInput) {
       ],
       answer: 0,
       explanation: 'Separation of Concerns maintains clean boundaries: HTML defines semantic structure, CSS handles visual design tokens, and JS controls behavior.'
+    },
+    {
+      category: 'laws',
+      question: 'What does the Law of Least Surprise dictate in software interface design?',
+      options: [
+        'Always surprise users with hidden navigation buttons',
+        'Elements should behave in predictable ways aligned with standard user mental models',
+        'Never update your UI design',
+        'Randomize button colors on every click'
+      ],
+      answer: 1,
+      explanation: 'Least Surprise dictates that user interface elements should behave predictably to minimize cognitive friction.'
+    },
+    {
+      category: 'laws',
+      question: 'What does the DRY (Don\'t Repeat Yourself) principle aim to eliminate?',
+      options: [
+        'Duplicated logic and redundant code across the codebase',
+        'Using CSS variables',
+        'Writing documentation comments',
+        'Creating modular components'
+      ],
+      answer: 0,
+      explanation: 'DRY promotes single sources of truth, reducing maintenance overhead and bug propagation.'
+    },
+    {
+      category: 'laws',
+      question: 'What is the correct sequence of the 7-Phase Web Development Lifecycle Model?',
+      options: [
+        'Deploy -> Code -> Plan -> Test -> Fix -> Launch -> Idea',
+        'Requirements -> Architecture -> Design System -> Implementation -> Verification -> Review -> Release',
+        'Code -> Release -> Test -> Design -> Plan -> Deploy -> Fix',
+        'Implementation only'
+      ],
+      answer: 1,
+      explanation: 'Disciplined software development progresses systematically from planning through implementation, verification, and tagged release.'
+    },
+    {
+      category: 'laws',
+      question: 'According to the Law of Premature Optimization, when should performance tuning take place?',
+      options: [
+        'Before writing any code',
+        'After establishing correct, clean architecture and identifying empirical bottlenecks',
+        'Never optimize anything',
+        'Rewrite everything in Assembly'
+      ],
+      answer: 1,
+      explanation: 'Optimizing without empirical profiling wastes effort; focus first on correctness and clean abstractions, then measure and optimize.'
     }
   ];
 
@@ -458,7 +709,16 @@ if (searchInput) {
     laws: { name: '12 Universal Laws & 7-Phase Workflow', url: 'laws-workflow.html' }
   };
 
-  let currentPool = [...quizQuestions];
+  function shuffleArray(arr) {
+    const array = [...arr];
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  let currentPool = shuffleArray(quizQuestions);
   let currentIndex = 0;
   let score = 0;
   let selectedCategory = 'all';
@@ -476,9 +736,9 @@ if (searchInput) {
   function filterQuestions(category) {
     selectedCategory = category;
     if (category === 'all') {
-      currentPool = [...quizQuestions];
+      currentPool = shuffleArray(quizQuestions);
     } else {
-      currentPool = quizQuestions.filter(q => q.category === category);
+      currentPool = shuffleArray(quizQuestions.filter(q => q.category === category));
     }
     currentIndex = 0;
     score = 0;
