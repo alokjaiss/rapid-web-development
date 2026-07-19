@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Setup & AI Context Management | WebDev Reference</title>
+  <meta name="description" content="Complete guide to GitHub repository setup, branching strategies, conventional commits, daily workflows, and AI context files (AGENTS.md)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─────────────────────────────────────────────── -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span>WebDev<strong>Ref</strong></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html" class="nav-link">← Hub Overview</a></li>
+        <li><a href="#github" class="nav-link">GitHub</a></li>
+        <li><a href="#aicontext" class="nav-link">AI Context</a></li>
+        
+        <li class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="checklists.html" class="dropdown-item">Checklists</a></li>
+            <li><a href="github-context.html" class="dropdown-item">GitHub &amp; AI Context</a></li>
+            <li><a href="css-performance.html" class="dropdown-item">CSS &amp; Performance</a></li>
+            <li><a href="testing-debugging.html" class="dropdown-item">Testing &amp; Debugging</a></li>
+            <li><a href="api-deployment.html" class="dropdown-item">API &amp; Deployment</a></li>
+            <li><a href="laws-workflow.html" class="dropdown-item">Laws &amp; Workflow</a></li>
+            <li><a href="gaps-devtools.html" class="dropdown-item">Gaps &amp; DevTools</a></li>
+            <li><a href="ai-acceleration.html" class="dropdown-item">AI &amp; Antigravity</a></li>
+            <li><a href="cheatsheet.html" class="dropdown-item">Cheat Sheet</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-search">
+        <input type="text" id="searchInput" placeholder="🔍 Search topics..." aria-label="Search Reference Topics" />
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── GITHUB SETUP & WORKFLOW ────────────────────────────────── -->
+  <section class="section" id="github">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Version Control</span>
+        <h2 class="section-title">GitHub Setup &amp;<br/><span class="gradient-text">Effective Workflow</span></h2>
+        <p class="section-subtitle">How to set up GitHub properly, configure branches, follow conventional commits, and use GitHub Actions CI/CD.</p>
+      </div>
+
+      <!-- ── BLOCK 1: First-Time Setup ── -->
+      <div class="gh-block">
+        <div class="gh-block-header">
+          <div class="gh-block-icon">🔧</div>
+          <div>
+            <h3>First-Time GitHub Setup</h3>
+            <p>Connect your local Git to your GitHub account securely once per machine.</p>
+          </div>
+        </div>
+        <div class="gh-steps">
+
+          <div class="gh-step">
+            <div class="gh-step-num">1</div>
+            <div class="gh-step-body">
+              <h4>Create a GitHub Account</h4>
+              <p>Sign up at <strong>github.com</strong> with a professional username.</p>
+            </div>
+          </div>
+
+          <div class="gh-step">
+            <div class="gh-step-num">2</div>
+            <div class="gh-step-body">
+              <h4>Configure Identity Locally</h4>
+              <div class="gh-code">
+                <pre>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global init.defaultBranch main</pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="gh-step">
+            <div class="gh-step-num">3</div>
+            <div class="gh-step-body">
+              <h4>Set Up SSH Authentication</h4>
+              <div class="gh-code">
+                <pre>ssh-keygen -t ed25519 -C "you@example.com"
+cat ~/.ssh/id_ed25519.pub | clip</pre>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── BLOCK 2: Branching & Commits ── -->
+      <div class="gh-block">
+        <div class="gh-block-header">
+          <div class="gh-block-icon">🌿</div>
+          <div>
+            <h3>Branching Strategy &amp; Conventional Commits</h3>
+            <p>Never commit directly to <code>main</code>. Use structured branch names and commit prefixes.</p>
+          </div>
+        </div>
+        <div class="gh-commit-grid">
+          <div class="gh-commit-card">
+            <div class="gh-commit-type feat">feat</div>
+            <p>New feature added</p>
+            <div class="gh-code"><pre>feat: add user authentication flow</pre></div>
+          </div>
+          <div class="gh-commit-card">
+            <div class="gh-commit-type fix">fix</div>
+            <p>Bug fix referencing issue</p>
+            <div class="gh-code"><pre>fix: resolve nav overflow on mobile (#12)</pre></div>
+          </div>
+          <div class="gh-commit-card">
+            <div class="gh-commit-type style">style</div>
+            <p>CSS styling / formatting</p>
+            <div class="gh-code"><pre>style: update card hover transition timing</pre></div>
+          </div>
+          <div class="gh-commit-card">
+            <div class="gh-commit-type refactor">refactor</div>
+            <p>Code restructuring</p>
+            <div class="gh-code"><pre>refactor: extract Button component</pre></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── AI CONTEXT FILES ──────────────────────────────────────── -->
+  <section class="section section-alt" id="aicontext">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">AI-First Development</span>
+        <h2 class="section-title">AI Context Files &amp;<br/><span class="gradient-text">Knowledge Management</span></h2>
+        <p class="section-subtitle">How to write <code>AGENTS.md</code>, maintain a <code>docs/</code> folder, and give AI assistants maximum project context.</p>
+      </div>
+
+      <div class="aic-why-banner">
+        <div class="aic-why-item">
+          <div class="aic-why-icon">🧠</div>
+          <div>
+            <h4>Without Context Files</h4>
+            <p>AI has zero memory between sessions. You re-explain your stack, conventions, and architecture every single time.</p>
+          </div>
+        </div>
+        <div class="aic-why-divider"></div>
+        <div class="aic-why-item">
+          <div class="aic-why-icon">⚡</div>
+          <div>
+            <h4>With Context Files</h4>
+            <p>AI reads AGENTS.md, instantly understands your architecture, and produces on-brand code from message one.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aic-block">
+        <div class="aic-block-header">
+          <div class="aic-block-icon">📄</div>
+          <div>
+            <h3>AGENTS.md Template Structure</h3>
+            <p>Keep AGENTS.md in your project root as the AI assistant briefing document.</p>
+          </div>
+        </div>
+        <div class="aic-code-block">
+          <pre># AGENTS.md — AI Assistant Briefing
+
+## Project Overview
+- Name: MyApp
+- Tech Stack: HTML, CSS, JS, Node
+- Folder Structure: assets/, css/, js/, pages/
+
+## Coding Standards
+- Use BEM naming in CSS
+- TypeScript strict mode enabled
+- Never hardcode secrets in source code</pre>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-icon">⬡</span>
+            <span>WebDev<strong>Ref</strong></span>
+          </a>
+          <p>Universal principles, workflows, and AI acceleration guide.</p>
+        </div>
+        <div class="footer-links">
+          <a href="../index.html">← Hub Home</a>
+          <a href="checklists.html">Checklists</a>
+          <a href="github-context.html">GitHub &amp; Context</a>
+          <a href="laws-workflow.html">Laws &amp; Workflow</a>
+          <a href="ai-acceleration.html">AI Suite</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+  <div id="toastContainer" class="toast-container"></div>
+  <script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Design & Deployment Guide | WebDev Reference</title>
+  <meta name="description" content="RESTful API best practices, HTTP status codes, authentication, CORS, and modern deployment environments (Vercel, Netlify, GitHub Pages)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span>WebDev<strong>Ref</strong></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html" class="nav-link">← Hub Overview</a></li>
+        <li><a href="#apidesign" class="nav-link">API Design</a></li>
+        <li><a href="#deployment" class="nav-link">Deployment</a></li>
+        
+        <li class="nav-item-dropdown">
+          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="checklists.html" class="dropdown-item">Checklists</a></li>
+            <li><a href="github-context.html" class="dropdown-item">GitHub &amp; AI Context</a></li>
+            <li><a href="css-performance.html" class="dropdown-item">CSS &amp; Performance</a></li>
+            <li><a href="testing-debugging.html" class="dropdown-item">Testing &amp; Debugging</a></li>
+            <li><a href="api-deployment.html" class="dropdown-item">API &amp; Deployment</a></li>
+            <li><a href="laws-workflow.html" class="dropdown-item">Laws &amp; Workflow</a></li>
+            <li><a href="gaps-devtools.html" class="dropdown-item">Gaps &amp; DevTools</a></li>
+            <li><a href="ai-acceleration.html" class="dropdown-item">AI &amp; Antigravity</a></li>
+            <li><a href="cheatsheet.html" class="dropdown-item">Cheat Sheet</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-search">
+        <input type="text" id="searchInput" placeholder="🔍 Search topics..." aria-label="Search Reference Topics" />
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── API DESIGN BEST PRACTICES ─── -->
+  <section class="section section-alt" id="apidesign">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Backend Integration</span>
+        <h2 class="section-title">API Design<br/><span class="gradient-text">Best Practices</span></h2>
+        <p class="section-subtitle">REST endpoints, standard HTTP status codes, structured JSON error responses, and CORS security.</p>
+      </div>
+
+      <div class="api-grid">
+        <div class="api-card">
+          <div class="api-icon">⚡</div>
+          <h3>Standard HTTP Status Codes</h3>
+          <ul class="pp-checklist">
+            <li><code>200 OK</code>: Successful request</li>
+            <li><code>201 Created</code>: Resource created</li>
+            <li><code>400 Bad Request</code>: Validation failed</li>
+            <li><code>401 Unauthorized</code>: Missing authentication</li>
+            <li><code>403 Forbidden</code>: Insufficient permissions</li>
+            <li><code>404 Not Found</code>: Resource missing</li>
+            <li><code>500 Internal Error</code>: Server exception</li>
+          </ul>
+        </div>
+
+        <div class="api-card">
+          <div class="api-icon">🔒</div>
+          <h3>Consistent Error Response Format</h3>
+          <div class="pp-code-block">
+            <pre>{
+  "error": {
+    "code": "INVALID_INPUT",
+    "message": "Email is required",
+    "status": 400
+  }
+}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DEPLOYMENT GUIDE ─── -->
+  <section class="section" id="deployment">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Production Release</span>
+        <h2 class="section-title">Deployment Guide &amp;<br/><span class="gradient-text">Platforms</span></h2>
+        <p class="section-subtitle">Staging vs Production pipelines, environment variables management, and static hosting platforms.</p>
+      </div>
+
+      <div class="deploy-grid">
+        <div class="deploy-platform-card">
+          <div class="deploy-icon">🐙</div>
+          <h3>GitHub Pages</h3>
+          <p>Ideal for zero-cost static HTML/CSS/JS reference sites and documentation.</p>
+        </div>
+        <div class="deploy-platform-card">
+          <div class="deploy-icon">▲</div>
+          <h3>Vercel</h3>
+          <p>Instant deployments for Next.js, Vite, and frontend frameworks with preview links.</p>
+        </div>
+        <div class="deploy-platform-card">
+          <div class="deploy-icon">🌐</div>
+          <h3>Netlify</h3>
+          <p>Continuous deployment, form handling, and serverless functions integration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="logo-icon">⬡</span>
+            <span>WebDev<strong>Ref</strong></span>
+          </a>
+          <p>Universal principles, workflows, and AI acceleration guide.</p>
+        </div>
+        <div class="footer-links">
+          <a href="../index.html">← Hub Home</a>
+          <a href="api-deployment.html">API &amp; Deployment</a>
+          <a href="laws-workflow.html">Laws &amp; Workflow</a>
+          <a href="cheatsheet.html">Cheat Sheet</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+  <div id="toastContainer" class="toast-container"></div>
+  <script src="../js/script.js"></script>
+</body>
+</html>
