@@ -1059,3 +1059,546 @@ if (searchInput) {
 
   renderQuestion();
 })();
+
+/* ====================================================================
+   ALGOMASTER-INSPIRED KNOWLEDGE BASE PORTAL INTERACTIVE ENGINE
+   ==================================================================== */
+(function initKnowledgePortal() {
+  const portalTree = document.getElementById('portalTree');
+  if (!portalTree || !window.KNOWLEDGE_DATA) return;
+
+  const data = window.KNOWLEDGE_DATA;
+  
+  // Storage Keys
+  const STORAGE_KEY_COMPLETED = 'webdevref_completed_topics';
+  const STORAGE_KEY_BOOKMARKS = 'webdevref_bookmarked_topics';
+  const STORAGE_KEY_NOTES     = 'webdevref_notes_data';
+
+  // State
+  let completedTopics = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_COMPLETED) || '[]'));
+  let bookmarkedTopics = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_BOOKMARKS) || '[]'));
+  let notesData = JSON.parse(localStorage.getItem(STORAGE_KEY_NOTES) || '{}');
+
+  // Flatten all topics for navigation & total count
+  const allTopics = [];
+  data.modules.forEach(mod => {
+    mod.topics.forEach(topic => {
+      allTopics.push({ ...topic, moduleId: mod.id, moduleTitle: mod.title });
+    });
+  });
+
+  let currentTopicId = location.hash.replace('#', '') || allTopics[0].id;
+
+  // DOM Elements
+  const portalProgressPct   = document.getElementById('portalProgressPct');
+  const portalProgressCount = document.getElementById('portalProgressCount');
+  const portalProgressFill  = document.getElementById('portalProgressFill');
+  const chapterSearchInput  = document.getElementById('chapterSearchInput');
+
+  const bcModule = document.getElementById('bcModule');
+  const bcTopic  = document.getElementById('bcTopic');
+
+  const articleTitle      = document.getElementById('articleTitle');
+  const badgePriority     = document.getElementById('badgePriority');
+  const badgeTime         = document.getElementById('badgeTime');
+  const badgeUpdated      = document.getElementById('badgeUpdated');
+  const portalContentBody = document.getElementById('portalContentBody');
+
+  const btnCompleteToggle  = document.getElementById('btnCompleteToggle');
+  const completeToggleText = document.getElementById('completeToggleText');
+  const btnStarToggle      = document.getElementById('btnStarToggle');
+  const btnNotesToggle     = document.getElementById('btnNotesToggle');
+  const btnAiHelper        = document.getElementById('btnAiHelper');
+  const btnPrevTopic       = document.getElementById('btnPrevTopic');
+  const btnNextTopic       = document.getElementById('btnNextTopic');
+
+  const readingProgressPct  = document.getElementById('readingProgressPct');
+  const readingProgressFill = document.getElementById('readingProgressFill');
+  const tocLinks            = document.getElementById('tocLinks');
+
+  const portalSidebar       = document.getElementById('portalSidebar');
+  const portalSidebarToggle = document.getElementById('portalSidebarToggle');
+
+  const notesModalOverlay   = document.getElementById('notesModalOverlay');
+  const notesModalClose     = document.getElementById('notesModalClose');
+  const notesTextarea       = document.getElementById('notesTextarea');
+  const notesSaveBtn        = document.getElementById('notesSaveBtn');
+
+  // --- Audio TTS Engine (Web Speech API) ---
+  const audioBar            = document.querySelector('.portal-audio-bar');
+  const audioPlayBtn        = document.getElementById('audioPlayBtn');
+  let speechSynth           = window.speechSynthesis;
+  let currentUtterance      = null;
+  let isSpeaking            = false;
+  let isPaused              = false;
+
+  function stopSpeech() {
+    if (speechSynth) {
+      speechSynth.cancel();
+    }
+    isSpeaking = false;
+    isPaused = false;
+    updateAudioUI();
+  }
+
+  function getBestEnglishVoice() {
+    if (!speechSynth) return null;
+    const voices = speechSynth.getVoices();
+    // Prefer Google US English
+    let voice = voices.find(v => v.lang.startsWith('en-US') && v.name.includes('Google'));
+    if (!voice) {
+      // Fallback to any English voice
+      voice = voices.find(v => v.lang.startsWith('en'));
+    }
+    if (!voice && voices.length > 0) {
+      voice = voices[0];
+    }
+    return voice;
+  }
+
+  function extractSpeakableProse(htmlString) {
+    if (!htmlString) return '';
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlString;
+
+    // Remove pre tags (code blocks), images, style, script, and icon elements
+    const blocksToRemove = tempDiv.querySelectorAll('pre, .code-box, img, style, script, .callout-icon');
+    blocksToRemove.forEach(el => el.remove());
+
+    // Add a natural period space after headings so they don't run into paragraphs
+    tempDiv.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(h => {
+      h.innerHTML = h.innerHTML + '. ';
+    });
+
+    // Add a semicolon space after list items for a brief pause
+    tempDiv.querySelectorAll('li').forEach(li => {
+      li.innerHTML = li.innerHTML + '; ';
+    });
+
+    return tempDiv.textContent || tempDiv.innerText || '';
+  }
+
+  function updateAudioUI() {
+    if (!audioPlayBtn || !audioBar) return;
+    
+    const iconSpan = audioPlayBtn.querySelector('span:first-child');
+    const textSpan = audioPlayBtn.querySelector('span:last-child');
+    const labelSpan = audioBar.querySelector('.audio-label');
+
+    if (isSpeaking && !isPaused) {
+      audioBar.classList.add('playing');
+      audioBar.classList.remove('paused');
+      audioPlayBtn.classList.add('playing');
+      if (iconSpan) iconSpan.textContent = '⏸';
+      if (textSpan) textSpan.textContent = 'Pause audio';
+      if (labelSpan) {
+        labelSpan.innerHTML = `🎙️ Speaking... <div class="voice-visualizer"><span></span><span></span><span></span><span></span></div>`;
+      }
+    } else if (isSpeaking && isPaused) {
+      audioBar.classList.add('playing');
+      audioBar.classList.add('paused');
+      audioPlayBtn.classList.remove('playing');
+      if (iconSpan) iconSpan.textContent = '▶';
+      if (textSpan) textSpan.textContent = 'Resume audio';
+      if (labelSpan) {
+        labelSpan.innerHTML = `⏸ Audio Paused <div class="voice-visualizer"><span></span><span></span><span></span><span></span></div>`;
+      }
+    } else {
+      audioBar.classList.remove('playing');
+      audioBar.classList.remove('paused');
+      audioPlayBtn.classList.remove('playing');
+      if (iconSpan) iconSpan.textContent = '▶';
+      if (textSpan) textSpan.textContent = 'Listen to this chapter';
+      if (labelSpan) labelSpan.textContent = '🎧 Audio Overview Available';
+    }
+  }
+
+  function startSpeaking() {
+    if (!speechSynth) return;
+    speechSynth.cancel();
+
+    const topicObj = allTopics.find(t => t.id === currentTopicId) || allTopics[0];
+    const speakTitle = topicObj.title ? `Chapter: ${topicObj.title}. ` : '';
+    const speakSummary = topicObj.summary ? `Overview: ${topicObj.summary}. ` : '';
+    const speakContent = extractSpeakableProse(topicObj.content);
+    
+    const textToSpeak = (speakTitle + speakSummary + speakContent).replace(/\s+/g, ' ').trim();
+
+    if (!textToSpeak) return;
+
+    currentUtterance = new SpeechSynthesisUtterance(textToSpeak);
+    
+    const voice = getBestEnglishVoice();
+    if (voice) {
+      currentUtterance.voice = voice;
+    }
+    currentUtterance.rate = 1.05;
+    currentUtterance.pitch = 1.0;
+
+    currentUtterance.onend = () => {
+      isSpeaking = false;
+      isPaused = false;
+      updateAudioUI();
+    };
+
+    currentUtterance.onerror = (e) => {
+      if (e.error !== 'interrupted') {
+        console.error('Speech synthesis error:', e);
+      }
+      isSpeaking = false;
+      isPaused = false;
+      updateAudioUI();
+    };
+
+    isSpeaking = true;
+    isPaused = false;
+    updateAudioUI();
+    
+    speechSynth.speak(currentUtterance);
+  }
+
+  if (speechSynth && speechSynth.onvoiceschanged !== undefined) {
+    speechSynth.onvoiceschanged = () => {
+      getBestEnglishVoice();
+    };
+  }
+
+  if (audioPlayBtn) {
+    audioPlayBtn.addEventListener('click', () => {
+      if (!speechSynth) {
+        alert('Web Speech API is not supported in this browser.');
+        return;
+      }
+
+      if (isSpeaking) {
+        if (isPaused) {
+          speechSynth.resume();
+          isPaused = false;
+          updateAudioUI();
+        } else {
+          speechSynth.pause();
+          isPaused = true;
+          updateAudioUI();
+        }
+      } else {
+        startSpeaking();
+      }
+    });
+  }
+
+  window.addEventListener('beforeunload', () => {
+    stopSpeech();
+  });
+
+  // --- Render Knowledge Tree Navigation ---
+  function renderTree(filterQuery = '') {
+    const query = filterQuery.toLowerCase().trim();
+    let treeHTML = '';
+
+    data.modules.forEach((mod, modIdx) => {
+      let matchingTopics = mod.topics.filter(t => 
+        !query || t.title.toLowerCase().includes(query) || t.summary.toLowerCase().includes(query)
+      );
+
+      if (query && matchingTopics.length === 0) return; // Skip non-matching modules when searching
+
+      let modCompletedCount = mod.topics.filter(t => completedTopics.has(t.id)).length;
+      const isExpanded = query.length > 0 || mod.topics.some(t => t.id === currentTopicId) || modIdx === 0;
+
+      treeHTML += `
+        <div class="portal-tree-group ${isExpanded ? 'expanded' : ''}" data-mod-id="${mod.id}">
+          <button class="portal-tree-header">
+            <div class="portal-tree-title">
+              <span>${mod.icon}</span>
+              <span>${mod.title}</span>
+            </div>
+            <div class="portal-tree-meta">
+              <span class="portal-tree-counter">${modCompletedCount}/${mod.topics.length}</span>
+              <span class="portal-tree-chevron">▾</span>
+            </div>
+          </button>
+          <div class="portal-tree-list">
+            ${matchingTopics.map(topic => {
+              const isActive = topic.id === currentTopicId;
+              const isCompleted = completedTopics.has(topic.id);
+              return `
+                <a href="#${topic.id}" class="portal-tree-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}" data-topic-id="${topic.id}">
+                  <span class="portal-tree-icon">📄</span>
+                  <span class="portal-tree-label">${topic.title}</span>
+                  <span class="portal-tree-check">✓</span>
+                </a>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    });
+
+    portalTree.innerHTML = treeHTML || '<div style="padding:1rem; text-align:center; color:var(--text-muted); font-size:0.85rem;">No matching chapters found</div>';
+
+    // Accordion Toggle Event Listeners
+    portalTree.querySelectorAll('.portal-tree-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const group = header.closest('.portal-tree-group');
+        group.classList.toggle('expanded');
+      });
+    });
+
+    // Topic Item Click Listeners
+    portalTree.querySelectorAll('.portal-tree-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        const topicId = item.dataset.topicId;
+        currentTopicId = topicId;
+        loadTopic(topicId);
+        if (window.innerWidth <= 992 && portalSidebar) {
+          portalSidebar.classList.remove('open');
+        }
+      });
+    });
+
+    updateOverallProgress();
+  }
+
+  // --- Update Overall Progress Bar ---
+  function updateOverallProgress() {
+    const total = allTopics.length;
+    const completedCount = completedTopics.size;
+    const pct = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+
+    if (portalProgressPct) portalProgressPct.textContent = `${pct}%`;
+    if (portalProgressCount) portalProgressCount.textContent = `${completedCount} / ${total}`;
+    if (portalProgressFill) portalProgressFill.style.width = `${pct}%`;
+  }
+
+  // --- Load Topic Content into Reader ---
+  function loadTopic(topicId) {
+    stopSpeech();
+    const topicObj = allTopics.find(t => t.id === topicId) || allTopics[0];
+    currentTopicId = topicObj.id;
+
+    // Breadcrumbs
+    if (bcModule) bcModule.textContent = topicObj.moduleTitle;
+    if (bcTopic) bcTopic.textContent = topicObj.title;
+
+    // Header Badges
+    if (articleTitle) articleTitle.textContent = topicObj.title;
+    if (badgePriority) badgePriority.textContent = `🔥 ${topicObj.priority}`;
+    if (badgeTime) badgeTime.textContent = `⏱️ ${topicObj.readTime}`;
+    if (badgeUpdated) badgeUpdated.textContent = `📅 Updated ${topicObj.updated}`;
+
+    // Content Body
+    if (portalContentBody) {
+      portalContentBody.innerHTML = topicObj.content;
+    }
+
+    // Complete Button state
+    updateCompleteButtonState(topicObj.id);
+
+    // Star/Bookmark button state
+    if (btnStarToggle) {
+      const isBookmarked = bookmarkedTopics.has(topicObj.id);
+      btnStarToggle.style.color = isBookmarked ? 'var(--accent-amber)' : 'var(--text-primary)';
+      btnStarToggle.querySelector('span:last-child').textContent = isBookmarked ? 'Bookmarked' : 'Bookmark';
+    }
+
+    // Prev / Next Navigation buttons
+    const currentIndex = allTopics.findIndex(t => t.id === topicObj.id);
+    if (btnPrevTopic) {
+      if (currentIndex > 0) {
+        btnPrevTopic.style.display = 'inline-flex';
+        btnPrevTopic.onclick = () => loadTopic(allTopics[currentIndex - 1].id);
+      } else {
+        btnPrevTopic.style.display = 'none';
+      }
+    }
+
+    if (btnNextTopic) {
+      if (currentIndex < allTopics.length - 1) {
+        btnNextTopic.style.display = 'inline-flex';
+        btnNextTopic.onclick = () => loadTopic(allTopics[currentIndex + 1].id);
+      } else {
+        btnNextTopic.style.display = 'none';
+      }
+    }
+
+    // Render Right Column TOC
+    renderTOC(topicObj);
+
+    // Re-highlight tree
+    renderTree(chapterSearchInput ? chapterSearchInput.value : '');
+
+    // Reset scroll to top of content
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // --- Complete Button State Helper ---
+  function updateCompleteButtonState(topicId) {
+    if (!btnCompleteToggle) return;
+    const isDone = completedTopics.has(topicId);
+    if (isDone) {
+      btnCompleteToggle.classList.add('active');
+      if (completeToggleText) completeToggleText.textContent = 'Completed ✓';
+    } else {
+      btnCompleteToggle.classList.remove('active');
+      if (completeToggleText) completeToggleText.textContent = 'Mark Complete';
+    }
+  }
+
+  // --- Render Table of Contents (Right Sidebar) ---
+  function renderTOC(topicObj) {
+    if (!tocLinks) return;
+
+    let outlineItems = topicObj.outline || [];
+
+    // Fallback: search rendered h2/h3 tags if outline not defined
+    if (outlineItems.length === 0 && portalContentBody) {
+      const headings = portalContentBody.querySelectorAll('h2, h3');
+      headings.forEach((h, i) => {
+        if (!h.id) h.id = `section-${i}`;
+        outlineItems.push({ id: h.id, text: h.textContent });
+      });
+    }
+
+    if (outlineItems.length === 0) {
+      tocLinks.innerHTML = '<li style="font-size:0.8rem; color:var(--text-muted);">No sections</li>';
+      return;
+    }
+
+    tocLinks.innerHTML = outlineItems.map((item, idx) => `
+      <li>
+        <a href="#${item.id}" class="toc-link ${idx === 0 ? 'active' : ''}" data-target="${item.id}">
+          ${item.text}
+        </a>
+      </li>
+    `).join('');
+
+    // Smooth scroll to heading when TOC link clicked
+    tocLinks.querySelectorAll('.toc-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.dataset.target;
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          const offsetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - 90;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  // --- Reading Progress % Calculation & Scroll TOC Sync ---
+  window.addEventListener('scroll', () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (totalHeight > 0) {
+      const pct = Math.min(100, Math.max(0, Math.round((window.scrollY / totalHeight) * 100)));
+      if (readingProgressPct) readingProgressPct.textContent = `${pct}%`;
+      if (readingProgressFill) readingProgressFill.style.width = `${pct}%`;
+    }
+
+    // Scrollsync TOC link highlight
+    const headings = portalContentBody ? portalContentBody.querySelectorAll('h2[id], h3[id]') : [];
+    let currentHeadingId = '';
+
+    headings.forEach(h => {
+      const rect = h.getBoundingClientRect();
+      if (rect.top <= 140) {
+        currentHeadingId = h.id;
+      }
+    });
+
+    if (currentHeadingId && tocLinks) {
+      tocLinks.querySelectorAll('.toc-link').forEach(l => {
+        l.classList.toggle('active', l.dataset.target === currentHeadingId);
+      });
+    }
+  }, { passive: true });
+
+  // --- Live Chapter Search ---
+  if (chapterSearchInput) {
+    chapterSearchInput.addEventListener('input', (e) => {
+      renderTree(e.target.value);
+    });
+  }
+
+  // --- Complete Button Toggle ---
+  if (btnCompleteToggle) {
+    btnCompleteToggle.addEventListener('click', () => {
+      if (completedTopics.has(currentTopicId)) {
+        completedTopics.delete(currentTopicId);
+      } else {
+        completedTopics.add(currentTopicId);
+      }
+      localStorage.setItem(STORAGE_KEY_COMPLETED, JSON.stringify([...completedTopics]));
+      updateCompleteButtonState(currentTopicId);
+      renderTree(chapterSearchInput ? chapterSearchInput.value : '');
+    });
+  }
+
+  // --- Star/Bookmark Button Toggle ---
+  if (btnStarToggle) {
+    btnStarToggle.addEventListener('click', () => {
+      if (bookmarkedTopics.has(currentTopicId)) {
+        bookmarkedTopics.delete(currentTopicId);
+      } else {
+        bookmarkedTopics.add(currentTopicId);
+      }
+      localStorage.setItem(STORAGE_KEY_BOOKMARKS, JSON.stringify([...bookmarkedTopics]));
+      const isBookmarked = bookmarkedTopics.has(currentTopicId);
+      btnStarToggle.style.color = isBookmarked ? 'var(--accent-amber)' : 'var(--text-primary)';
+      btnStarToggle.querySelector('span:last-child').textContent = isBookmarked ? 'Bookmarked' : 'Bookmark';
+    });
+  }
+
+  // --- Notes Modal Handler ---
+  if (btnNotesToggle && notesModalOverlay) {
+    btnNotesToggle.addEventListener('click', () => {
+      notesTextarea.value = notesData[currentTopicId] || '';
+      notesModalOverlay.classList.add('active');
+    });
+  }
+
+  if (notesModalClose && notesModalOverlay) {
+    notesModalClose.addEventListener('click', () => {
+      notesModalOverlay.classList.remove('active');
+    });
+  }
+
+  if (notesSaveBtn) {
+    notesSaveBtn.addEventListener('click', () => {
+      notesData[currentTopicId] = notesTextarea.value;
+      localStorage.setItem(STORAGE_KEY_NOTES, JSON.stringify(notesData));
+      notesModalOverlay.classList.remove('active');
+      if (typeof showToast === 'function') showToast('Notes saved successfully!');
+    });
+  }
+
+  // --- Ask AI Helper Button ---
+  if (btnAiHelper) {
+    btnAiHelper.addEventListener('click', () => {
+      const activeTopicObj = allTopics.find(t => t.id === currentTopicId);
+      const prompt = `I am studying "${activeTopicObj ? activeTopicObj.title : 'Web Development'}" on WebDevRef. Can you quiz me on these key concepts or provide a real-world scenario to test my knowledge?`;
+      navigator.clipboard.writeText(prompt);
+      alert('🤖 AI Assistant Prompt copied to clipboard!\n\nPaste this in your AI chat window to start pair programming!');
+    });
+  }
+
+  // --- Mobile Sidebar Drawer Toggle ---
+  if (portalSidebarToggle && portalSidebar) {
+    portalSidebarToggle.addEventListener('click', () => {
+      portalSidebar.classList.toggle('open');
+    });
+  }
+
+  // --- Initial Load ---
+  renderTree();
+  loadTopic(currentTopicId);
+
+  // Sync with Hash Changes in URL
+  window.addEventListener('hashchange', () => {
+    const hashId = location.hash.replace('#', '');
+    if (hashId && hashId !== currentTopicId) {
+      loadTopic(hashId);
+    }
+  });
+})();
+

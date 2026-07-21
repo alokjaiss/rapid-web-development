@@ -3,125 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Testing Strategy & Debugging Toolkit | WebDev Reference</title>
-  <meta name="description" content="Testing pyramid, unit vs integration vs E2E testing, browser DevTools, network inspection, and root cause debugging workflows." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+  <title>Testing Strategy & Debugging | WebDev Reference Portal</title>
+  <script>
+    window.location.replace("../portal.html#testing-pyramid");
+  </script>
 </head>
-<body>
-
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
-        <span class="logo-icon">⬡</span>
-        <span>WebDev<strong>Ref</strong></span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html" class="nav-link">← Hub Overview</a></li>
-        <li><a href="#testing" class="nav-link">Testing</a></li>
-        <li><a href="#debugging" class="nav-link">Debugging</a></li>
-        
-        <li class="nav-item-dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
-          <ul class="dropdown-menu">
-            <li><a href="checklists.html" class="dropdown-item">Checklists</a></li>
-            <li><a href="github-context.html" class="dropdown-item">GitHub &amp; AI Context</a></li>
-            <li><a href="css-performance.html" class="dropdown-item">CSS &amp; Performance</a></li>
-            <li><a href="testing-debugging.html" class="dropdown-item">Testing &amp; Debugging</a></li>
-            <li><a href="api-deployment.html" class="dropdown-item">API &amp; Deployment</a></li>
-            <li><a href="laws-workflow.html" class="dropdown-item">Laws &amp; Workflow</a></li>
-            <li><a href="gaps-devtools.html" class="dropdown-item">Gaps &amp; DevTools</a></li>
-            <li><a href="ai-acceleration.html" class="dropdown-item">AI &amp; Antigravity</a></li>
-            <li><a href="cheatsheet.html" class="dropdown-item">Cheat Sheet</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="nav-search">
-        <input type="text" id="searchInput" placeholder="🔍 Search topics..." aria-label="Search Reference Topics" />
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ─── TESTING STRATEGY ─── -->
-  <section class="section section-alt" id="testing">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Quality Assurance</span>
-        <h2 class="section-title">Testing Strategy<br/><span class="gradient-text">Pyramid</span></h2>
-        <p class="section-subtitle">How to structure unit tests, integration tests, and end-to-end (E2E) automated verification.</p>
-      </div>
-
-      <div class="test-grid">
-        <div class="test-rule-card">
-          <div class="test-icon">🧪</div>
-          <h3>Unit Testing (70% Coverage Target)</h3>
-          <p>Test pure business logic functions, utilities, and isolated components in fast automated test runs.</p>
-        </div>
-        <div class="test-rule-card">
-          <div class="test-icon">🔄</div>
-          <h3>Integration Testing</h3>
-          <p>Verify interaction between components, state managers, and API mock layers.</p>
-        </div>
-        <div class="test-rule-card">
-          <div class="test-icon">🎭</div>
-          <h3>End-to-End (E2E) Testing</h3>
-          <p>Use Playwright or Cypress to automate critical user journeys (e.g. signup, checkout, auth).</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── DEBUGGING TOOLKIT ─── -->
-  <section class="section" id="debugging">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Troubleshooting</span>
-        <h2 class="section-title">Debugging Toolkit &amp;<br/><span class="gradient-text">Root Cause Analysis</span></h2>
-        <p class="section-subtitle">Empirical debugging rules: inspect stack traces, reproduce consistently, and fix root causes rather than patching symptoms.</p>
-      </div>
-
-      <div class="debug-grid">
-        <div class="debug-card">
-          <div class="debug-icon">📜</div>
-          <h3>Inspect Un-truncated Logs First</h3>
-          <p>Never guess failure hypotheses without reading complete stack traces and error logs.</p>
-        </div>
-        <div class="debug-card">
-          <div class="debug-icon">🛡️</div>
-          <h3>No Symptom Masking</h3>
-          <p>Avoid silent try/catch blocks or dummy fallbacks. Address why the underlying contract broke.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <a href="../index.html" class="nav-logo">
-            <span class="logo-icon">⬡</span>
-            <span>WebDev<strong>Ref</strong></span>
-          </a>
-          <p>Universal principles, workflows, and AI acceleration guide.</p>
-        </div>
-        <div class="footer-links">
-          <a href="../index.html">← Hub Home</a>
-          <a href="testing-debugging.html">Testing &amp; Debugging</a>
-          <a href="api-deployment.html">API &amp; Deployment</a>
-          <a href="laws-workflow.html">Laws &amp; Workflow</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
-  <div id="toastContainer" class="toast-container"></div>
-  <script src="../js/script.js"></script>
+<body style="background:#050510; color:#f8fafc; font-family:sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; text-align:center;">
+  <div>
+    <h2>Redirecting to AlgoMaster Knowledge Base Portal...</h2>
+    <p><a href="../portal.html#testing-pyramid" style="color:#06b6d4;">Click here if not redirected automatically</a></p>
+  </div>
 </body>
 </html>

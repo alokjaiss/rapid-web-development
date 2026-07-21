@@ -3,137 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSS Architecture & Performance Optimization | WebDev Reference</title>
-  <meta name="description" content="Design systems, CSS custom properties, responsive breakpoints, Core Web Vitals, image compression, and performance optimization rules." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+  <title>CSS Architecture & Performance | WebDev Reference Portal</title>
+  <script>
+    window.location.replace("../portal.html#css-architecture");
+  </script>
 </head>
-<body>
-
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
-        <span class="logo-icon">⬡</span>
-        <span>WebDev<strong>Ref</strong></span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html" class="nav-link">← Hub Overview</a></li>
-        <li><a href="#cssarch" class="nav-link">CSS Architecture</a></li>
-        <li><a href="#performance" class="nav-link">Performance</a></li>
-        
-        <li class="nav-item-dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
-          <ul class="dropdown-menu">
-            <li><a href="checklists.html" class="dropdown-item">Checklists</a></li>
-            <li><a href="github-context.html" class="dropdown-item">GitHub &amp; AI Context</a></li>
-            <li><a href="css-performance.html" class="dropdown-item">CSS &amp; Performance</a></li>
-            <li><a href="testing-debugging.html" class="dropdown-item">Testing &amp; Debugging</a></li>
-            <li><a href="api-deployment.html" class="dropdown-item">API &amp; Deployment</a></li>
-            <li><a href="laws-workflow.html" class="dropdown-item">Laws &amp; Workflow</a></li>
-            <li><a href="gaps-devtools.html" class="dropdown-item">Gaps &amp; DevTools</a></li>
-            <li><a href="ai-acceleration.html" class="dropdown-item">AI &amp; Antigravity</a></li>
-            <li><a href="cheatsheet.html" class="dropdown-item">Cheat Sheet</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="nav-search">
-        <input type="text" id="searchInput" placeholder="🔍 Search topics..." aria-label="Search Reference Topics" />
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ─── CSS ARCHITECTURE ─── -->
-  <section class="section section-alt" id="cssarch">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Styling System</span>
-        <h2 class="section-title">CSS Architecture &amp;<br/><span class="gradient-text">Design Tokens</span></h2>
-        <p class="section-subtitle">Scalable CSS custom properties, BEM naming conventions, fluid typography, and responsive grid patterns.</p>
-      </div>
-
-      <div class="css-grid">
-        <div class="css-card">
-          <div class="css-icon">🎨</div>
-          <h3>Design Tokens in :root</h3>
-          <p>Define colors, fonts, radius, and shadows in <code>:root</code> to enforce site-wide visual consistency.</p>
-          <div class="pp-code-block">
-            <pre>:root {
-  --bg-primary: #050510;
-  --accent-cyan: #06b6d4;
-  --radius-md: 12px;
-  --font-main: 'Outfit', sans-serif;
-}</pre>
-          </div>
-        </div>
-
-        <div class="css-card">
-          <div class="css-icon">📐</div>
-          <h3>Fluid Typography with clamp()</h3>
-          <p>Use CSS <code>clamp(min, val, max)</code> for responsive font sizes without dozens of media queries.</p>
-          <div class="pp-code-block">
-            <pre>h1 {
-  font-size: clamp(2rem, 5vw, 4.5rem);
-}</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── PERFORMANCE OPTIMIZATION ─── -->
-  <section class="section" id="performance">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Speed &amp; Vitals</span>
-        <h2 class="section-title">Performance Optimization<br/><span class="gradient-text">Guide</span></h2>
-        <p class="section-subtitle">Core Web Vitals targets, WebP image formatting, script deferral, and asset caching strategies.</p>
-      </div>
-
-      <div class="perf-metrics">
-        <div class="perf-metric">
-          <div class="metric-val">&lt; 2.5s</div>
-          <div class="metric-lbl">LCP (Largest Contentful Paint)</div>
-        </div>
-        <div class="perf-metric">
-          <div class="metric-val">&lt; 100ms</div>
-          <div class="metric-lbl">FID / INP (Input Latency)</div>
-        </div>
-        <div class="perf-metric">
-          <div class="metric-val">&lt; 0.1</div>
-          <div class="metric-lbl">CLS (Cumulative Layout Shift)</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <a href="../index.html" class="nav-logo">
-            <span class="logo-icon">⬡</span>
-            <span>WebDev<strong>Ref</strong></span>
-          </a>
-          <p>Universal principles, workflows, and AI acceleration guide.</p>
-        </div>
-        <div class="footer-links">
-          <a href="../index.html">← Hub Home</a>
-          <a href="checklists.html">Checklists</a>
-          <a href="css-performance.html">CSS &amp; Performance</a>
-          <a href="laws-workflow.html">Laws &amp; Workflow</a>
-          <a href="ai-acceleration.html">AI Suite</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
-  <div id="toastContainer" class="toast-container"></div>
-  <script src="../js/script.js"></script>
+<body style="background:#050510; color:#f8fafc; font-family:sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; text-align:center;">
+  <div>
+    <h2>Redirecting to AlgoMaster Knowledge Base Portal...</h2>
+    <p><a href="../portal.html#css-architecture" style="color:#06b6d4;">Click here if not redirected automatically</a></p>
+  </div>
 </body>
 </html>

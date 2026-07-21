@@ -1,121 +1,141 @@
 # AGENTS.md — AI Assistant Briefing
 # Read this file before doing ANYTHING in this project.
-# This is the WebDev Reference project — a static educational website.
+# WebDevRef — AlgoMaster.io-Inspired Interactive Knowledge Base Portal
 
 ## Project Overview
-- **Name:** WebDevRef — Universal Laws of Web Development
-- **Goal:** A personal reference guide covering pre-project setup, GitHub workflow, AI context management, universal dev laws, workflow phases, knowledge gaps, and AI acceleration
-- **Type:** Static HTML/CSS/JS — no framework, no build step
-- **Status:** Active — continuously expanding with new sections
-- **Live:** Open index.html directly in any browser (no server needed)
+- **Name:** WebDevRef — Interactive Web Development Knowledge Base Portal
+- **Architecture:** Modelled after **AlgoMaster.io** — 3-column workspace portal with interactive tree navigation, live search, scroll-synced TOC, and dynamic progress tracking.
+- **Goal:** A scalable developer reference platform covering Pre-Project Setup, GitHub Workflow, CSS Architecture, Performance Optimization, Testing Strategy, API Design, Universal Laws, AI Acceleration, and Active-Recall Quizzes.
+- **Type:** Static HTML5 / Vanilla CSS3 / Vanilla JS ES6+ — zero external dependencies, zero build steps.
+- **Live Portal:** Open `portal.html` or `index.html` directly in any browser.
 
-## Tech Stack
-- **Structure:** HTML5 (semantic elements, single-page with anchor sections)
-- **Styling:** Vanilla CSS with CSS custom properties (design tokens in :root)
-- **Logic:** Vanilla JavaScript ES6+ (IntersectionObserver, Canvas API, no libraries)
-- **Fonts:** Google Fonts — Outfit (body) + JetBrains Mono (code)
-- **Icons:** Emoji only (no icon library)
-- **Build:** None — pure static files
+---
 
 ## Folder Structure
 ```
 Rapid Web Development/
-├── index.html          ← Single HTML file, ALL sections here
-├── README.md           ← Public project documentation
-├── AGENTS.md           ← This file — AI briefing
+├── index.html          ← Hub Overview & Landing Page with Hero Tracks & Flame Streak
+├── portal.html         ← 3-Column AlgoMaster-Style Knowledge Base Portal View
+├── AGENTS.md           ← This briefing document — AI instructions
+├── README.md           ← Public documentation
 ├── .gitignore          ← Git ignore rules
 │
 ├── css/
-│   └── style.css       ← ALL styles — design tokens + every section's CSS
+│   └── style.css       ← ALL styles — design tokens, 3-column portal grid, tree accordion & responsive rules
 │
 ├── js/
-│   └── script.js       ← Scroll effects, particles, nav, reveal animations
+│   ├── knowledge-data.js ← Central Master Registry of all modules, topics, metadata, outlines & lessons
+│   └── script.js       ← Tree accordion, live chapter search, scroll progress sync, notes modal & localStorage completion tracking
 │
 ├── assets/
-│   ├── images/         ← Screenshots and images
-│   ├── fonts/          ← Self-hosted fonts (none yet)
-│   └── icons/          ← Favicon etc (none yet)
+│   ├── images/         ← Screenshots and visual assets
+│   ├── fonts/          ← Self-hosted fonts (Outfit & JetBrains Mono)
+│   └── icons/          ← Favicons and graphic tokens
 │
-└── pages/              ← Future additional HTML pages (empty for now)
+└── pages/              ← Active-recall quiz & legacy topic subpages
+    ├── quiz.html       ← Active-recall practice suite with recall analytics
+    └── ...
 ```
 
-## Design System — CSS Variables (DO NOT DEVIATE)
-All design tokens are in `css/style.css` under `:root`. Always use these:
-- **Background:** `--bg-primary: #050510`, `--bg-secondary: #0a0a1a`, `--bg-card`
-- **Gradient:** `--grad-start: #6366f1` (indigo), `--grad-mid: #8b5cf6` (violet), `--grad-end: #06b6d4` (cyan)
-- **Accents:** `--accent-primary`, `--accent-secondary`, `--accent-cyan`, `--accent-green`, `--accent-amber`, `--accent-red`
-- **Text:** `--text-primary`, `--text-secondary`, `--text-muted`
-- **Radius:** `--radius-sm: 8px`, `--radius-md: 12px`, `--radius-lg: 20px`, `--radius-xl: 32px`
-- **Shadows:** `--shadow-glow`, `--shadow-card`
+---
 
-## Coding Standards
-- **CSS class naming:** BEM-inspired, section-prefixed (e.g., `.gh-block`, `.aic-rule-card`, `.pp-card`)
-- **Each new section** gets its own CSS block in style.css with a clear comment header
-- **Scroll reveal:** Add new card elements to the `revealTargets` selector in script.js
-- **No inline styles** — all styles go in css/style.css
-- **No external JS libraries** — vanilla JS only
-- **Hover effects** on every interactive card element (translateY + border-color)
-- **Code blocks** use `rgba(0,0,0,0.45)` background + `rgba(99,102,241,0.2)` border
-- **Monospace text** always uses JetBrains Mono, color: `var(--accent-cyan)`
+## AlgoMaster-Inspired Design System (DO NOT DEVIATE)
+All design tokens are defined in `css/style.css` under `:root`:
+- **Backgrounds:** `--bg-primary: #050510`, `--bg-secondary: #0a0a1a`, `--bg-card: rgba(255,255,255,0.04)`
+- **Gradients:** `--grad-start: #6366f1` (indigo), `--grad-mid: #8b5cf6` (violet), `--grad-end: #06b6d4` (cyan)
+- **Accents:** `--accent-cyan: #06b6d4`, `--accent-green: #10b981`, `--accent-amber: #f59e0b`, `--accent-red: #ef4444`, `--accent-orange: #f97316` (streak flame)
+- **Typography:** Google Fonts — **Outfit** (body & headers) + **JetBrains Mono** (code & metadata)
+- **Borders & Glassmorphism:** `--border: rgba(255,255,255,0.08)`, `--shadow-glow`, `--shadow-card`
 
-## Section Structure Pattern
-Every section follows this pattern:
-```html
-<section class="section [section-alt?]" id="sectionid">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Category Label</span>
-      <h2 class="section-title">Title<br/><span class="gradient-text">Subtitle</span></h2>
-      <p class="section-subtitle">Description...</p>
-    </div>
-    <!-- section content -->
-  </div>
-</section>
+---
+
+## Discoveries & Nuances from AlgoMaster.io Structure
+
+| AlgoMaster Design Element | WebDevRef Implementation | Key Features & Behavior |
+| :--- | :--- | :--- |
+| **Top Header Bar** | `nav.navbar` in `index.html` & `portal.html` | Logo badge, category links, global command search (`Ctrl+K` / `F`), theme toggle, & flame streak indicator. |
+| **Hero Mesh & Gradients** | `.hero-bg` with radial glows | Dark glassmorphism, radial gradient spots, & particle canvas background animation. |
+| **3-Column Workspace Portal** | `portal.html` | 320px left tree sidebar, fluid center reader viewport, 260px right table of contents column. |
+| **Collapsible Category Accordion** | `.portal-tree-group` | Category titles with topic counters (`0/4`), collapsible chevron toggles, and live search chapter filtering. |
+| **Article Header & Badges** | `.portal-reader-header` | Topic title, priority tag (`🔥 High Priority`), read time estimate (`⏱️ 5 min read`), last updated date (`📅 May 2026`). |
+| **Audio Overview Bar** | `.portal-audio-bar` | "Listen to this chapter" interactive audio preview placeholder bar. |
+| **Editorial Prose Reading View** | `.portal-content` | **Long-form article format** (matching `algomaster.io/learn/system-design/what-is-system-design`). Clear lead paragraphs, numbered section headings (`1.`, `2.`), bullet/numbered lists (`.article-list`), single callout boxes (`.callout`), dark code blocks (`.code-box pre code`). **NO card grids inside article prose**. |
+| **Sticky Bottom Action Toolbar** | `.portal-toolbar` | Floating blur bar (`Mark Complete`, `Bookmark`, `Take Notes` popover, `Ask AI` assistant prompt copy, `Prev/Next`). |
+| **Scroll-Synced Table of Contents** | `.portal-toc` | Reading progress counter percentage (`0% - 100%`) and active section anchor link highlighting on scroll. |
+| **Active-Recall Practice** | `pages/quiz.html` | Topic-filtered recall practice, instant explanation cards, score analytics, and mistakes review filter. |
+
+---
+
+## Article Presentation Standard (Editorial Prose Layout)
+- **Do NOT** format lesson articles inside the portal as card grids (`.cards-grid` / `.info-card`).
+- **DO** present all knowledge articles in clean, long-form editorial prose (matching `https://algomaster.io/learn/system-design/what-is-system-design`):
+  1. Introductory lead paragraph (`<p class="article-lead">`).
+  2. Clear numbered section headings (`<h2 id="...">1. The Core Idea</h2>`).
+  3. Well-spaced paragraphs (`<p>`).
+  4. Structured ordered lists (`<ol class="article-list">`) and bullet points (`<ul class="article-list">`).
+  5. Callout alert blocks (`<div class="callout callout-tip">`).
+  6. Dark editor code blocks (`<div class="code-box"><pre><code>...</code></pre></div>`).
+
+---
+
+## Data-Driven Content Registry (`js/knowledge-data.js`)
+All course content is stored in `window.KNOWLEDGE_DATA`. The registry structure:
+```javascript
+window.KNOWLEDGE_DATA = {
+  courseTitle: "Web Development Mastery & AI Velocity",
+  totalTopics: 37,
+  modules: [
+    {
+      id: "mod-id",
+      title: "01. Category Title",
+      icon: "⚡",
+      topics: [
+        {
+          id: "topic-unique-id",
+          title: "Topic Title",
+          priority: "High Priority",
+          readTime: "5 min read",
+          updated: "May 2026",
+          badge: "Essential",
+          audioUrl: "#",
+          summary: "Short topic description",
+          outline: [
+            { id: "section-anchor-id", text: "1. Section Heading Text" }
+          ],
+          content: `HTML formatted article content...`
+        }
+      ]
+    }
+  ]
+};
 ```
-- `.section` = white/dark bg, `.section-alt` = `var(--bg-secondary)` bg, alternating
-- Always add nav link AND footer link when adding a new section
 
-## Current Sections (in order)
-1. `#hero` — Hero with particle canvas
-2. `#preproject` — Pre-Project Setup Checklist (8 steps)
-3. `#github` — GitHub Setup & Workflow (6 blocks)
-4. `#aicontext` — AI Context Files & Knowledge Management (5 blocks)
-5. `#prelaunch` — Pre-Launch Checklist (6 categories)
-6. `#cssarch` — CSS Architecture & Responsive Design (8 cards)
-7. `#performance` — Performance Optimization Guide (metrics + cards)
-8. `#testing` — Testing Strategy (Pyramid + Rules)
-9. `#debugging` — Debugging Toolkit (6 cards)
-10. `#apidesign` — API Design Best Practices (REST, Status codes, auth, etc.)
-11. `#deployment` — Deployment Guide (flow + platform cards + rules)
-12. `#devtools` — Developer Tools & Workflow (Extensions + productivity cards)
-13. `#laws` — 12 Universal Laws of Web Development
-14. `#workflow` — 7-Phase Development Workflow
-15. `#gaps` — Knowledge Gaps by category
-16. `#ai` — AI Acceleration section
-17. `#antigravity` — Mastering Antigravity AI
-18. `#cheatsheet` — Developer Cheat Sheet
+---
 
-## Git Workflow
-- **Branch naming:** `feature/`, `fix/`, `chore/`, `docs/`
-- **Commit style:** Conventional Commits (`feat:`, `fix:`, `style:`, `docs:`, `chore:`)
-- **Branch from:** `main` for active development/features
-- **Merge to:** `release` for stable production releases/deployments
-- **Never** force-push to `main` or `release`
+## Interactive Features & Persistence
+1. **Completion Tracking:** Clicking `Mark Complete` on the sticky toolbar toggles topic ID in `localStorage` (`webdevref_completed_topics`). Instantly updates progress bars (`X%`) and tree checkmarks.
+2. **Bookmarking System:** Toggling `Bookmark` saves topic ID to `localStorage` (`webdevref_bookmarked_topics`).
+3. **Personal Notes Pad:** Clicking `Notes` opens a popover text area saving chapter notes per topic ID in `localStorage` (`webdevref_notes_data`).
+4. **Ask AI Helper:** Copies a structured pair programming prompt to clipboard for AI assistant discussion.
+5. **Live Search:** Typing in `#chapterSearchInput` filters tree topics and auto-expands matching module accordions.
+
+---
 
 ## What NOT to Do
-- Do NOT add external CSS frameworks (no Tailwind, no Bootstrap)
-- Do NOT add JavaScript libraries (no jQuery, no Alpine.js)
-- Do NOT add a build system (no Webpack, no Vite) — keep it zero-dependency
-- Do NOT use inline styles in HTML
-- Do NOT change the :root CSS variables — extend them if needed
-- Do NOT split into multiple HTML files without discussing first
-- Do NOT add new Google Fonts without checking they match the existing Outfit + JetBrains Mono pair
+- **Do NOT** introduce external JS libraries or build systems (no React, Next.js, Vite, Webpack, Alpine, or jQuery).
+- **Do NOT** add external CSS frameworks (no Tailwind, Bootstrap).
+- **Do NOT** hardcode static topic articles in HTML files—always add new content to `js/knowledge-data.js`.
+- **Do NOT** use card grids inside knowledge articles—always use editorial prose.
+- **Do NOT** modify existing `:root` design token names in `css/style.css` (extend them if needed).
 
-## Adding a New Section — Checklist
-When asked to add a new section:
-1. [ ] Add nav `<li>` link in the `#navLinks` `<ul>`
-2. [ ] Add section HTML between the correct sections (maintain logical flow)
-3. [ ] Add CSS in `css/style.css` with a clearly labelled comment block
-4. [ ] Add new card elements to `revealTargets` in `js/script.js`
-5. [ ] Add footer link in `.footer-links`
-6. [ ] Commit with `feat: add [section name] section`
+---
+
+## Checklist: Adding a New Topic or Module
+When expanding the knowledge base with new topics:
+1. [ ] Open [js/knowledge-data.js](file:///d:/Rapid%20Web%20Development/js/knowledge-data.js).
+2. [ ] Locate the appropriate module in `window.KNOWLEDGE_DATA.modules` or create a new module object.
+3. [ ] Add a new topic object with a unique `id`, `title`, `priority`, `readTime`, `updated`, `outline`, and `content`.
+4. [ ] Verify the content uses editorial prose (lead paragraph, numbered h2 headings, article-list, callout, code-box) instead of card grid layouts.
+5. [ ] Verify the new topic appears in the left sidebar tree in `portal.html`.
+6. [ ] Verify live search filtering, reading progress % calculation, section TOC links, and completion tracking.
+7. [ ] Commit with conventional format: `feat: add [topic name] knowledge section`.

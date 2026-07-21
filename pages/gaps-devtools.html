@@ -3,129 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Knowledge Gaps & Developer Tools | WebDev Reference</title>
-  <meta name="description" content="Common web developer knowledge gaps by category and essential developer tools, VS Code extensions, and productivity utilities." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+  <title>Knowledge Gaps & DevTools | WebDev Reference Portal</title>
+  <script>
+    window.location.replace("../portal.html#developer-cheatsheet");
+  </script>
 </head>
-<body>
-
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
-        <span class="logo-icon">⬡</span>
-        <span>WebDev<strong>Ref</strong></span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html" class="nav-link">← Hub Overview</a></li>
-        <li><a href="#gaps" class="nav-link">Knowledge Gaps</a></li>
-        <li><a href="#devtools" class="nav-link">Dev Tools</a></li>
-        
-        <li class="nav-item-dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
-          <ul class="dropdown-menu">
-            <li><a href="checklists.html" class="dropdown-item">Checklists</a></li>
-            <li><a href="github-context.html" class="dropdown-item">GitHub &amp; AI Context</a></li>
-            <li><a href="css-performance.html" class="dropdown-item">CSS &amp; Performance</a></li>
-            <li><a href="testing-debugging.html" class="dropdown-item">Testing &amp; Debugging</a></li>
-            <li><a href="api-deployment.html" class="dropdown-item">API &amp; Deployment</a></li>
-            <li><a href="laws-workflow.html" class="dropdown-item">Laws &amp; Workflow</a></li>
-            <li><a href="gaps-devtools.html" class="dropdown-item">Gaps &amp; DevTools</a></li>
-            <li><a href="ai-acceleration.html" class="dropdown-item">AI &amp; Antigravity</a></li>
-            <li><a href="cheatsheet.html" class="dropdown-item">Cheat Sheet</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="nav-search">
-        <input type="text" id="searchInput" placeholder="🔍 Search topics..." aria-label="Search Reference Topics" />
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ─── KNOWLEDGE GAPS ─── -->
-  <section class="section section-alt" id="gaps">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Skill Mastery</span>
-        <h2 class="section-title">Developer Knowledge Gaps<br/><span class="gradient-text">By Category</span></h2>
-        <p class="section-subtitle">Bridging the gap between junior syntax knowledge and senior architectural mastery.</p>
-      </div>
-
-      <div class="gaps-grid">
-        <div class="gap-category">
-          <div class="gap-icon">🌐</div>
-          <h3>HTTP &amp; Networking Gaps</h3>
-          <ul class="pp-checklist">
-            <li>CORS headers and preflight OPTIONS requests</li>
-            <li>Cache-Control, ETag, and browser caching mechanics</li>
-            <li>Cookie flags: SameSite, HttpOnly, Secure</li>
-          </ul>
-        </div>
-
-        <div class="gap-category">
-          <div class="gap-icon">⚛️</div>
-          <h3>JavaScript Runtime Gaps</h3>
-          <ul class="pp-checklist">
-            <li>Event Loop, Microtasks vs Macrotasks queue</li>
-            <li>Closures, lexical scoping, and memory leaks</li>
-            <li>Prototypes, prototypal inheritance, and ES Modules</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── DEV TOOLS ─── -->
-  <section class="section" id="devtools">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Productivity</span>
-        <h2 class="section-title">Developer Tools &amp;<br/><span class="gradient-text">Workflow Extensions</span></h2>
-        <p class="section-subtitle">Must-have VS Code extensions, terminal tooling, and browser DevTools shortcuts.</p>
-      </div>
-
-      <div class="tools-grid">
-        <div class="tool-category">
-          <div class="tool-icon">🛠️</div>
-          <h3>VS Code Extensions</h3>
-          <ul class="pp-checklist">
-            <li>Prettier - Code formatter</li>
-            <li>ESLint - Static code analysis</li>
-            <li>GitLens - Git blame &amp; commit history</li>
-            <li>Auto Rename Tag - HTML tag closing</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <a href="../index.html" class="nav-logo">
-            <span class="logo-icon">⬡</span>
-            <span>WebDev<strong>Ref</strong></span>
-          </a>
-          <p>Universal principles, workflows, and AI acceleration guide.</p>
-        </div>
-        <div class="footer-links">
-          <a href="../index.html">← Hub Home</a>
-          <a href="gaps-devtools.html">Gaps &amp; DevTools</a>
-          <a href="ai-acceleration.html">AI Suite</a>
-          <a href="cheatsheet.html">Cheat Sheet</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
-  <div id="toastContainer" class="toast-container"></div>
-  <script src="../js/script.js"></script>
+<body style="background:#050510; color:#f8fafc; font-family:sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; text-align:center;">
+  <div>
+    <h2>Redirecting to AlgoMaster Knowledge Base Portal...</h2>
+    <p><a href="../portal.html#developer-cheatsheet" style="color:#06b6d4;">Click here if not redirected automatically</a></p>
+  </div>
 </body>
 </html>
