@@ -1070,7 +1070,22 @@ export const Button: React.FC<ButtonProps> = ({ label, onClick, disabled }) => (
       track: "nextjs",
       topics: [
         {
-          \1          content: \`
+          id: "nextjs-architecture",
+          title: "Next.js Setup & App Router Architecture",
+          priority: "High Priority",
+          readTime: "8 min read",
+          updated: "Jul 21, 2026",
+          badge: "Fundamentals",
+          audioUrl: "#",
+          summary: "Master Next.js App Router, Nested Layouts, Server Components vs Client Components, and advanced Data Fetching & Caching.",
+          outline: [
+            { id: "mindset-shift", text: "1. Imperative vs Declarative Mindset" },
+            { id: "nextjs-basics", text: "2. What is JSX and Props?" },
+            { id: "routing-layouts", text: "3. Routing & Nested Layouts" },
+            { id: "rendering-models", text: "4. Server vs Client Components" },
+            { id: "data-fetching", text: "5. Data Fetching and Caching" }
+          ],
+          content: `
             <div class="content-block">
               <p class="article-lead">Next.js is a production-ready framework built on top of React. It provides routing, server-side rendering (SSR), and assets optimizations out of the box, allowing you to deploy high-performance web applications.</p>
 
@@ -1186,9 +1201,24 @@ export default async function Page() {
 }</code></pre>
               </div>
             </div>
-          \`\3,
+          `
+        },
         {
-          \1          content: \`
+          id: "nextjs-miniproject",
+          title: "Mini Project: Server-Driven Task Board",
+          priority: "Hands-on Project",
+          readTime: "10 min read",
+          updated: "Jul 21, 2026",
+          badge: "Mini Project",
+          audioUrl: "#",
+          summary: "Build a server-driven Task Board using Next.js Server Actions, Route Handlers, and Optimistic UI state updates.",
+          outline: [
+            { id: "server-actions", text: "1. What are Server Actions?" },
+            { id: "taskboard-form", text: "2. Submitting Actions via Forms" },
+            { id: "route-handlers", text: "3. API Route Handlers" },
+            { id: "optimistic-ui", text: "4. Optimistic UI Updates" }
+          ],
+          content: `
             <div class="content-block">
               <p class="article-lead">In this chapter, we will build a collaborative, real-time Task Board using Next.js Server Actions, custom API Route Handlers, and responsive Client hydration.</p>
 
@@ -1263,7 +1293,7 @@ import { useOptimistic } from 'react';
 export default function TaskList({ initialTasks }: { initialTasks: any[] }) {
   const [optimisticTasks, addOptimisticTask] = useOptimistic(
     initialTasks,
-    (state, newTaskTitle: string) => [
+    (state, newTaskTitle: string) =&gt; [
       ...state,
       { id: Date.now().toString(), title: newTaskTitle, completed: false }
     ]
@@ -1277,9 +1307,24 @@ export default function TaskList({ initialTasks }: { initialTasks: any[] }) {
 }</code></pre>
               </div>
             </div>
-          \`\3,
+          `
+        },
         {
-          \1          content: \`
+          id: "nextjs-ai-integration",
+          title: "AI Integration & LLM Streaming",
+          priority: "AI Integration",
+          readTime: "9 min read",
+          updated: "Jul 21, 2026",
+          badge: "AI & LLM",
+          audioUrl: "#",
+          summary: "Learn how to connect Large Language Models (Gemini/GPT), setup streaming response SDKs, and format structured JSON output.",
+          outline: [
+            { id: "ai-principles", text: "1. Secure Server-Side Execution" },
+            { id: "vercel-sdk", text: "2. Setting Up Vercel AI SDK" },
+            { id: "llm-streaming", text: "3. Real-Time Streaming Responses" },
+            { id: "structured-json", text: "4. Structured JSON Output (Schema Control)" }
+          ],
+          content: `
             <div class="content-block">
               <p class="article-lead">AI Integration lets you connect Large Language Models to your application to generate responses, grade transcripts, or process text in real-time.</p>
 
@@ -1327,16 +1372,31 @@ export async function gradeInterview(answers: string[]) {
       feedback: z.string(),
       recommendedGuides: z.array(z.string())
     }),
-    prompt: \`Analyze these mock interview answers: ${JSON.stringify(answers)}\`,
+    prompt: \`Analyze these mock interview answers: \${JSON.stringify(answers)}\`,
   });
 
   return object; // Guaranteed to match the JSON schema
 }</code></pre>
               </div>
             </div>
-          \`\3,
+          `
+        },
         {
-          \1          content: \`
+          id: "nextjs-capstone",
+          title: "Capstone Project: Intelligent AI Mock Interviewer",
+          priority: "Capstone Project",
+          readTime: "12 min read",
+          updated: "Jul 21, 2026",
+          badge: "Capstone",
+          audioUrl: "#",
+          summary: "Build an Intelligent AI Mock Interviewer that provides interactive mock interviews, streams voice prompts, and outputs detailed feedback reports.",
+          outline: [
+            { id: "capstone-architecture", text: "1. System Architecture" },
+            { id: "step1-simulator", text: "2. Interactive Interview Engine" },
+            { id: "voice-synthesis", text: "3. Web Speech Voice Assistant" },
+            { id: "auto-grading", text: "4. Auto-Grading & Report Dashboard" }
+          ],
+          content: `
             <div class="content-block">
               <p class="article-lead">Deploy a production-grade AI Mock Interviewer that generates dynamic questions, reads them aloud, and outputs score dashboard evaluations.</p>
 
@@ -1399,7 +1459,8 @@ export async function processEvaluation(questions: string[], answers: string[]) 
 }</code></pre>
               </div>
             </div>
-          \`\3
+          `
+        }
       ]
     }
   ]
