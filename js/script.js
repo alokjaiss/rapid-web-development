@@ -873,6 +873,67 @@ if (searchInput) {
       ],
       answer: 1,
       explanation: 'Optimizing without empirical profiling wastes effort; focus first on correctness and clean abstractions, then measure and optimize.'
+    },
+    // ── CATEGORY 7: SESSION 2 LEARNINGS (5 Questions) ──
+    {
+      category: 'session',
+      question: 'What is the key conceptual difference between Imperative UI (vanilla JS) and Declarative UI (React/Next.js)?',
+      options: [
+        'Imperative UI declares a function of state; Declarative UI manually updates individual elements',
+        'Imperative UI manually selects and modifies elements on events; Declarative UI defines UI as a function of current state',
+        'Declarative UI requires database queries for every button click; Imperative UI is server-only',
+        'There is no difference; both rely on document.getElementById for rendering updates'
+      ],
+      answer: 1,
+      explanation: 'Vanilla JS uses imperative steps to locate and mutate elements. React/Next.js uses declarative programming, where you define the target state and UI, and React updates the DOM automatically when the state changes.'
+    },
+    {
+      category: 'session',
+      question: 'Why are React Server Components (RSC) the default rendering model in the Next.js App Router?',
+      options: [
+        'They render on the server, shipping zero client-side JavaScript for those components, maximizing page speed',
+        'They run only in client-side web workers to improve render latency',
+        'They replace HTML files with static raw database query logs',
+        'They force all components to reload the browser on every state mutation'
+      ],
+      answer: 0,
+      explanation: 'RSCs execute only on the server, allowing direct database access and zero client-side JS bundle overhead, yielding instant loading states.'
+    },
+    {
+      category: 'session',
+      question: 'How do Server Actions in Next.js eliminate standard API controller boilerplate?',
+      options: [
+        'They compile forms to binary files and run them inside server iframe cells',
+        'They allow calling asynchronous server-side functions directly from client components or forms without manual fetch POST routes',
+        'They replace local storage with static cookies for background syncs',
+        'They require setting up Express.js servers inside client-side components'
+      ],
+      answer: 1,
+      explanation: 'Server Actions allow you to define secure server functions (\'use server\') that compile to standard HTTP RPC calls automatically, eliminating manual REST fetch routes.'
+    },
+    {
+      category: 'session',
+      question: 'When escaping code templates inside Javascript backtick template literals in knowledge data files, why must we write \'\\${}\' instead of \'${}\'?',
+      options: [
+        'To tell Next.js to compile it as a TypeScript module type',
+        'To prevent the browser from evaluating the content on page load as a live JavaScript template expression',
+        'To tell CSS to render the dollar sign in purple',
+        'To prevent Git from detecting line changes in commit diffs'
+      ],
+      answer: 1,
+      explanation: 'Unescaped \'${}\' strings inside backtick literals are executed immediately on file load. We must escape them to render them as static code templates.'
+    },
+    {
+      category: 'session',
+      question: 'Which API is used in the AI Mock Interviewer Capstone project to read questions aloud to candidates in real-time?',
+      options: [
+        'HTML5 Audio Element with custom mp3 voice files',
+        'Native Web Speech API (SpeechSynthesis)',
+        'Node.js server-side voice synthesis pipeline',
+        'Vercel AI SDK Voice Streaming streamReader'
+      ],
+      answer: 1,
+      explanation: 'The native Web Speech API SpeechSynthesis is used client-side to read dynamically generated AI questions without extra server latency or audio payload generation.'
     }
   ];
 
@@ -882,7 +943,8 @@ if (searchInput) {
     css: { name: 'CSS Architecture & Performance', url: 'css-performance.html' },
     testing: { name: 'Testing Strategy & Debugging Toolkit', url: 'testing-debugging.html' },
     api: { name: 'API Design & Deployment Guide', url: 'api-deployment.html' },
-    laws: { name: '12 Universal Laws & 7-Phase Workflow', url: 'laws-workflow.html' }
+    laws: { name: '12 Universal Laws & 7-Phase Workflow', url: 'laws-workflow.html' },
+    session: { name: 'Session 2: Next.js & AI Mastery', url: 'portal.html?track=nextjs' }
   };
 
   function shuffleArray(arr) {
