@@ -1062,6 +1062,244 @@ export const Button: React.FC<ButtonProps> = ({ label, onClick, disabled }) => (
           `
         }
       ]
+    },
+    {
+      id: "mod-nextjs",
+      title: "09. Next.js & AI Integration",
+      icon: "⚛️",
+      track: "nextjs",
+      topics: [
+        {
+          id: "nextjs-architecture",
+          title: "Next.js Setup & App Router Architecture",
+          priority: "High Priority",
+          readTime: "8 min read",
+          updated: "Jul 21, 2026",
+          badge: "Fundamentals",
+          audioUrl: "#",
+          summary: "Master Next.js App Router, Nested Layouts, Server Components vs Client Components, and advanced Data Fetching & Caching.",
+          outline: [
+            { id: "app-router-setup", text: "1. Next.js App Router Setup" },
+            { id: "rendering-models", text: "2. Server vs Client Components" },
+            { id: "routing-layouts", text: "3. Routing & Nested Layouts" },
+            { id: "fetching-caching", text: "4. Data Fetching & Caching" }
+          ],
+          content: `
+            <div class="content-block">
+              <p class="article-lead">Next.js is the leading React framework for building high-performance, SEO-friendly web applications utilizing server-side execution and modular App Router architectures.</p>
+
+              <h2 id="app-router-setup">1. Next.js App Router Setup</h2>
+              <p>Initialize a new production-ready Next.js application using the standard CLI creator. Enable TypeScript, ESLint, Tailwind CSS (optional), and the <code>app/</code> directory:</p>
+              <div class="code-box">
+                <pre><code>npx create-next-app@latest my-app --ts --eslint --app --src-dir=false --import-alias=\"@/*\"</code></pre>
+              </div>
+
+              <h2 id="rendering-models">2. Server vs Client Components</h2>
+              <p>Next.js splits components into Server Components (default) and Client Components to minimize bundle sizes:</p>
+              <ul class="article-list">
+                <li><strong>React Server Components (RSC):</strong> Render exclusively on the server. Zero client-side JavaScript. Direct access to secure databases and server resources.</li>
+                <li><strong>Client Components:</strong> Rendered on the server initially, then hydrated on the client. Indicated by the <code>"use client"</code> directive at the top of the file. Required for state hooks (<code>useState</code>, <code>useEffect</code>) and event listeners (<code>onClick</code>).</li>
+              </ul>
+
+              <h2 id="routing-layouts">3. Routing & Nested Layouts</h2>
+              <p>The App Router uses file-system based routing under the <code>app/</code> directory. Pages are defined using <code>page.tsx</code>, while shared shells are defined using <code>layout.tsx</code>:</p>
+              <div class="code-box">
+                <pre><code>// app/dashboard/layout.tsx
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  return (
+    &lt;div class="dashboard-shell"&gt;
+      &lt;aside&gt;Sidebar Navigation&lt;/aside&gt;
+      &lt;main&gt;{children}&lt;/main&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+              </div>
+
+              <h2 id="fetching-caching">4. Data Fetching & Caching</h2>
+              <p>Perform async fetches directly inside Server Components using native <code>async/await</code>. Next.js extends the web <code>fetch</code> API to support automated caching and revalidation configurations:</p>
+              <div class="code-box">
+                <pre><code>// Dynamic data fetching with revalidation every hour
+async function getProducts() {
+  const res = await fetch('https://api.example.com/products', { next: { revalidate: 3600 } });
+  return res.json();
+}
+
+export default async function Page() {
+  const products = await getProducts();
+  return &lt;ul&gt;{products.map(p =&gt; &lt;li key={p.id}&gt;{p.name}&lt;/li&gt;)}&lt;/ul&gt;;
+}</code></pre>
+              </div>
+            </div>
+          `
+        },
+        {
+          id: "nextjs-miniproject",
+          title: "Mini Project: Server-Driven Task Board",
+          priority: "Hands-on Project",
+          readTime: "10 min read",
+          updated: "Jul 21, 2026",
+          badge: "Mini Project",
+          audioUrl: "#",
+          summary: "Build a server-driven Task Board using Next.js Server Actions, Route Handlers, and Optimistic UI state updates.",
+          outline: [
+            { id: "taskboard-intro", text: "1. Project Overview & Setup" },
+            { id: "server-actions", text: "2. Mutating Data with Server Actions" },
+            { id: "route-handlers", text: "3. API Route Handlers" },
+            { id: "optimistic-ui", text: "4. Optimistic UI Updates" }
+          ],
+          content: `
+            <div class="content-block">
+              <p class="article-lead">Learn how to build a collaborative, real-time Task Board with direct database mutations via server execution and responsive client-side UI hydration.</p>
+
+              <h2 id="taskboard-intro">1. Project Overview & Setup</h2>
+              <p>Our task board allows users to create, delete, and toggle tasks in columns. It leverages Server Actions for secure mutations without standard API controllers, and registers state instantly.</p>
+
+              <h2 id="server-actions">2. Mutating Data with Server Actions</h2>
+              <p>Server Actions are async functions declared with the <code>"use server"</code> directive. They can be invoked inside form actions or event handlers to execute securely on the server:</p>
+              <div class="code-box">
+                <pre><code>// app/actions.ts
+"use server";
+import { revalidatePath } from 'next/cache';
+
+export async function createTask(formData: FormData) {
+  const title = formData.get('title');
+  // Execute database query securely here: DB.insert(title)
+  revalidatePath('/tasks'); // Purge cache and update UI
+}</code></pre>
+              </div>
+
+              <h2 id="route-handlers">3. API Route Handlers</h2>
+              <p>If you need external systems to access task data, create custom HTTP Route Handlers using standard methods (<code>GET</code>, <code>POST</code>, <code>DELETE</code>) defined in <code>route.ts</code> files:</p>
+              <div class="code-box">
+                <pre><code>// app/api/tasks/route.ts
+import { NextResponse } from 'next/server';
+
+export async function GET() {
+  const tasks = await db.fetchTasks();
+  return NextResponse.json(tasks);
+}</code></pre>
+              </div>
+
+              <h2 id="optimistic-ui">4. Optimistic UI Updates</h2>
+              <p>Use React's experimental <code>useOptimistic</code> hook to instantly render changes in the UI before the server resolves the action, keeping the user interface extremely fast:</p>
+              <div class="code-box">
+                <pre><code>// Client Component
+const [optimisticTasks, addOptimisticTask] = useOptimistic(
+  tasks,
+  (state, newTask) =&gt; [...state, newTask]
+);</code></pre>
+              </div>
+            </div>
+          `
+        },
+        {
+          id: "nextjs-ai-integration",
+          title: "AI Integration & LLM Streaming",
+          priority: "AI Integration",
+          readTime: "9 min read",
+          updated: "Jul 21, 2026",
+          badge: "AI & LLM",
+          audioUrl: "#",
+          summary: "Learn how to connect Large Language Models (Gemini/GPT), setup streaming response SDKs, and format structured JSON output.",
+          outline: [
+            { id: "vercel-ai-sdk", text: "1. Vercel AI SDK Integration" },
+            { id: "streaming-responses", text: "2. Streaming Responses" },
+            { id: "structured-json", text: "3. Structured JSON Generation" }
+          ],
+          content: `
+            <div class="content-block">
+              <p class="article-lead">Integrate intelligent AI models into Next.js by setting up secure server configurations and streaming real-time model text outputs directly to client views.</p>
+
+              <h2 id="vercel-ai-sdk">1. Vercel AI SDK Integration</h2>
+              <p>Install the Vercel AI SDK and the model provider package of your choice (e.g., OpenAI or Google Gemini provider):</p>
+              <div class="code-box">
+                <pre><code>npm install ai @ai-sdk/google</code></pre>
+              </div>
+
+              <h2 id="streaming-responses">2. Streaming Responses</h2>
+              <p>Use the <code>streamText</code> utility from the AI SDK inside a Next.js Route Handler to steam characters to the browser as they are generated by the model:</p>
+              <div class="code-box">
+                <pre><code>// app/api/chat/route.ts
+import { google } from '@ai-sdk/google';
+import { streamText } from 'ai';
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+  const result = await streamText({
+    model: google('gemini-1.5-pro'),
+    messages,
+  });
+  return result.toDataStreamResponse();
+}</code></pre>
+              </div>
+
+              <h2 id="structured-json">3. Structured JSON Generation</h2>
+              <p>For programmatic evaluations, grading rubrics, or schema validation, enforce structured JSON output formats using the <code>generateObject</code> utility:</p>
+              <div class="code-box">
+                <pre><code>import { generateObject } from 'ai';
+import { z } from 'zod';
+
+const scoreSchema = z.object({
+  score: z.number().min(0).max(100),
+  feedback: z.string(),
+  strengths: z.array(z.string())
+});</code></pre>
+              </div>
+            </div>
+          `
+        },
+        {
+          id: "nextjs-capstone",
+          title: "Capstone Project: Intelligent AI Mock Interviewer",
+          priority: "Capstone Project",
+          readTime: "12 min read",
+          updated: "Jul 21, 2026",
+          badge: "Capstone",
+          audioUrl: "#",
+          summary: "Build an Intelligent AI Mock Interviewer that provides interactive mock interviews, streams voice prompts, and outputs detailed feedback reports.",
+          outline: [
+            { id: "capstone-overview", text: "1. Capstone Requirements" },
+            { id: "interview-engine", text: "2. Interactive Interview Engine" },
+            { id: "ai-evaluator", text: "3. Auto-Grading & Score Reports" }
+          ],
+          content: `
+            <div class="content-block">
+              <p class="article-lead">Apply all Next.js App Router features, Server Actions, and AI SDK APIs to deploy a production-ready Intelligent AI Mock Interviewer platform.</p>
+
+              <h2 id="capstone-overview">1. Capstone Requirements</h2>
+              <p>The AI Mock Interviewer must satisfy the following core criteria:</p>
+              <ul class="article-list">
+                <li><strong>Topic Selection:</strong> User selects an interview topic (e.g., Frontend React, Backend Systems, System Design).</li>
+                <li><strong>Interactive Simulator:</strong> User participates in a 5-question mock interview. Questions are dynamically generated based on selection.</li>
+                <li><strong>Real-time Voice Output (Optional):</strong> Synthesize voice for the generated questions using the Web Speech TTS system.</li>
+                <li><strong>Evaluation Dashboard:</strong> The model evaluates the candidate's answers and generates a structured performance report (Score, Strengths, Weaknesses, Recommended Study Topics).</li>
+              </ul>
+
+              <h2 id="interview-engine">2. Interactive Interview Engine</h2>
+              <p>Manage the session state (current question index, transcript list) inside a React client component, prompting the next dynamic question sequentially via a client-side layout:</p>
+              <div class="code-box">
+                <pre><code>// Client component managing interview state
+export default function InterviewSession() {
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState&lt;string[]&gt;([]);
+  // UI logic to prompt questions and record answers
+}</code></pre>
+              </div>
+
+              <h2 id="ai-evaluator">3. Auto-Grading & Score Reports</h2>
+              <p>When the interview is completed, POST the transcript array to a Next.js Server Action or API Route. Use <code>generateObject</code> with Gemini/GPT models and Zod schemas to compile the official grade report card:</p>
+              <div class="code-box">
+                <pre><code>// server action or API route processing the answers
+const report = await generateObject({
+  model: google('gemini-1.5-pro'),
+  schema: scoreSchema,
+  prompt: "Grade these interview answers: " + JSON.stringify(answers)
+});</code></pre>
+              </div>
+            </div>
+          `
+        }
+      ]
     }
   ]
 };

@@ -3772,10 +3772,14 @@ tbody tr:hover td {
 .track-production::before { background: linear-gradient(90deg, var(--grad-start), var(--grad-mid)); }
 .track-ai::before { background: linear-gradient(90deg, var(--accent-cyan), #22d3ee); }
 .track-architect::before { background: linear-gradient(90deg, var(--accent-green), #34d399); }
+.track-typescript::before { background: linear-gradient(90deg, var(--accent-cyan), #38bdf8); }
+.track-nextjs::before { background: linear-gradient(90deg, var(--accent-secondary), #a78bfa); }
 
 .track-production:hover { border-color: var(--grad-mid); box-shadow: 0 0 30px rgba(139, 92, 246, 0.15); }
 .track-ai:hover { border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(6, 182, 212, 0.15); }
 .track-architect:hover { border-color: var(--accent-green); box-shadow: 0 0 30px rgba(16, 185, 129, 0.15); }
+.track-typescript:hover { border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(6, 182, 212, 0.15); }
+.track-nextjs:hover { border-color: var(--accent-secondary); box-shadow: 0 0 30px rgba(139, 92, 246, 0.15); }
 
 .track-card:hover {
   transform: translateY(-4px);

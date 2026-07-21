@@ -372,6 +372,12 @@ if (searchInput) {
     { group: 'TypeScript Mastery', icon: '⚡', text: 'Mastering Generics & Type Parameters', url: 'portal.html?track=typescript#ts-generics' },
     { group: 'TypeScript Mastery', icon: '🛠️', text: 'Utility Types & Type Manipulations', url: 'portal.html?track=typescript#ts-utility-types' },
     { group: 'TypeScript Mastery', icon: '⚙️', text: 'Strict Mode & Production React/Node.js', url: 'portal.html?track=typescript#ts-strict-react-node' },
+
+    // Next.js & AI Integration Track Chapters
+    { group: 'Next.js Mastery', icon: '⚛️', text: 'Next.js App Router Architecture', url: 'portal.html?track=nextjs#nextjs-architecture' },
+    { group: 'Next.js Mastery', icon: '📋', text: 'Mini Project: Server Task Board', url: 'portal.html?track=nextjs#nextjs-miniproject' },
+    { group: 'Next.js Mastery', icon: '🤖', text: 'AI Integration & LLM Streaming', url: 'portal.html?track=nextjs#nextjs-ai-integration' },
+    { group: 'Next.js Mastery', icon: '🏆', text: 'Capstone Project: AI Mock Interviewer', url: 'portal.html?track=nextjs#nextjs-capstone' },
   ];
 
   let activeIndex = -1;
@@ -1153,6 +1159,15 @@ if (searchInput) {
     
     document.getElementById('trackOptWebdev')?.classList.remove('active');
     document.getElementById('trackOptTypescript')?.classList.add('active');
+    document.getElementById('trackOptNextjs')?.classList.remove('active');
+  } else if (activeTrack === 'nextjs') {
+    if (activeTrackIcon) activeTrackIcon.textContent = '⚛️';
+    if (activeTrackLabel) activeTrackLabel.textContent = 'Next.js Mastery';
+    if (portalCourseTitle) portalCourseTitle.textContent = 'Next.js & AI Integration';
+    
+    document.getElementById('trackOptWebdev')?.classList.remove('active');
+    document.getElementById('trackOptTypescript')?.classList.remove('active');
+    document.getElementById('trackOptNextjs')?.classList.add('active');
   } else {
     if (activeTrackIcon) activeTrackIcon.textContent = '🌐';
     if (activeTrackLabel) activeTrackLabel.textContent = 'Web Development Mastery';
@@ -1160,6 +1175,7 @@ if (searchInput) {
     
     document.getElementById('trackOptWebdev')?.classList.add('active');
     document.getElementById('trackOptTypescript')?.classList.remove('active');
+    document.getElementById('trackOptNextjs')?.classList.remove('active');
   }
 
   if (trackSelectBtn && portalTrackSelector) {
