@@ -72,6 +72,18 @@
     <aside class="portal-sidebar" id="portalSidebar">
       <div class="portal-sidebar-header">
         <h2 class="portal-course-title" id="portalCourseTitle">Web Development Mastery</h2>
+
+        <!-- Track Selector Dropdown -->
+        <div class="portal-track-selector" id="portalTrackSelector">
+          <button class="track-select-btn" id="trackSelectBtn" aria-label="Select Learning Track">
+            <span id="activeTrackIcon">🌐</span> <span id="activeTrackLabel">Web Development Mastery</span> <span class="chevron">▾</span>
+          </button>
+          <ul class="track-dropdown-menu" id="trackDropdownMenu">
+            <li class="active" id="trackOptWebdev"><a href="?track=webdev">🌐 Web Development Mastery</a></li>
+            <li id="trackOptTypescript"><a href="?track=typescript">📘 TypeScript &amp; Type Systems</a></li>
+          </ul>
+        </div>
+
         <div class="portal-progress-box">
           <div class="portal-progress-row">
             <span class="portal-progress-pct" id="portalProgressPct">0%</span>

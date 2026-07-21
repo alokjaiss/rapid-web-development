@@ -10,6 +10,7 @@ window.KNOWLEDGE_DATA = {
   modules: [
     {
       id: "mod-setup-git",
+      track: "webdev",
       title: "01. Pre-Project & GitHub Workflow",
       icon: "⚡",
       topics: [
@@ -229,6 +230,7 @@ chore(deps): update dependencies to latest patch versions</code></pre>
     },
     {
       id: "mod-css-perf",
+      track: "webdev",
       title: "02. CSS Architecture & Performance",
       icon: "🎨",
       topics: [
@@ -337,6 +339,7 @@ chore(deps): update dependencies to latest patch versions</code></pre>
     },
     {
       id: "mod-testing-debug",
+      track: "webdev",
       title: "03. Testing Strategy & Debugging Toolkit",
       icon: "🧪",
       topics: [
@@ -409,6 +412,7 @@ chore(deps): update dependencies to latest patch versions</code></pre>
     },
     {
       id: "mod-api-deploy",
+      track: "webdev",
       title: "04. API Design & Deployment",
       icon: "🌐",
       topics: [
@@ -500,6 +504,7 @@ chore(deps): update dependencies to latest patch versions</code></pre>
     },
     {
       id: "mod-laws-workflow",
+      track: "webdev",
       title: "05. Universal Laws & Development Workflow",
       icon: "📜",
       topics: [
@@ -586,6 +591,7 @@ chore(deps): update dependencies to latest patch versions</code></pre>
     },
     {
       id: "mod-ai-antigravity",
+      track: "webdev",
       title: "06. AI Acceleration & Antigravity",
       icon: "🤖",
       topics: [
@@ -627,6 +633,7 @@ chore(deps): update dependencies to latest patch versions</code></pre>
     },
     {
       id: "mod-cheatsheet",
+      track: "webdev",
       title: "07. Developer DevTools & Cheat Sheet",
       icon: "📑",
       topics: [
@@ -697,6 +704,7 @@ const map = Object.fromEntries(entries);</code></pre>
     },
     {
       id: "mod-typescript",
+      track: "typescript",
       title: "08. TypeScript Mastery & Type Systems",
       icon: "📘",
       topics: [

@@ -365,6 +365,13 @@ if (searchInput) {
     { group: 'Learning Tracks', icon: '🚀', text: 'Production Readiness Track', url: '#tracks' },
     { group: 'Learning Tracks', icon: '⚡', text: 'AI-Accelerated Developer Track', url: '#tracks' },
     { group: 'Learning Tracks', icon: '🛡️', text: 'Senior Architect Track', url: '#tracks' },
+
+    // TypeScript Mastery Track Chapters
+    { group: 'TypeScript Mastery', icon: '📘', text: 'TypeScript Setup & Primitive Types', url: 'portal.html?track=typescript#ts-fundamentals' },
+    { group: 'TypeScript Mastery', icon: '🔷', text: 'Interfaces vs Type Aliases', url: 'portal.html?track=typescript#ts-interfaces-types' },
+    { group: 'TypeScript Mastery', icon: '⚡', text: 'Mastering Generics & Type Parameters', url: 'portal.html?track=typescript#ts-generics' },
+    { group: 'TypeScript Mastery', icon: '🛠️', text: 'Utility Types & Type Manipulations', url: 'portal.html?track=typescript#ts-utility-types' },
+    { group: 'TypeScript Mastery', icon: '⚙️', text: 'Strict Mode & Production React/Node.js', url: 'portal.html?track=typescript#ts-strict-react-node' },
   ];
 
   let activeIndex = -1;
@@ -1069,6 +1076,13 @@ if (searchInput) {
 
   const data = window.KNOWLEDGE_DATA;
   
+  // Get active track from URL query parameter (?track=typescript or ?track=webdev)
+  const urlParams = new URLSearchParams(window.location.search);
+  const activeTrack = urlParams.get('track') || 'webdev';
+  
+  // Filter modules based on the active track
+  const activeModules = data.modules.filter(mod => mod.track === activeTrack);
+  
   // Storage Keys
   const STORAGE_KEY_COMPLETED = 'webdevref_completed_topics';
   const STORAGE_KEY_BOOKMARKS = 'webdevref_bookmarked_topics';
@@ -1079,9 +1093,9 @@ if (searchInput) {
   let bookmarkedTopics = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_BOOKMARKS) || '[]'));
   let notesData = JSON.parse(localStorage.getItem(STORAGE_KEY_NOTES) || '{}');
 
-  // Flatten all topics for navigation & total count
+  // Flatten active track's topics for navigation & total count
   const allTopics = [];
-  data.modules.forEach(mod => {
+  activeModules.forEach(mod => {
     mod.topics.forEach(topic => {
       allTopics.push({ ...topic, moduleId: mod.id, moduleTitle: mod.title });
     });
@@ -1123,6 +1137,41 @@ if (searchInput) {
   const notesModalClose     = document.getElementById('notesModalClose');
   const notesTextarea       = document.getElementById('notesTextarea');
   const notesSaveBtn        = document.getElementById('notesSaveBtn');
+
+  // --- Track Selection & Dropdown Controller ---
+  const portalTrackSelector = document.getElementById('portalTrackSelector');
+  const trackSelectBtn       = document.getElementById('trackSelectBtn');
+  const activeTrackIcon      = document.getElementById('activeTrackIcon');
+  const activeTrackLabel     = document.getElementById('activeTrackLabel');
+  const trackDropdownMenu    = document.getElementById('trackDropdownMenu');
+  const portalCourseTitle    = document.getElementById('portalCourseTitle');
+
+  if (activeTrack === 'typescript') {
+    if (activeTrackIcon) activeTrackIcon.textContent = '📘';
+    if (activeTrackLabel) activeTrackLabel.textContent = 'TypeScript Mastery';
+    if (portalCourseTitle) portalCourseTitle.textContent = 'TypeScript Mastery & Type Systems';
+    
+    document.getElementById('trackOptWebdev')?.classList.remove('active');
+    document.getElementById('trackOptTypescript')?.classList.add('active');
+  } else {
+    if (activeTrackIcon) activeTrackIcon.textContent = '🌐';
+    if (activeTrackLabel) activeTrackLabel.textContent = 'Web Development Mastery';
+    if (portalCourseTitle) portalCourseTitle.textContent = 'Web Development Mastery';
+    
+    document.getElementById('trackOptWebdev')?.classList.add('active');
+    document.getElementById('trackOptTypescript')?.classList.remove('active');
+  }
+
+  if (trackSelectBtn && portalTrackSelector) {
+    trackSelectBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      portalTrackSelector.classList.toggle('active');
+    });
+
+    document.addEventListener('click', () => {
+      portalTrackSelector.classList.remove('active');
+    });
+  }
 
   // --- Audio TTS Engine (Web Speech API) ---
   const audioBar            = document.querySelector('.portal-audio-bar');
@@ -1295,7 +1344,7 @@ if (searchInput) {
     const query = filterQuery.toLowerCase().trim();
     let treeHTML = '';
 
-    data.modules.forEach((mod, modIdx) => {
+    activeModules.forEach((mod, modIdx) => {
       let matchingTopics = mod.topics.filter(t => 
         !query || t.title.toLowerCase().includes(query) || t.summary.toLowerCase().includes(query)
       );
@@ -1362,7 +1411,7 @@ if (searchInput) {
   // --- Update Overall Progress Bar ---
   function updateOverallProgress() {
     const total = allTopics.length;
-    const completedCount = completedTopics.size;
+    const completedCount = allTopics.filter(t => completedTopics.has(t.id)).length;
     const pct = total > 0 ? Math.round((completedCount / total) * 100) : 0;
 
     if (portalProgressPct) portalProgressPct.textContent = `${pct}%`;
