@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WebDev Reference | Your Complete Web Development Command Center</title>
   <meta name="description" content="A multi-page developer command center covering universal laws, guided learning tracks, interactive quizzes, and AI acceleration." />
+  <meta name="theme-color" content="#050510" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
+  <a href="#hero" class="skip-link">Skip to main content</a>
 
   <!-- ─── NAVIGATION ─────────────────────────────────────────────── -->
   <nav class="navbar" id="navbar">
@@ -20,14 +23,14 @@
         <span>WebDev<strong>Ref</strong></span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="portal.html" class="nav-link" style="color: var(--accent-green); font-weight: 700;">🚀 Knowledge Portal</a></li>
+        <li><a href="portal.html" class="nav-link nav-link--portal">🚀 Knowledge Portal</a></li>
         <li><a href="#tracks" class="nav-link">Learning Tracks</a></li>
-        <li><a href="pages/quiz.html" class="nav-link" style="color: var(--accent-cyan); font-weight: 600;">🧠 Quiz</a></li>
+        <li><a href="pages/quiz.html" class="nav-link nav-link--quiz">🧠 Quiz</a></li>
         <li><a href="#directories" class="nav-link">All Guides</a></li>
         <li><a href="#highlights" class="nav-link">Core Laws</a></li>
 
         <li class="nav-item-dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
+          <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">Guides <span class="dropdown-arrow">▾</span></button>
           <ul class="dropdown-menu">
             <li><a href="portal.html" class="dropdown-item" style="color:var(--accent-green);">🚀 AlgoMaster Portal</a></li>
             <li><a href="pages/checklists.html" class="dropdown-item">Checklists</a></li>
@@ -40,6 +43,9 @@
             <li><a href="pages/ai-acceleration.html" class="dropdown-item">AI &amp; Antigravity</a></li>
             <li><a href="pages/cheatsheet.html" class="dropdown-item">Cheat Sheet</a></li>
           </ul>
+        </li>
+        <li class="mobile-search-link">
+          <button onclick="document.getElementById('cmdPaletteTrigger').click()">🔍 Search Topics</button>
         </li>
       </ul>
       <button class="cmd-palette-trigger" id="cmdPaletteTrigger" aria-label="Open Command Palette">
@@ -72,7 +78,7 @@
       <div class="hero-orb orb1"></div>
       <div class="hero-orb orb2"></div>
       <div class="hero-orb orb3"></div>
-      <canvas id="particleCanvas"></canvas>
+      <canvas id="particleCanvas" role="img" aria-label="Animated particle background decoration"></canvas>
     </div>
     <div class="hero-content">
       <div class="hero-badge">

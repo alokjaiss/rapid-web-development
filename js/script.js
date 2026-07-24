@@ -24,6 +24,7 @@ if (hamburger && navLinks) {
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('open');
     hamburger.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen); // a11y: communicate state to screen readers
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 

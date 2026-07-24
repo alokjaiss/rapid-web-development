@@ -18,6 +18,77 @@ button:focus-visible,
   border-radius: 4px;
 }
 
+/* Skip Navigation Link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--accent-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  z-index: 10001;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Dropdown toggle button reset (when <a> changed to <button>) */
+button.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+}
+
+/* Nav link modifier classes (replaces inline styles) */
+.nav-link--portal {
+  color: var(--accent-green) !important;
+  font-weight: 700 !important;
+}
+.nav-link--quiz {
+  color: var(--accent-cyan) !important;
+  font-weight: 600 !important;
+}
+
+/* Mobile search link — only visible in hamburger drawer */
+.mobile-search-link {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .mobile-search-link {
+    display: block;
+  }
+  .mobile-search-link button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mobile-search-link button:hover {
+    background: rgba(255,255,255,0.07);
+    color: var(--text-primary);
+  }
+}
+
 :root {
   /* Colour palette */
   --bg-primary: #050510;
@@ -129,6 +200,15 @@ code {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+/* Performance: promote frequently animated cards to their own compositor layer */
+.pp-card,
+.law-card,
+.track-card,
+.pillar-card,
+.cs-card {
+  will-change: transform;
 }
 
 .section-header {
@@ -433,8 +513,8 @@ code {
   cursor: pointer;
   padding: 8px;
   z-index: 1051;
-  width: 40px;
-  height: 40px;
+  width: 44px;  /* WCAG minimum tap target */
+  height: 44px;
   transition: background 0.2s, border-color 0.2s;
 }
 
@@ -4713,6 +4793,13 @@ tbody tr:hover td {
   padding: 0;
   color: inherit;
 }
+
+/* Step card (portal article sequential step display) */
+.step-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   padding: 1rem 1.25rem;
   border-radius: var(--radius-md);

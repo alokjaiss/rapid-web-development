@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interactive Active-Recall Quiz Engine | WebDev Reference</title>
   <meta name="description" content="Test your web development knowledge, reinforce core concepts, and achieve permanent memory retention through active recall." />
+  <meta name="theme-color" content="#050510" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
+
+  <a href="#quizSection" class="skip-link">Skip to main content</a>
 
   <!-- ─── NAVIGATION ─────────────────────────────────────────────── -->
   <nav class="navbar scrolled" id="navbar">
@@ -24,7 +27,7 @@
         <li><a href="quiz.html" class="nav-link active">Interactive Quiz</a></li>
         
         <li class="nav-item-dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
+          <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">Guides <span class="dropdown-arrow">▾</span></button>
           <ul class="dropdown-menu">
             <li><a href="quiz.html" class="dropdown-item">Interactive Quiz Engine</a></li>
             <li><a href="checklists.html" class="dropdown-item">Checklists</a></li>

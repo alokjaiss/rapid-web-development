@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Knowledge Base Portal | WebDev Reference</title>
   <meta name="description" content="Interactive 3-column Web Development Knowledge Base portal inspired by AlgoMaster. Deep dives into GitHub setup, CSS architecture, performance, testing, APIs, universal laws, and AI acceleration." />
+  <meta name="theme-color" content="#050510" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="portal-wrapper">
+
+  <a href="#portalMain" class="skip-link">Skip to main content</a>
 
   <!-- ─── TOP NAVBAR ─────────────────────────────────────────────── -->
   <nav class="navbar scrolled" id="navbar">
@@ -25,7 +28,7 @@
         <li><a href="pages/quiz.html" class="nav-link" style="color: var(--accent-cyan); font-weight: 600;">🧠 Recall Quiz</a></li>
         
         <li class="nav-item-dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
+          <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">Guides <span class="dropdown-arrow">▾</span></button>
           <ul class="dropdown-menu">
             <li><a href="pages/checklists.html" class="dropdown-item">Checklists</a></li>
             <li><a href="pages/github-context.html" class="dropdown-item">GitHub &amp; AI Context</a></li>
