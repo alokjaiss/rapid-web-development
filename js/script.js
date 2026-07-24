@@ -335,32 +335,32 @@ if (searchInput) {
   const cmdIndex = [
     // Quick Actions
     { group: 'Quick Actions', icon: '🧠', text: 'Take the Quiz Challenge', url: 'pages/quiz.html' },
-    { group: 'Quick Actions', icon: '📑', text: 'View Cheat Sheet', url: 'pages/cheatsheet.html' },
+    { group: 'Quick Actions', icon: '📑', text: 'View Cheat Sheet', url: 'portal.html#developer-cheatsheet' },
     { group: 'Quick Actions', icon: '🏠', text: 'Back to Hub Overview', url: '#hero' },
 
     // Guides
-    { group: 'Guides', icon: '📋', text: 'Pre-Project & Pre-Launch Checklists', url: 'pages/checklists.html' },
-    { group: 'Guides', icon: '🐙', text: 'GitHub & AI Context Management', url: 'pages/github-context.html' },
-    { group: 'Guides', icon: '🎨', text: 'CSS Architecture & Performance', url: 'pages/css-performance.html' },
-    { group: 'Guides', icon: '🧪', text: 'Testing Strategy & Debugging', url: 'pages/testing-debugging.html' },
-    { group: 'Guides', icon: '🌐', text: 'API Design & Deployment', url: 'pages/api-deployment.html' },
-    { group: 'Guides', icon: '📜', text: '12 Universal Laws & 7-Phase Workflow', url: 'pages/laws-workflow.html' },
-    { group: 'Guides', icon: '💡', text: 'Knowledge Gaps & Dev Tools', url: 'pages/gaps-devtools.html' },
-    { group: 'Guides', icon: '🤖', text: 'AI Acceleration & Antigravity', url: 'pages/ai-acceleration.html' },
+    { group: 'Guides', icon: '📋', text: 'Pre-Project & Pre-Launch Checklists', url: 'portal.html#preproject-checklist' },
+    { group: 'Guides', icon: '🐙', text: 'GitHub & AI Context Management', url: 'portal.html#github-workflow' },
+    { group: 'Guides', icon: '🎨', text: 'CSS Architecture & Performance', url: 'portal.html#css-architecture' },
+    { group: 'Guides', icon: '🧪', text: 'Testing Strategy & Debugging', url: 'portal.html#testing-pyramid' },
+    { group: 'Guides', icon: '🌐', text: 'API Design & Deployment', url: 'portal.html#api-design' },
+    { group: 'Guides', icon: '📜', text: '12 Universal Laws & 7-Phase Workflow', url: 'portal.html#universal-laws' },
+    { group: 'Guides', icon: '💡', text: 'Knowledge Gaps & Dev Tools', url: 'portal.html#developer-cheatsheet' },
+    { group: 'Guides', icon: '🤖', text: 'AI Acceleration & Antigravity', url: 'portal.html#ai-velocity' },
 
     // 12 Universal Laws
-    { group: '12 Laws', icon: '⚖️', text: 'Separation of Concerns', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '📱', text: 'Mobile-First Responsive Design', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '🛡️', text: 'Defensive Coding', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '🔒', text: 'Progressive Enhancement', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '♻️', text: 'DRY — Don\'t Repeat Yourself', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '🔀', text: 'Single Responsibility Principle', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '📦', text: 'Semantic HTML', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '⚡', text: 'Performance Budget', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '♿', text: 'Accessibility First (a11y)', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '🔄', text: 'Version Control Everything', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '🧪', text: 'Test Before Ship', url: 'pages/laws-workflow.html' },
-    { group: '12 Laws', icon: '🎯', text: 'Law of Least Surprise', url: 'pages/laws-workflow.html' },
+    { group: '12 Laws', icon: '⚖️', text: 'Separation of Concerns', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '📱', text: 'Mobile-First Responsive Design', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '🛡️', text: 'Defensive Coding', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '🔒', text: 'Progressive Enhancement', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '♻️', text: 'DRY — Don\'t Repeat Yourself', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '🔀', text: 'Single Responsibility Principle', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '📦', text: 'Semantic HTML', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '⚡', text: 'Performance Budget', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '♿', text: 'Accessibility First (a11y)', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '🔄', text: 'Version Control Everything', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '🧪', text: 'Test Before Ship', url: 'portal.html#universal-laws' },
+    { group: '12 Laws', icon: '🎯', text: 'Law of Least Surprise', url: 'portal.html#universal-laws' },
 
     // Learning Tracks
     { group: 'Learning Tracks', icon: '🚀', text: 'Production Readiness Track', url: '#tracks' },
@@ -939,13 +939,13 @@ if (searchInput) {
   ];
 
   const categoryStudyMap = {
-    checklists: { name: 'Pre-Project & Pre-Launch Checklists', url: 'checklists.html' },
-    github: { name: 'GitHub Setup & AI Context Management', url: 'github-context.html' },
-    css: { name: 'CSS Architecture & Performance', url: 'css-performance.html' },
-    testing: { name: 'Testing Strategy & Debugging Toolkit', url: 'testing-debugging.html' },
-    api: { name: 'API Design & Deployment Guide', url: 'api-deployment.html' },
-    laws: { name: '12 Universal Laws & 7-Phase Workflow', url: 'laws-workflow.html' },
-    session: { name: 'Session 2: Next.js & AI Mastery', url: 'portal.html?track=nextjs' }
+    checklists: { name: 'Pre-Project & Pre-Launch Checklists', url: '../portal.html#preproject-checklist' },
+    github: { name: 'GitHub Setup & AI Context Management', url: '../portal.html#github-workflow' },
+    css: { name: 'CSS Architecture & Performance', url: '../portal.html#css-architecture' },
+    testing: { name: 'Testing Strategy & Debugging Toolkit', url: '../portal.html#testing-pyramid' },
+    api: { name: 'API Design & Deployment Guide', url: '../portal.html#api-design' },
+    laws: { name: '12 Universal Laws & 7-Phase Workflow', url: '../portal.html#universal-laws' },
+    session: { name: 'Session 2: Next.js & AI Mastery', url: '../portal.html?track=nextjs' }
   };
 
   function shuffleArray(arr) {
