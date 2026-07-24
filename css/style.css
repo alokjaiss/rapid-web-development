@@ -18,6 +18,77 @@ button:focus-visible,
   border-radius: 4px;
 }
 
+/* Skip Navigation Link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--accent-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  z-index: 10001;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Dropdown toggle button reset (when <a> changed to <button>) */
+button.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+}
+
+/* Nav link modifier classes (replaces inline styles) */
+.nav-link--portal {
+  color: var(--accent-green) !important;
+  font-weight: 700 !important;
+}
+.nav-link--quiz {
+  color: var(--accent-cyan) !important;
+  font-weight: 600 !important;
+}
+
+/* Mobile search link — only visible in hamburger drawer */
+.mobile-search-link {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .mobile-search-link {
+    display: block;
+  }
+  .mobile-search-link button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mobile-search-link button:hover {
+    background: rgba(255,255,255,0.07);
+    color: var(--text-primary);
+  }
+}
+
 :root {
   /* Colour palette */
   --bg-primary: #050510;
@@ -45,7 +116,7 @@ button:focus-visible,
   --text-muted: #94a3b8;
 
   /* Spacing */
-  --section-padding: 5rem 0;
+  --section-padding: 4rem 0;
   --container-width: 1200px;
 
   /* Radius */
@@ -131,9 +202,26 @@ code {
   height: 100%;
 }
 
+/* Performance: promote frequently animated cards to their own compositor layer */
+.pp-card,
+.law-card,
+.track-card,
+.pillar-card,
+.cs-card {
+  will-change: transform;
+}
+
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
+}
+
+.section + .section::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.25), transparent);
+  margin-bottom: 2rem;
 }
 
 .section-tag {
@@ -433,8 +521,8 @@ code {
   cursor: pointer;
   padding: 8px;
   z-index: 1051;
-  width: 40px;
-  height: 40px;
+  width: 44px;  /* WCAG minimum tap target */
+  height: 44px;
   transition: background 0.2s, border-color 0.2s;
 }
 
@@ -1506,25 +1594,6 @@ tbody tr:hover td {
 }
 
 @media (max-width: 640px) {
-  .nav-links {
-    display: none;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: rgba(5,5,16,0.97);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    flex-direction: column;
-    padding: 1rem;
-    gap: 0.25rem;
-  }
-  .nav-links.open {
-    display: flex;
-  }
-  .hamburger {
-    display: flex;
-  }
   .laws-grid,
   .ai-pillars,
   .cheatsheet-grid,
@@ -1549,6 +1618,20 @@ tbody tr:hover td {
   }
   .section-title {
     font-size: 1.8rem;
+  }
+  .quiz-category-pills {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.5rem;
+    justify-content: flex-start;
+  }
+  .quiz-category-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .quiz-pill {
+    flex-shrink: 0;
   }
 }
 
@@ -3178,6 +3261,11 @@ tbody tr:hover td {
   position: relative;
   overflow: hidden;
   transition: all 0.3s;
+}
+
+.pp-card[data-step="00"] {
+  grid-column: 1 / -1;
+}
   cursor: default;
   display: flex;
   flex-direction: column;
@@ -4363,11 +4451,11 @@ tbody tr:hover td {
 .portal-tree-item {
   display: flex;
   align-items: center;
-  padding: 0.5rem 0.65rem;
+  padding: 0.55rem 0.75rem;
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.83rem;
+  font-size: 0.88rem;
   margin-top: 0.2rem;
   transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
@@ -4593,6 +4681,7 @@ tbody tr:hover td {
 .portal-content {
   font-family: 'Outfit', sans-serif;
   color: var(--text-secondary);
+  max-width: 720px;
 }
 
 .portal-content .article-lead {
@@ -4604,8 +4693,8 @@ tbody tr:hover td {
 }
 
 .portal-content p {
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: 1.1rem;
+  line-height: 1.85;
   color: #cbd5e1;
   margin-bottom: 1.5rem;
   letter-spacing: -0.01em;
@@ -4713,6 +4802,13 @@ tbody tr:hover td {
   padding: 0;
   color: inherit;
 }
+
+/* Step card (portal article sequential step display) */
+.step-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   padding: 1rem 1.25rem;
   border-radius: var(--radius-md);

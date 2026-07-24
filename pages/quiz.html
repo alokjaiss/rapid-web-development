@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interactive Active-Recall Quiz Engine | WebDev Reference</title>
   <meta name="description" content="Test your web development knowledge, reinforce core concepts, and achieve permanent memory retention through active recall." />
+  <meta name="theme-color" content="#050510" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
+
+  <a href="#quizSection" class="skip-link">Skip to main content</a>
 
   <!-- ─── NAVIGATION ─────────────────────────────────────────────── -->
   <nav class="navbar scrolled" id="navbar">
@@ -24,18 +27,18 @@
         <li><a href="quiz.html" class="nav-link active">Interactive Quiz</a></li>
         
         <li class="nav-item-dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
+          <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true">Guides <span class="dropdown-arrow">▾</span></button>
           <ul class="dropdown-menu">
             <li><a href="quiz.html" class="dropdown-item">Interactive Quiz Engine</a></li>
-            <li><a href="checklists.html" class="dropdown-item">Checklists</a></li>
-            <li><a href="github-context.html" class="dropdown-item">GitHub &amp; AI Context</a></li>
-            <li><a href="css-performance.html" class="dropdown-item">CSS &amp; Performance</a></li>
-            <li><a href="testing-debugging.html" class="dropdown-item">Testing &amp; Debugging</a></li>
-            <li><a href="api-deployment.html" class="dropdown-item">API &amp; Deployment</a></li>
-            <li><a href="laws-workflow.html" class="dropdown-item">Laws &amp; Workflow</a></li>
-            <li><a href="gaps-devtools.html" class="dropdown-item">Gaps &amp; DevTools</a></li>
-            <li><a href="ai-acceleration.html" class="dropdown-item">AI &amp; Antigravity</a></li>
-            <li><a href="cheatsheet.html" class="dropdown-item">Cheat Sheet</a></li>
+            <li><a href="../portal.html#preproject-checklist" class="dropdown-item">Checklists</a></li>
+            <li><a href="../portal.html#github-workflow" class="dropdown-item">GitHub &amp; AI Context</a></li>
+            <li><a href="../portal.html#css-architecture" class="dropdown-item">CSS &amp; Performance</a></li>
+            <li><a href="../portal.html#testing-pyramid" class="dropdown-item">Testing &amp; Debugging</a></li>
+            <li><a href="../portal.html#api-design" class="dropdown-item">API &amp; Deployment</a></li>
+            <li><a href="../portal.html#universal-laws" class="dropdown-item">Laws &amp; Workflow</a></li>
+            <li><a href="../portal.html#developer-cheatsheet" class="dropdown-item">Gaps &amp; DevTools</a></li>
+            <li><a href="../portal.html#ai-velocity" class="dropdown-item">AI &amp; Antigravity</a></li>
+            <li><a href="../portal.html#developer-cheatsheet" class="dropdown-item">Cheat Sheet</a></li>
           </ul>
         </li>
       </ul>
@@ -51,6 +54,9 @@
   <!-- ─── QUIZ ENGINE SECTION ─── -->
   <section class="section section-alt" id="quizSection">
     <div class="container">
+      <div class="portal-breadcrumbs" style="margin-bottom: 2rem;">
+        <a href="../index.html">WebDevRef</a> &rsaquo; <span style="color: var(--text-primary);">Mastery Quiz</span>
+      </div>
       <div class="section-header">
         <span class="section-tag">Active Recall</span>
         <h2 class="section-title">WebDev Knowledge<br/><span class="gradient-text">Mastery Quiz</span></h2>
@@ -115,9 +121,9 @@
         <div class="footer-links">
           <a href="../index.html">← Hub Home</a>
           <a href="quiz.html">Interactive Quiz</a>
-          <a href="checklists.html">Checklists</a>
-          <a href="laws-workflow.html">Laws &amp; Workflow</a>
-          <a href="cheatsheet.html">Cheat Sheet</a>
+          <a href="../portal.html#preproject-checklist">Checklists</a>
+          <a href="../portal.html#universal-laws">Laws &amp; Workflow</a>
+          <a href="../portal.html#developer-cheatsheet">Cheat Sheet</a>
         </div>
       </div>
     </div>
