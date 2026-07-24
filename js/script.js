@@ -100,7 +100,7 @@ revealTargets.forEach((el, i) => {
   window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  const PARTICLE_COUNT = 80;
+  const PARTICLE_COUNT = window.innerWidth < 768 ? 30 : 80;
   const COLORS = ['rgba(99,102,241,', 'rgba(139,92,246,', 'rgba(6,182,212,'];
 
   function createParticle() {
