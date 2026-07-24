@@ -3,52 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebDev Reference | Your Complete Web Development Command Center</title>
-  <meta name="description" content="A multi-page developer command center covering universal laws, guided learning tracks, interactive quizzes, and AI acceleration." />
+  <title>WebDev Reference | Master Modern Web Development Engineering</title>
+  <meta name="description" content="Ace full-stack development, frontend layouts, engine runtimes, system design patterns, and QA audits with interactive visualizations and AI tutors." />
+  <meta name="theme-color" content="#050510" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/homepage.css" />
 </head>
 <body>
+
+  <a href="#hero" class="skip-link">Skip to main content</a>
 
   <!-- ─── NAVIGATION ─────────────────────────────────────────────── -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">
+      <a href="index.html" class="nav-logo" id="navLogo">
         <span class="logo-icon">⬡</span>
         <span>WebDev<strong>Ref</strong></span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="portal.html" class="nav-link" style="color: var(--accent-green); font-weight: 700;">🚀 Knowledge Portal</a></li>
-        <li><a href="#tracks" class="nav-link">Learning Tracks</a></li>
-        <li><a href="pages/quiz.html" class="nav-link" style="color: var(--accent-cyan); font-weight: 600;">🧠 Quiz</a></li>
-        <li><a href="#directories" class="nav-link">All Guides</a></li>
-        <li><a href="#highlights" class="nav-link">Core Laws</a></li>
+        <li><a href="portal.html" class="nav-link nav-link--portal" id="navPortalLink">🚀 Knowledge Portal</a></li>
+        <li><a href="#patterns" class="nav-link" id="navPatternsLink">Core Patterns</a></li>
+        <li><a href="pages/quiz.html" class="nav-link nav-link--quiz" id="navQuizLink">🧠 Quiz</a></li>
+        <li><a href="#interactive" class="nav-link" id="navInteractiveLink">Features</a></li>
+        <li><a href="#faq" class="nav-link" id="navFaqLink">FAQ</a></li>
 
         <li class="nav-item-dropdown">
-          <a href="#" class="nav-link dropdown-toggle">Guides <span class="dropdown-arrow">▾</span></a>
+          <button class="nav-link dropdown-toggle" id="navGuidesDropdown" aria-expanded="false" aria-haspopup="true">Guides <span class="dropdown-arrow">▾</span></button>
           <ul class="dropdown-menu">
-            <li><a href="portal.html" class="dropdown-item" style="color:var(--accent-green);">🚀 AlgoMaster Portal</a></li>
-            <li><a href="pages/checklists.html" class="dropdown-item">Checklists</a></li>
-            <li><a href="pages/github-context.html" class="dropdown-item">GitHub &amp; AI Context</a></li>
-            <li><a href="pages/css-performance.html" class="dropdown-item">CSS &amp; Performance</a></li>
-            <li><a href="pages/testing-debugging.html" class="dropdown-item">Testing &amp; Debugging</a></li>
-            <li><a href="pages/api-deployment.html" class="dropdown-item">API &amp; Deployment</a></li>
-            <li><a href="pages/laws-workflow.html" class="dropdown-item">Laws &amp; Workflow</a></li>
-            <li><a href="pages/gaps-devtools.html" class="dropdown-item">Gaps &amp; DevTools</a></li>
-            <li><a href="pages/ai-acceleration.html" class="dropdown-item">AI &amp; Antigravity</a></li>
-            <li><a href="pages/cheatsheet.html" class="dropdown-item">Cheat Sheet</a></li>
+            <li><a href="portal.html#preproject-checklist" class="dropdown-item">Checklists</a></li>
+            <li><a href="portal.html#github-workflow" class="dropdown-item">GitHub &amp; AI Context</a></li>
+            <li><a href="portal.html#css-architecture" class="dropdown-item">CSS &amp; Performance</a></li>
+            <li><a href="portal.html#testing-pyramid" class="dropdown-item">Testing &amp; Debugging</a></li>
+            <li><a href="portal.html#api-design" class="dropdown-item">API &amp; Deployment</a></li>
+            <li><a href="portal.html#universal-laws" class="dropdown-item">Laws &amp; Workflow</a></li>
+            <li><a href="portal.html#developer-cheatsheet" class="dropdown-item">Gaps &amp; DevTools</a></li>
+            <li><a href="portal.html#ai-velocity" class="dropdown-item">AI &amp; Antigravity</a></li>
+            <li><a href="portal.html#developer-cheatsheet" class="dropdown-item">Cheat Sheet</a></li>
           </ul>
         </li>
+        <li class="mobile-search-link">
+          <button onclick="document.getElementById('cmdPaletteTrigger').click()">🔍 Search Topics</button>
+        </li>
       </ul>
-      <button class="cmd-palette-trigger" id="cmdPaletteTrigger" aria-label="Open Command Palette">
-        <span>🔍 Search...</span>
-        <kbd>Ctrl K</kbd>
-      </button>
-      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-        <span></span><span></span><span></span>
-      </button>
+      
+      <!-- Streak and Quick Search Controls -->
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="nav-quick-search">
+          <button class="nav-search-btn" id="quickSearchBtn" onclick="document.getElementById('cmdPaletteTrigger').click()" aria-label="Quick Search">
+            <span>🔍 Search...</span>
+            <kbd>Ctrl K</kbd>
+          </button>
+        </div>
+        <button class="nav-streak-badge" id="streakBadge" aria-label="Streak Counter">
+          <span class="nav-streak-icon">🔥</span>
+          <span>3</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -66,291 +82,524 @@
     </div>
   </div>
 
-  <!-- ─── HERO ──────────────────────────────────────────────────── -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <div class="hero-orb orb1"></div>
-      <div class="hero-orb orb2"></div>
-      <div class="hero-orb orb3"></div>
-      <canvas id="particleCanvas"></canvas>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        AlgoMaster-Style 3-Column Portal · v3.0
+  <!-- ─── HERO & COURSE SECTIONS ─────────────────────────────────── -->
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <div class="hero-orb orb1"></div>
+        <div class="hero-orb orb2"></div>
+        <div class="hero-orb orb3"></div>
+        <canvas id="particleCanvas" role="img" aria-label="Animated particle background decoration"></canvas>
       </div>
-      <h1 class="hero-title">
-        Your Complete<br/>
-        <span class="gradient-text">Web Development</span><br/>
-        Knowledge Base
-      </h1>
-      <p class="hero-subtitle">
-        Interactive 3-column portal, chapter progress tracking, active-recall quiz suite, framework-agnostic laws,
-        and how <strong>AI agents</strong> multiply your velocity by <span class="highlight-num">1000×</span>
-      </p>
-      <div class="hero-cta">
-        <a href="portal.html" class="btn btn-primary">🚀 Launch Knowledge Portal</a>
-        <a href="pages/quiz.html" class="btn btn-ghost">🧠 Take the Quiz →</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">9</span><span class="stat-label">Sub-Guides</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">30</span><span class="stat-label">Quiz Questions</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">12</span><span class="stat-label">Universal Laws</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">1000×</span><span class="stat-label">AI Speed Boost</span></div>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <span>Scroll to explore</span>
-      <div class="scroll-arrow"></div>
-    </div>
-  </section>
-
-  <!-- ─── GUIDED LEARNING TRACKS ─── -->
-  <section class="section" id="tracks">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Guided Pathways</span>
-        <h2 class="section-title">Learning<br/><span class="gradient-text">Tracks</span></h2>
-        <p class="section-subtitle">Choose a structured pathway based on your goal. Each track connects related guides in the recommended study order.</p>
-      </div>
-
-      <div class="tracks-grid">
-
-        <div class="track-card track-production">
-          <div class="track-icon">🚀</div>
-          <h3 class="track-title">Production Readiness</h3>
-          <p class="track-desc">From project creation to production launch, step by step.</p>
-          <div class="track-steps">
-            <a href="pages/checklists.html" class="track-step">📋 Pre-Project Setup</a>
-            <span class="track-arrow">→</span>
-            <a href="pages/github-context.html" class="track-step">🐙 Git &amp; AGENTS.md</a>
-            <span class="track-arrow">→</span>
-            <a href="pages/css-performance.html" class="track-step">🎨 CSS &amp; Perf</a>
-            <span class="track-arrow">→</span>
-            <a href="pages/checklists.html" class="track-step">✅ Pre-Launch Audit</a>
+      <div class="container" style="z-index: 2; position: relative;">
+        <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Comprehensive Developer reference &middot; v3.0
+          </div>
+          <h1 class="hero-title" style="margin-bottom: 1.5rem;">
+            Master Modern<br/>
+            <span class="gradient-text hero-underline-container">
+              Web Development
+              <svg aria-hidden="true" viewBox="0 0 400 12" preserveAspectRatio="none" class="hero-underline-svg">
+                <path d="M2 8 Q 100 2, 200 7 T 398 5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
+              </svg>
+            </span>
+          </h1>
+          <p class="hero-subtitle" style="margin-bottom: 2rem; max-width: 650px; margin-left: auto; margin-right: auto;">
+            The modern way to prepare for engineering challenges, master architectural laws, audit performance, and multiply development velocity.
+          </p>
+          <div class="hero-cta" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="portal.html" class="btn btn-primary" id="heroLaunchBtn">🚀 Launch Knowledge Portal</a>
+            <a href="pages/quiz.html" class="btn btn-ghost" id="heroQuizBtn">🧠 Take the Quiz &rarr;</a>
           </div>
         </div>
 
-        <div class="track-card track-ai">
-          <div class="track-icon">⚡</div>
-          <h3 class="track-title">AI-Accelerated Developer</h3>
-          <p class="track-desc">Master agentic AI pair programming for maximum velocity.</p>
-          <div class="track-steps">
-            <a href="pages/github-context.html" class="track-step">📄 AGENTS.md Context</a>
-            <span class="track-arrow">→</span>
-            <a href="pages/ai-acceleration.html" class="track-step">🤖 AI Acceleration</a>
-            <span class="track-arrow">→</span>
-            <a href="pages/gaps-devtools.html" class="track-step">🛠️ DevTools</a>
-            <span class="track-arrow">→</span>
-            <a href="pages/cheatsheet.html" class="track-step">📑 Cheat Sheet</a>
+        <!-- 6-Course Grid -->
+        <div class="courses-grid">
+          
+          <!-- Card 1 -->
+          <a href="portal.html#css-architecture" class="course-card" id="courseCardCSS">
+            <div class="course-image-box">
+              <div class="course-image-overlay"></div>
+              <div class="course-icon-wrapper">🎨</div>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">Frontend Architecture &amp; CSS</h3>
+              <p class="course-desc">Master custom property design systems, fluid typography clamp(), Core Web Vitals targets, and layouts alignment.</p>
+              <button class="course-footer-btn">Start Learning &rarr;</button>
+            </div>
+            <div class="course-card-accent-line"></div>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="portal.html#developer-cheatsheet" class="course-card" id="courseCardJS">
+            <div class="course-image-box" style="background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(99,102,241,0.1));">
+              <div class="course-image-overlay"></div>
+              <div class="course-icon-wrapper">⚡</div>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">JavaScript &amp; Type Systems</h3>
+              <p class="course-desc">Deep-dive into event loops, engine runtimes, execution stack contexts, and strict Type systems safety.</p>
+              <button class="course-footer-btn">Start Learning &rarr;</button>
+            </div>
+            <div class="course-card-accent-line" style="background: linear-gradient(to right, var(--accent-amber), var(--accent-primary));"></div>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="portal.html#api-design" class="course-card" id="courseCardSys">
+            <div class="course-image-box" style="background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(6,182,212,0.1));">
+              <div class="course-image-overlay"></div>
+              <div class="course-icon-wrapper">🌐</div>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">System Design &amp; API Engineering</h3>
+              <p class="course-desc">Build RESTful resources, configure CORS policies, configure HTTP caching controls, and deploy to serverless stacks.</p>
+              <button class="course-footer-btn">Start Learning &rarr;</button>
+            </div>
+            <div class="course-card-accent-line" style="background: linear-gradient(to right, var(--accent-green), var(--accent-cyan));"></div>
+          </a>
+
+          <!-- Card 4 -->
+          <a href="portal.html#testing-pyramid" class="course-card" id="courseCardTesting">
+            <div class="course-image-box" style="background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(139,92,246,0.1));">
+              <div class="course-image-overlay"></div>
+              <div class="course-icon-wrapper">🧪</div>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">Production Testing &amp; QA</h3>
+              <p class="course-desc">Navigate standard testing pyramids, perform DevTools audits, and run empirical root-cause debugging processes.</p>
+              <button class="course-footer-btn">Start Learning &rarr;</button>
+            </div>
+            <div class="course-card-accent-line" style="background: linear-gradient(to right, var(--accent-red), var(--accent-secondary));"></div>
+          </a>
+
+          <!-- Card 5 -->
+          <a href="portal.html#universal-laws" class="course-card" id="courseCardLaws">
+            <div class="course-image-box" style="background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(6,182,212,0.1));">
+              <div class="course-image-overlay"></div>
+              <div class="course-icon-wrapper">📜</div>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">12 Universal Laws &amp; QA Checks</h3>
+              <p class="course-desc">Apply defensive coding, separation of concerns, single source of truth, DRY, and pre-launch QA checklists.</p>
+              <button class="course-footer-btn">Start Learning &rarr;</button>
+            </div>
+            <div class="course-card-accent-line" style="background: linear-gradient(to right, var(--accent-secondary), var(--accent-cyan));"></div>
+          </a>
+
+          <!-- Card 6 -->
+          <a href="portal.html#ai-velocity" class="course-card" id="courseCardAI">
+            <div class="course-image-box" style="background: linear-gradient(135deg, rgba(6,182,212,0.1), rgba(245,158,11,0.1));">
+              <div class="course-image-overlay"></div>
+              <div class="course-icon-wrapper">🤖</div>
+            </div>
+            <div class="course-body">
+              <h3 class="course-title">AI Velocity &amp; Antigravity</h3>
+              <p class="course-desc">Master agentic prompt systems, structure project briefing files, and leverage AI code generators for 1000x output.</p>
+              <button class="course-footer-btn">Start Learning &rarr;</button>
+            </div>
+            <div class="course-card-accent-line" style="background: linear-gradient(to right, var(--accent-cyan), var(--accent-amber));"></div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── MARQUEE ────────────────────────────────────────────────── -->
+    <div class="marquee-container" aria-label="Featured companies">
+      <div class="marquee-mask">
+        <div class="marquee-track">
+          <!-- Item 1 -->
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Google</span>
+          </div>
+          <!-- Item 2 -->
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Meta</span>
+          </div>
+          <!-- Item 3 -->
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Amazon</span>
+          </div>
+          <!-- Item 4 -->
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Microsoft</span>
+          </div>
+          <!-- Item 5 -->
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Netflix</span>
+          </div>
+          <!-- Item 6 -->
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Apple</span>
+          </div>
+          <!-- Duplicated for Infinite Loop -->
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Google</span>
+          </div>
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Meta</span>
+          </div>
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Amazon</span>
+          </div>
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Microsoft</span>
+          </div>
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Netflix</span>
+          </div>
+          <div class="marquee-logo">
+            <span style="font-size: 1.5rem;">Apple</span>
           </div>
         </div>
-
-        <div class="track-card track-architect">
-          <div class="track-icon">🛡️</div>
-          <h3 class="track-title">Senior Architect</h3>
-          <p class="track-desc">Deep-dive into timeless engineering laws and quality systems.</p>
-          <div class="track-steps">
-            <a href="pages/laws-workflow.html" class="track-step">📜 12 Laws &amp; Phases</a>
-            <span class="track-arrow">→</span>
-            <a href="pages/testing-debugging.html" class="track-step">🧪 Testing &amp; Debug</a>
-            <span class="track-arrow">→</span>
-            <a href="pages/api-deployment.html" class="track-step">🌐 API &amp; Deploy</a>
-            <span class="track-arrow">→</span>
-            <a href="pages/quiz.html" class="track-step">🧠 Mastery Quiz</a>
-          </div>
-        </div>
-
-        <div class="track-card track-typescript">
-          <div class="track-icon">📘</div>
-          <h3 class="track-title">TypeScript &amp; Type Systems</h3>
-          <p class="track-desc">Master static type safety, generics, utility types, and production strict mode.</p>
-          <div class="track-steps">
-            <a href="portal.html?track=typescript#ts-fundamentals" class="track-step">📘 Setup &amp; Types</a>
-            <span class="track-arrow">→</span>
-            <a href="portal.html?track=typescript#ts-interfaces-types" class="track-step">🔷 Interfaces</a>
-            <span class="track-arrow">→</span>
-            <a href="portal.html?track=typescript#ts-generics" class="track-step">⚡ Generics</a>
-            <span class="track-arrow">→</span>
-            <a href="portal.html?track=typescript#ts-utility-types" class="track-step">🛠️ Utility Types</a>
-          </div>
-        </div>
-
-        <div class="track-card track-nextjs">
-          <div class="track-icon">⚛️</div>
-          <h3 class="track-title">Next.js &amp; AI Integration</h3>
-          <p class="track-desc">Build server-rendered App Router systems, stream model responses, and deploy an AI Mock Interviewer.</p>
-          <div class="track-steps">
-            <a href="portal.html?track=nextjs#nextjs-architecture" class="track-step">⚛️ Setup &amp; App Router</a>
-            <span class="track-arrow">→</span>
-            <a href="portal.html?track=nextjs#nextjs-miniproject" class="track-step">📋 Mini Task Board</a>
-            <span class="track-arrow">→</span>
-            <a href="portal.html?track=nextjs#nextjs-ai-integration" class="track-step">🤖 AI Streaming</a>
-            <span class="track-arrow">→</span>
-            <a href="portal.html?track=nextjs#nextjs-capstone" class="track-step">🏆 AI Mock Interview</a>
-          </div>
-        </div>
-
       </div>
     </div>
-  </section>
 
-  <!-- ─── TOPIC DIRECTORY HUB ────────────────────────────────────── -->
-  <section class="section section-alt" id="directories">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Reference Platform</span>
-        <h2 class="section-title">All<br/><span class="gradient-text">Guides</span></h2>
-        <p class="section-subtitle">Every topic in the handbook. Open any guide to explore detailed checklists, architectural standards, and workflow blueprints.</p>
-      </div>
-
-      <div class="preproject-grid">
-
-        <div class="pp-card" data-step="00" style="border-color: var(--accent-cyan); background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(6,182,212,0.08));">
-          <div class="pp-icon">🧠</div>
-          <h3>Interactive Active-Recall Quiz</h3>
-          <p>30 questions across 6 categories. Instant feedback, explanations, and mastery scoring.</p>
-          <div class="pp-tags"><span>Active Recall</span><span>30 Questions</span><span>Quiz</span></div>
-          <a href="pages/quiz.html" class="btn btn-primary" style="margin-top: 1rem;">Take Quiz Now →</a>
+    <!-- ─── SECTION 1: CORE PATTERNS ─────────────────────────────── -->
+    <section class="section" id="patterns">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Systematic Knowledge</span>
+          <h2 class="section-title">Master Principles,<br/><span class="gradient-text">Not Just Snippets</span></h2>
+          <p class="section-subtitle">Stop copy-pasting layouts. Build a solid blueprint of underlying patterns that dictate responsive, high-performance web engineering.</p>
         </div>
 
-        <div class="pp-card" data-step="01">
-          <div class="pp-icon">📋</div>
-          <h3>Pre-Project &amp; Pre-Launch Checklists</h3>
-          <p>The 8 essential pre-coding setup steps and the non-negotiable pre-launch verification checklist.</p>
-          <div class="pp-tags"><span>Setup</span><span>Launch</span><span>Checklist</span></div>
-          <a href="pages/checklists.html" class="btn btn-ghost" style="margin-top: 1rem;">Open Guide →</a>
-        </div>
+        <div class="patterns-split-grid">
+          
+          <!-- Column 1 -->
+          <div class="patterns-column-card">
+            <div class="patterns-column-header">
+              <span style="font-size: 2rem;">🎨</span>
+              <div>
+                <h3 class="patterns-column-title">Frontend &amp; Layout Patterns</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">Responsive fluid interfaces &middot; UX performance</p>
+              </div>
+            </div>
+            <div class="patterns-tag-list">
+              <span class="pattern-tag">Fluid Clamped Typography</span>
+              <span class="pattern-tag">Flexbox Alignment Systems</span>
+              <span class="pattern-tag">CSS Custom Property Trees</span>
+              <span class="pattern-tag">Component Isolation Rules</span>
+              <span class="pattern-tag">Grayscale Image Fallbacks</span>
+              <span class="pattern-tag">Dynamic Event Loops</span>
+              <span class="pattern-tag">Skip Navigation Triggers</span>
+            </div>
+          </div>
 
-        <div class="pp-card" data-step="02">
-          <div class="pp-icon">🐙</div>
-          <h3>GitHub &amp; AI Context Management</h3>
-          <p>Repository configuration, conventional commits, branch protection rules, and building AGENTS.md briefing files.</p>
-          <div class="pp-tags"><span>Git</span><span>AGENTS.md</span><span>Context</span></div>
-          <a href="pages/github-context.html" class="btn btn-ghost" style="margin-top: 1rem;">Open Guide →</a>
-        </div>
+          <!-- Column 2 -->
+          <div class="patterns-column-card">
+            <div class="patterns-column-header">
+              <span style="font-size: 2rem;">🌐</span>
+              <div>
+                <h3 class="patterns-column-title">Backend &amp; System Patterns</h3>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">Scalable architecture &middot; Secure deployments</p>
+              </div>
+            </div>
+            <div class="patterns-tag-list">
+              <span class="pattern-tag">REST Resource Definitions</span>
+              <span class="pattern-tag">CORS Preflight Configurations</span>
+              <span class="pattern-tag">Cache-Control Headers</span>
+              <span class="pattern-tag">Standardized HTTP Statuses</span>
+              <span class="pattern-tag">Multi-tier Testing Pyramids</span>
+              <span class="pattern-tag">Serverless Edge Handlers</span>
+              <span class="pattern-tag">Zero-Config Vercel Pipelines</span>
+            </div>
+          </div>
 
-        <div class="pp-card" data-step="03">
-          <div class="pp-icon">🎨</div>
-          <h3>CSS Architecture &amp; Performance</h3>
-          <p>CSS custom properties design tokens, fluid typography clamp(), Core Web Vitals targets, and WebP compression.</p>
-          <div class="pp-tags"><span>CSS Tokens</span><span>Web Vitals</span></div>
-          <a href="pages/css-performance.html" class="btn btn-ghost" style="margin-top: 1rem;">Open Guide →</a>
-        </div>
-
-        <div class="pp-card" data-step="04">
-          <div class="pp-icon">🧪</div>
-          <h3>Testing Strategy &amp; Debugging</h3>
-          <p>Unit vs integration vs E2E testing pyramid, DevTools network debugging, and empirical root-cause analysis.</p>
-          <div class="pp-tags"><span>Testing</span><span>Debugging</span><span>DevTools</span></div>
-          <a href="pages/testing-debugging.html" class="btn btn-ghost" style="margin-top: 1rem;">Open Guide →</a>
-        </div>
-
-        <div class="pp-card" data-step="05">
-          <div class="pp-icon">🌐</div>
-          <h3>API Design &amp; Deployment</h3>
-          <p>RESTful API endpoints, standard HTTP status codes, CORS configuration, and static/serverless deployment platforms.</p>
-          <div class="pp-tags"><span>REST API</span><span>Deployment</span><span>Vercel</span></div>
-          <a href="pages/api-deployment.html" class="btn btn-ghost" style="margin-top: 1rem;">Open Guide →</a>
-        </div>
-
-        <div class="pp-card" data-step="06">
-          <div class="pp-icon">📜</div>
-          <h3>12 Universal Laws &amp; 7-Phase Workflow</h3>
-          <p>Timeless engineering principles and the 7-phase software development lifecycle model.</p>
-          <div class="pp-tags"><span>12 Laws</span><span>7 Phases</span><span>Architecture</span></div>
-          <a href="pages/laws-workflow.html" class="btn btn-ghost" style="margin-top: 1rem;">Open Guide →</a>
-        </div>
-
-        <div class="pp-card" data-step="07">
-          <div class="pp-icon">💡</div>
-          <h3>Knowledge Gaps &amp; Dev Tools</h3>
-          <p>Bridging junior-to-senior knowledge gaps in HTTP/JS runtime and essential VS Code extensions.</p>
-          <div class="pp-tags"><span>Event Loop</span><span>VS Code</span><span>Gaps</span></div>
-          <a href="pages/gaps-devtools.html" class="btn btn-ghost" style="margin-top: 1rem;">Open Guide →</a>
-        </div>
-
-        <div class="pp-card" data-step="08">
-          <div class="pp-icon">🤖</div>
-          <h3>AI Acceleration &amp; Antigravity</h3>
-          <p>Multi-file agentic pair programming, planning mode workflows, and 1000× speed boost strategies.</p>
-          <div class="pp-tags"><span>AI Pair Programming</span><span>Antigravity</span></div>
-          <a href="pages/ai-acceleration.html" class="btn btn-ghost" style="margin-top: 1rem;">Open Guide →</a>
-        </div>
-
-        <div class="pp-card" data-step="09">
-          <div class="pp-icon">📑</div>
-          <h3>Developer Cheat Sheet</h3>
-          <p>Instant terminal CLI commands, Git snippets, CSS layout helpers, and JS shortcuts.</p>
-          <div class="pp-tags"><span>Snippets</span><span>CLI</span><span>Cheat Sheet</span></div>
-          <a href="pages/cheatsheet.html" class="btn btn-ghost" style="margin-top: 1rem;">Open Guide →</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── CORE LAWS HIGHLIGHT ─── -->
-  <section class="section" id="highlights">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Featured Highlight</span>
-        <h2 class="section-title">Core Principles<br/><span class="gradient-text">Snapshot</span></h2>
-        <p class="section-subtitle">A quick preview of the foundational laws guiding high-performance web development.</p>
-      </div>
-
-      <div class="laws-grid">
-        <div class="law-card">
-          <div class="law-num">01</div>
-          <h3>Law of Separation of Concerns</h3>
-          <p>HTML for structure, CSS for presentation, JavaScript for behavior. Mixing them leads to unmaintainable code.</p>
-        </div>
-
-        <div class="law-card">
-          <div class="law-num">02</div>
-          <h3>Law of Mobile-First Responsive Design</h3>
-          <p>Design and build for small screens first. It forces focus on core content and prevents layout bloat.</p>
-        </div>
-
-        <div class="law-card">
-          <div class="law-num">03</div>
-          <h3>Law of Defensive Coding</h3>
-          <p>Assume user input is invalid, APIs will fail, and networks are unreliable. Handle null/undefined gracefully.</p>
         </div>
       </div>
+    </section>
 
-      <div style="text-align: center; margin-top: 2.5rem;">
-        <a href="pages/laws-workflow.html" class="btn btn-primary">View All 12 Universal Laws →</a>
+    <!-- ─── SECTION 2: INTERACTIVE FEATURES ────────────────────────── -->
+    <section class="section section-alt" id="interactive">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interactive Environment</span>
+          <h2 class="section-title">Built for Focused &amp;<br/><span class="gradient-text">Interactive Learning</span></h2>
+          <p class="section-subtitle">Listen to guides, self-assess with active-recall tests, audit CSS properties dynamically, and converse with integrated AI helpers.</p>
+        </div>
+
+        <div class="interactive-section-grid">
+          
+          <!-- Left Tabs -->
+          <div class="interactive-tabs-menu">
+            
+            <button class="interactive-tab-btn active" id="tabBtnListen" data-tab="1">
+              <span class="interactive-tab-num">01</span>
+              <div class="interactive-tab-content-wrapper">
+                <h4 class="interactive-tab-title">Audio Listen Mode</h4>
+                <p class="interactive-tab-desc">Synthesizes and narrates guide documents directly in-browser with visual text-to-speech highlighting.</p>
+              </div>
+            </button>
+
+            <button class="interactive-tab-btn" id="tabBtnQuiz" data-tab="2">
+              <span class="interactive-tab-num">02</span>
+              <div class="interactive-tab-content-wrapper">
+                <h4 class="interactive-tab-title">Active Recall Quiz</h4>
+                <p class="interactive-tab-desc">30-question interactive assessment engine for testing layouts, systems, and debugging.</p>
+              </div>
+            </button>
+
+            <button class="interactive-tab-btn" id="tabBtnProgress" data-tab="3">
+              <span class="interactive-tab-num">03</span>
+              <div class="interactive-tab-content-wrapper">
+                <h4 class="interactive-tab-title">Progress Tracker</h4>
+                <p class="interactive-tab-desc">Keep track of checklist items and completed guides, saving states automatically to browser storage.</p>
+              </div>
+            </button>
+
+            <button class="interactive-tab-btn" id="tabBtnVisualizer" data-tab="4">
+              <span class="interactive-tab-num">04</span>
+              <div class="interactive-tab-content-wrapper">
+                <h4 class="interactive-tab-title">Layout Visualizer</h4>
+                <p class="interactive-tab-desc">Interactive layout grid sandbox to test flex rows, columns, margins, and gaps alignments live.</p>
+              </div>
+            </button>
+
+            <button class="interactive-tab-btn" id="tabBtnAI" data-tab="5">
+              <span class="interactive-tab-num">05</span>
+              <div class="interactive-tab-content-wrapper">
+                <h4 class="interactive-tab-title">AI Tutor Assistant</h4>
+                <p class="interactive-tab-desc">Interact with contextual prompts to clarify browser runtime concepts and system patterns.</p>
+              </div>
+            </button>
+
+            <button class="interactive-tab-btn" id="tabBtnPalette" data-tab="6">
+              <span class="interactive-tab-num">06</span>
+              <div class="interactive-tab-content-wrapper">
+                <h4 class="interactive-tab-title">Command Search Palette</h4>
+                <p class="interactive-tab-desc">Fuzzy-search any guide index keyword or terminal snippet instantly with a single keyboard shortcut.</p>
+              </div>
+            </button>
+
+          </div>
+
+          <!-- Right Mockup Container -->
+          <div class="mockup-display-container">
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <div class="mockup-dot red"></div>
+                <div class="mockup-dot yellow"></div>
+                <div class="mockup-dot green"></div>
+              </div>
+              <span class="mockup-title">webdevref_preview.html</span>
+              <div class="mockup-actions">
+                <div class="mockup-action-btn"></div>
+              </div>
+            </div>
+            <div class="mockup-body" id="mockupBody">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
+    <!-- ─── SECTION 3: STATISTICS ──────────────────────────────────── -->
+    <section class="section" id="stats">
+      <div class="container" style="text-align: center;">
+        <h2 style="font-size: 1.25rem; font-weight: 500; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.15em;">Handbook Scope</h2>
+        <h3 style="font-size: 2.25rem; font-weight: 800; margin-top: 0.5rem; margin-bottom: 3rem;">Visual References, Cheatsheets &amp; Tests</h3>
+        
+        <div class="hero-stats" style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+          <div class="stat"><span class="stat-num" style="font-size: 3.5rem; display: block;">9</span><span class="stat-label">Sub-Guides</span></div>
+          <div class="stat-divider" style="height: 60px;"></div>
+          <div class="stat"><span class="stat-num" style="font-size: 3.5rem; display: block;">30</span><span class="stat-label">Quiz Challenges</span></div>
+          <div class="stat-divider" style="height: 60px;"></div>
+          <div class="stat"><span class="stat-num" style="font-size: 3.5rem; display: block;">12</span><span class="stat-label">Architectural Laws</span></div>
+          <div class="stat-divider" style="height: 60px;"></div>
+          <div class="stat"><span class="stat-num" style="font-size: 3.5rem; display: block;">1000&times;</span><span class="stat-label">AI Output multiplier</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SECTION 4: TESTIMONIALS ────────────────────────────────── -->
+    <section class="section section-alt" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Loved by Developers</span>
+          <h2 class="section-title">What Our<br/><span class="gradient-text">Users Say</span></h2>
+          <p class="section-subtitle">Real feedback from frontend developers, systems architects, and engineering managers who leverage WebDevRef.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"The CSS and Performance guide saved me hours of auditing. Implementing fluid clamp typography and setting up caching rules resolved our layout regressions."</p>
+            <div class="testimonial-user">
+              <div class="testimonial-avatar">JD</div>
+              <div>
+                <h4 class="testimonial-info-name">James Doe</h4>
+                <p class="testimonial-info-role">Senior Frontend Engineer at Meta</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"I study the 12 Universal Laws before any system design review. The checklist for REST resource designs and CORS preflights is bulletproof."</p>
+            <div class="testimonial-user">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--accent-amber), var(--accent-red));">SM</div>
+              <div>
+                <h4 class="testimonial-info-name">Sarah Miller</h4>
+                <p class="testimonial-info-role">Technical Architect at Google</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Using the AI Velocity context setups, my code generation output spiked. The AGENTS.md outline rules keep the agents focused and error-free."</p>
+            <div class="testimonial-user">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));">RL</div>
+              <div>
+                <h4 class="testimonial-info-name">Robert Lee</h4>
+                <p class="testimonial-info-role">Engineering Lead at Microsoft</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SECTION 5: CREATOR CARD ────────────────────────────────── -->
+    <section class="section" id="creator">
+      <div class="container">
+        <div class="creator-card">
+          <div class="creator-avatar-wrapper">
+            <div class="creator-avatar">🤖</div>
+          </div>
+          <div class="creator-details">
+            <h3>Antigravity Companion</h3>
+            <span class="creator-subtitle">AI Coding Assistant &middot; Developer Guide</span>
+            <p class="creator-bio">
+              We build professional, standard-compliant coding workspaces. Integrating text-to-speech tools, active recall quiz boards, and automated Github branch cycles, we accelerate your technical velocity to 1000x capability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SECTION 6: FAQ ACCORDION ───────────────────────────────── -->
+    <section class="section section-alt" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Common Enquiries</span>
+          <h2 class="section-title">Frequently Asked<br/><span class="gradient-text">Questions</span></h2>
+          <p class="section-subtitle">Answers to commonly asked questions about WebDevRef portal features and workflows.</p>
+        </div>
+
+        <div class="faq-list">
+          
+          <div class="faq-item" id="faqItem1">
+            <button class="faq-trigger">
+              <span>What is WebDevRef?</span>
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-content">
+                WebDevRef is an interactive developer portal outlining universal layout patterns, system architectures, text-to-speech narration, quizzes, and automated context guidelines for AI-assisted engineering.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faqItem2">
+            <button class="faq-trigger">
+              <span>How do I use the learning tracks?</span>
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-content">
+                Click on the Launch Knowledge Portal button to open the 3-column reference base. From there, select a pathway (Production Readiness, Senior Architect, AI-Accelerated) to view recommended article structures.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faqItem3">
+            <button class="faq-trigger">
+              <span>Is the mastery quiz randomized?</span>
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-content">
+                Yes! The active-recall quiz dynamically selects and shuffles questions from your selected category to ensure objective feedback and reinforce concepts in memory.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faqItem4">
+            <button class="faq-trigger">
+              <span>How does the Audio Listen Mode work?</span>
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-content">
+                It utilizes the browser's native speech synthesis system. When enabled, it parses the article's text blocks (proactively skipping syntax-heavy code blocks) to narrate the concepts cleanly with natural vocal pauses.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faqItem5">
+            <button class="faq-trigger">
+              <span>Is this platform open source?</span>
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-panel">
+              <div class="faq-content">
+                Yes, this template is built with zero runtime dependencies. It runs completely offline/client-side on modern static hosting systems (Vercel, Netlify, GitHub Pages).
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SECTION 7: CTA BANNER ──────────────────────────────────── -->
+    <section class="section" id="call-to-action">
+      <div class="container">
+        <div class="cta-banner">
+          <h2 class="cta-title">Ready to accelerate your velocity?</h2>
+          <p class="cta-desc">Launch the knowledge portal now and audit your next project against industry standards and core engineering laws.</p>
+          <div class="cta-buttons">
+            <a href="portal.html" class="btn btn-primary" id="ctaLaunchBtn">Launch Reference Portal</a>
+            <a href="pages/quiz.html" class="btn btn-ghost" id="ctaQuizBtn">Test Your Mastery &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────────────── -->
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="#hero" class="nav-logo">
+          <a href="index.html" class="nav-logo" id="footerLogo">
             <span class="logo-icon">⬡</span>
             <span>WebDev<strong>Ref</strong></span>
           </a>
           <p>Universal principles, workflows, and AI acceleration guide.</p>
         </div>
         <div class="footer-links">
-          <a href="pages/quiz.html">🧠 Quiz</a>
-          <a href="pages/checklists.html">Checklists</a>
-          <a href="pages/github-context.html">GitHub &amp; Context</a>
-          <a href="pages/css-performance.html">CSS Architecture</a>
-          <a href="pages/api-deployment.html">API &amp; Deployment</a>
-          <a href="pages/laws-workflow.html">Laws &amp; Workflow</a>
-          <a href="pages/ai-acceleration.html">AI Suite</a>
-          <a href="pages/cheatsheet.html">Cheat Sheet</a>
+          <a href="pages/quiz.html">🧠 Mastery Quiz</a>
+          <a href="portal.html#preproject-checklist">📋 Setup Checklists</a>
+          <a href="portal.html#github-workflow">🐙 GitHub Contexts</a>
+          <a href="portal.html#css-architecture">🎨 CSS Architecture</a>
+          <a href="portal.html#api-design">🌐 API &amp; Deployments</a>
+          <a href="portal.html#universal-laws">📜 Universal Laws</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>Built with Antigravity AI · Personal Reference · Command Center v3.0 · <span id="year"></span></p>
+        <p>Built with Antigravity AI &middot; Personal Reference &middot; Command Center v3.0 &middot; <span id="year"></span></p>
       </div>
     </div>
   </footer>
@@ -358,5 +607,6 @@
   <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
   <div id="toastContainer" class="toast-container"></div>
   <script src="js/script.js"></script>
+  <script src="js/homepage.js"></script>
 </body>
 </html>
